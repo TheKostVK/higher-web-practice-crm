@@ -1,0 +1,48 @@
+.registrationPage {
+    width: 100%;
+}
+
+.registrationPage__title {
+    margin: 0 0 var(--space-6);
+
+    color: var(--color-neutral-gray-800);
+    font-family: var(--font-family-heading);
+    font-size: var(--font-size-h2);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-h2);
+}
+
+.registrationPage__form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+
+    width: 100%;
+    min-width: 304px;
+}
+
+.registrationPage__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.registrationPage__label {
+    color: var(--color-neutral-gray-500);
+    font-size: var(--font-size-text-xs);
+    line-height: var(--line-height-text-xs);
+}
+
+.registrationPage__submit {
+    width: 100%;
+    margin-top: var(--space-4);
+}
+
+.registrationPage__error,
+.registrationPage__formError {
+    margin: 0;
+
+    color: var(--color-accent-red-500);
+    font-size: var(--font-size-text-xs);
+    line-height: var(--line-height-text-xs);
+}
