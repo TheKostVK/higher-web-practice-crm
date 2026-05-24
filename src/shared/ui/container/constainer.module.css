@@ -1,0 +1,11 @@
+.container {
+    padding: 24px 40px;
+
+    background: var(--white-color);
+    border-radius: var(--radius-md);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+}
