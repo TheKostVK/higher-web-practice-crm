@@ -12,6 +12,7 @@ import {
     LoginPage,
     RegistrationPage
 } from './lazyAuthPages.tsx';
+import {ProfilePage} from "@/pages/profile";
 
 const withSuspense = (element: ReactElement) => (
     <Suspense fallback={<Preloader/>}>
@@ -50,7 +51,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'profile',
-                element: <DashboardPage/>
+                element: <ProfilePage/>
             }
         ]
     },

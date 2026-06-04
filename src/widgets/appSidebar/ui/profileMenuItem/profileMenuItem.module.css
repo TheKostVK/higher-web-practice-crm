@@ -39,36 +39,8 @@
     background: var(--color-bg-gray-200);
 }
 
-.profileMenuItem:hover .profileSidebar__img {
-    border-color: var(--color-accent-blue-600);
-}
-
 .profileMenuItem_active {
     color: var(--color-accent-blue-600);
-}
-
-.profileMenuItem_active .profileSidebar__img {
-    border-color: var(--color-accent-blue-600);
-}
-
-.profileMenuItem_active svg path {
-    stroke: var(--color-accent-blue-600);
-}
-
-.profileSidebar__img {
-    box-sizing: border-box;
-    display: block;
-    flex: 0 0 auto;
-
-    width: 40px;
-    height: 40px;
-
-    border: 1px solid transparent;
-    border-radius: 50%;
-
-    object-fit: cover;
-
-    transition: border-color var(--animation-normal);
 }
 
 .profileSidebar__userName {
@@ -85,7 +57,7 @@
 
     transition:
             max-width var(--animation-normal),
-            opacity var(--animation-fast),
+            opacity var(--animation-normal),
             transform var(--animation-normal);
 }
 

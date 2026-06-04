@@ -1,0 +1,201 @@
+.profileForm {
+    width: 100%;
+    min-height: 640px;
+    max-width: 632px;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.profileForm__grid {
+    width: 632px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 312px);
+    column-gap: var(--space-2);
+    row-gap: var(--space-4);
+}
+
+.profileForm__emailConfirm {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.profileForm__hint {
+    margin: 0;
+
+    color: var(--color-neutral-gray-400);
+    font-size: var(--font-size-text-sm);
+    line-height: var(--line-height-text-sm);
+}
+
+.profileForm__emailButton {
+    --app-button-width: 100%;
+    --app-button-height: 40px;
+}
+
+.profileForm__passwordSection {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+
+    margin-top: var(--space-4);
+}
+
+.profileForm__sectionTitle {
+    margin: 0;
+
+    color: var(--color-neutral-gray-800);
+    font-family: var(--font-family-text);
+    font-size: var(--font-size-text-base);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-text-base);
+}
+
+.profileForm__gridSpacer {
+    display: block;
+}
+
+.profileForm__formError,
+.profileForm__success {
+    margin: 0;
+
+    font-size: var(--font-size-text-xs);
+    line-height: var(--line-height-text-xs);
+}
+
+.profileForm__formError {
+    color: var(--color-accent-red-500);
+}
+
+.profileForm__success {
+    color: var(--color-accent-green-500);
+}
+
+.profileForm__actions {
+    margin-top: auto;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.profileForm__deleteButton {
+    --app-button-height: auto;
+    --app-button-color: var(--color-accent-blue-500);
+    --app-button-hover-color: var(--color-accent-blue-600);
+    --app-button-font-size: var(--font-size-text-sm);
+    --app-button-line-height: var(--line-height-text-sm);
+}
+
+.profileForm__submitButton {
+    --app-button-width: 180px;
+    --app-button-min-width: 160px;
+    --app-button-height: 40px;
+    --app-button-font-size: var(--font-size-text-sm);
+    --app-button-line-height: var(--line-height-text-sm);
+}
+
+.profilePage__card {
+    width: 100%;
+    max-width: 680px;
+    min-height: 704px;
+    padding: var(--space-8) var(--space-6);
+
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 8px var(--color-bg-gray-200);
+}
+
+@media (max-width: 920px) {
+    .profilePage__card {
+        min-height: auto;
+        padding: var(--space-8) var(--space-6);
+    }
+
+    .profileForm__grid {
+        width: 100%;
+        grid-template-columns: 1fr;
+        row-gap: var(--space-3);
+    }
+
+    .profileForm__field_accountName {
+        order: 3;
+    }
+
+    .profileForm__field_email {
+        order: 4;
+    }
+
+    .profileForm__gridSpacer {
+        display: none;
+    }
+
+    .profileForm__emailButton {
+        max-width: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .profilePage__card {
+        padding: var(--space-6) var(--space-4);
+
+        border-radius: var(--radius-md);
+        box-shadow: none;
+    }
+
+    .profileForm {
+        position: relative;
+
+        align-items: stretch;
+        min-height: 0;
+    }
+
+    .profileForm__avatarUpload {
+        align-self: center;
+    }
+
+    .profileForm__passwordSection {
+        gap: var(--space-4);
+    }
+
+    .profileForm__sectionTitle {
+        font-size: var(--font-size-text-sm);
+        line-height: var(--line-height-text-sm);
+    }
+
+    .profileForm__emailButton {
+        --app-button-height: 36px;
+        --app-button-color: var(--color-neutral-gray-800);
+        --app-button-bg: var(--color-bg-white);
+        --app-button-border: var(--color-neutral-gray-300);
+        --app-button-hover-color: var(--color-neutral-gray-800);
+        --app-button-hover-bg: var(--color-bg-white);
+        --app-button-hover-border: var(--color-accent-blue-500);
+        --app-button-font-size: var(--font-size-text-sm);
+        --app-button-line-height: var(--line-height-text-sm);
+    }
+
+    .profileForm__actions {
+        width: 100%;
+        margin-top: 0;
+
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .profileForm__deleteButton {
+        align-self: center;
+
+        --app-button-font-size: var(--font-size-text-base);
+        --app-button-line-height: var(--line-height-text-base);
+    }
+
+    .profileForm__submitButton {
+        --app-button-width: 180px;
+        --app-button-min-width: 160px;
+        --app-button-height: 44px;
+    }
+}

@@ -1,0 +1,16 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+
+    height: 100vh;
+}
+
+@media (max-width: 768px) {
+    .content {
+        height: calc(100vh - 57px);
+
+        background: var(--main-gradient);
+    }
+}

@@ -1,16 +1,18 @@
-import {useSelector} from "react-redux";
-import {selectorUserIsInit} from "@/entities/user";
+import {selectorUserData} from "@/entities/user";
+import {useAppSelector} from "@/app";
+import {PageTitle} from "@/shared/ui/pageTitle";
+import {Container} from "@/shared/ui/container";
 
 export function DashboardPage() {
-    const isUserInit = useSelector(selectorUserIsInit);
+    const user = useAppSelector(selectorUserData);
 
     return (
-        <div style={{gridColumn: 5}}>
-            <h1>DashBoard template</h1>
-            <p>
-                {isUserInit ? 'true' : 'false'}
-            </p>
-        </div>
+        <>
+            <PageTitle title={`Добро пожаловать, ${user ? user.firstName : 'пользователь'}!`} subTitle={'Посмотрите сводную информацию по вашим клиентам, сделкам и задачам'}/>
+            <Container>
+                Профиль
+            </Container>
+        </>
     )
 }
 

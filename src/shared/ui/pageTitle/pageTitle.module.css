@@ -1,0 +1,23 @@
+.pageTitle {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.title {
+    color: var(--color-neutral-gray-800);
+    font-family: Roboto;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 36px;
+}
+
+.subtitle {
+    color: var(--color-neutral-gray-500, #6B7280);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+}

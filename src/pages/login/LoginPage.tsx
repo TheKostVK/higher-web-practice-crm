@@ -3,8 +3,8 @@ import {Button, Input} from "antd";
 import {Controller, useForm} from 'react-hook-form';
 import {useLocation, useNavigate} from 'react-router-dom';
 
-import {setUserProfileData, useLoginUserMutation} from '../../entities/user';
-import {useAppDispatch} from '../../app';
+import {setUserProfileData, useLoginUserMutation} from '@/entities/user';
+import {useAppDispatch} from '@/app';
 import Styles from './loginPage.module.css';
 import {loginSchema, type LoginFormValues} from './loginSchema';
 

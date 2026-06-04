@@ -1,28 +1,41 @@
 export type User = {
-  id: string
-  email: string
-  name: string
-  createdAt: string
-  password?: string
+    id: string;
+    email: string;
+    name: string;
+    firstName?: string;
+    lastName?: string;
+    accountName?: string;
+    avatarUrl?: string;
+    emailVerified?: boolean;
+    createdAt: string;
+    password?: string;
 }
 
 export type UserProfile = User & {
-  password?: string
+    firstName: string;
+    lastName: string;
+    password?: string;
 }
 
 export type RegisterPayload = {
-  email: string
-  password: string
-  name: string
+    email: string;
+    password: string;
+    name: string;
 }
 
 export type LoginPayload = {
-  email: string
-  password: string
+    email: string;
+    password: string;
 }
 
 export type UpdateProfilePayload = {
-  email?: string
-  name?: string
-  password?: string
+    id: string;
+    email?: string;
+    name?: string;
+    firstName?: string;
+    lastName?: string;
+    accountName?: string;
+    avatarUrl?: string;
+    emailVerified?: boolean;
+    password?: string;
 }

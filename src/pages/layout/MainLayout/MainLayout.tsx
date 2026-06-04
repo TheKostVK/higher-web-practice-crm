@@ -4,6 +4,8 @@ import {Layout} from "antd";
 import {AppSidebar} from "@/widgets/appSidebar";
 import {useIsMobile} from "@/shared/lib/hooks";
 
+import Styles from './mainLayout.module.css';
+
 const {Content} = Layout;
 
 export const MainLayout = () => {
@@ -13,7 +15,7 @@ export const MainLayout = () => {
         <Layout hasSider={!isMobile}>
             <AppSidebar/>
             <Layout>
-                <Content>
+                <Content className={Styles.content}>
                     <Outlet/>
                 </Content>
             </Layout>

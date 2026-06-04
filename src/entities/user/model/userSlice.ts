@@ -1,5 +1,5 @@
 import {createSlice, type PayloadAction} from "@reduxjs/toolkit";
-import type {UserProfile} from "../types";
+import type {User, UserProfile} from "../types";
 import {getUserLocalStorage, removeUserLocalStorage, setUserLocalStorage} from "../lib";
 
 type TUserState = {
@@ -12,16 +12,31 @@ const initialState: TUserState = {
     user: undefined,
 };
 
+const getUserProfile = (user: User): UserProfile => {
+    const [firstName = 'пользователь', ...lastNameParts] = user.name.trim().split(/\s+/);
+    const lastName = lastNameParts.join(' ');
+
+    return {
+        ...user,
+        firstName: user.firstName || firstName,
+        lastName: user.lastName || lastName,
+    };
+};
+
 export const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
         initUser: (state) => {
-            state.user = getUserLocalStorage();
+            const user = getUserLocalStorage();
+
+            state.user = user ? getUserProfile(user) : undefined;
+
             state.isInit = true;
         },
-        setUserProfileData: (state, action: PayloadAction<UserProfile>) => {
-            state.user = action.payload;
+        setUserProfileData: (state, action: PayloadAction<User>) => {
+            state.user = getUserProfile(action.payload);
+
             setUserLocalStorage(state.user);
         },
         clearUserProfileData: (state) => {
