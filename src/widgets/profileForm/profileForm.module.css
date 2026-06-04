@@ -194,7 +194,7 @@
     }
 
     .profileForm__submitButton {
-        --app-button-width: 180px;
+        --app-button-width: 100%;
         --app-button-min-width: 160px;
         --app-button-height: 44px;
     }
