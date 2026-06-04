@@ -1,4 +1,4 @@
-.profileSidebar {
+.profileMenuItem {
     padding: 8px 20px;
 
     display: flex;
@@ -13,6 +13,17 @@
     transition: color var(--animation-normal) background var(--animation-normal);
 }
 
+.profileMenuItem_mobile {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: color var(--animation-normal) background var(--animation-normal);
+}
+
 .profileSidebar_collapsed {
     margin: 0 auto;
     padding: 0;
@@ -23,13 +34,25 @@
     gap: 0;
 }
 
-.profileSidebar:hover:not(.profileSidebar_collapsed) {
+.profileMenuItem:hover:not(.profileSidebar_collapsed) {
     color: var(--color-accent-blue-600);
     background: var(--color-bg-gray-200);
 }
 
-.profileSidebar:hover .profileSidebar__img {
+.profileMenuItem:hover .profileSidebar__img {
     border-color: var(--color-accent-blue-600);
+}
+
+.profileMenuItem_active {
+    color: var(--color-accent-blue-600);
+}
+
+.profileMenuItem_active .profileSidebar__img {
+    border-color: var(--color-accent-blue-600);
+}
+
+.profileMenuItem_active svg path {
+    stroke: var(--color-accent-blue-600);
 }
 
 .profileSidebar__img {

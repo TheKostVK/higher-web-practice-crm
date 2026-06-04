@@ -5,7 +5,7 @@ import {ProtectedRoute} from "./ProtectedRoute";
 import {Preloader} from "@/shared/ui/preloader";
 import {AuthLayout} from "@/pages/layout/AuthLayout";
 import {MainLayout} from "@/pages/layout/MainLayout";
-import {StubPage} from "../../pages/StubPage.tsx";
+import {DashboardPage} from "@/pages/dashboard";
 import {
     ConfirmEmailPage,
     ForgotPasswordPage,
@@ -30,23 +30,27 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <StubPage/>
+                element: <DashboardPage/>
             },
             {
                 path: 'clients',
-                element: <StubPage/>
+                element: <DashboardPage/>
             },
             {
                 path: 'deals',
-                element: <StubPage/>
+                element: <DashboardPage/>
             },
             {
                 path: 'reports',
-                element: <StubPage/>
+                element: <DashboardPage/>
             },
             {
                 path: 'tasks',
-                element: <StubPage/>
+                element: <DashboardPage/>
+            },
+            {
+                path: 'profile',
+                element: <DashboardPage/>
             }
         ]
     },

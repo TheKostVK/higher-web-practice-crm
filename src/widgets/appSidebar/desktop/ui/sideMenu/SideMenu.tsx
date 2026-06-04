@@ -1,29 +1,30 @@
 import {Button} from "antd";
 
-import SideMenuOpenIcon from './assets/sideMenuOpen.svg?react';
-import SideMenuCloseIcon from './assets/sideMenuClose.svg?react';
+import Logo from '../../../assetes/logo/YaPlex+Logo.svg';
+import OpenIcon from './assets/sideMenuOpen.svg?react';
+import CloseIcon from './assets/sideMenuClose.svg?react';
 
 import Styles from './sideMenu.module.css';
 import {type ReactNode, useContext} from "react";
-import {AppSidebarContext} from "../../context";
+import {AppMenuContext} from "../../../context";
+import {ProfileMenuItem} from "@/widgets/appSidebar/ui/profileMenuItem";
 
 type SideMenuProps = {
     children: ReactNode;
-    footerChildren: ReactNode;
 }
 
-export const SideMenu = ({children, footerChildren}: SideMenuProps) => {
-    const {collapsed, toggleCollapsed} = useContext(AppSidebarContext);
+export const SideMenu = ({children}: SideMenuProps) => {
+    const {collapsed, toggleCollapsed} = useContext(AppMenuContext);
 
     return (
         <div className={`${Styles.sideMenu} ${collapsed ? Styles.sideMenu_collapsed : ''}`}>
             <div className={Styles.sideMenu__header}>
-                <img className={Styles.sideMenu__logo} src="/logo/YaPlex+Logo.svg" alt="YaPlex"/>
+                <img className={Styles.sideMenu__logo} src={Logo} alt="YaPlex"/>
                 <Button
                     aria-label={collapsed ? 'Раскрыть меню' : 'Свернуть меню'}
                     className={Styles.sideMenu__trigger}
                     type="text"
-                    icon={collapsed ? <SideMenuOpenIcon/> : <SideMenuCloseIcon/>}
+                    icon={collapsed ? <OpenIcon/> : <CloseIcon/>}
                     onClick={toggleCollapsed}
                 />
             </div>
@@ -31,7 +32,7 @@ export const SideMenu = ({children, footerChildren}: SideMenuProps) => {
                 {children}
             </div>
             <div className={Styles.sideMenu__footer}>
-                {footerChildren}
+                <ProfileMenuItem/>
             </div>
         </div>
     )

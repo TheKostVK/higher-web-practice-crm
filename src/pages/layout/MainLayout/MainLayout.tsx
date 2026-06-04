@@ -1,17 +1,18 @@
 import {Outlet} from "react-router-dom";
 import {Layout} from "antd";
 
-import {MainHeader} from "../../../shared/ui/mainHeader";
-import {AppSidebar} from "../../../widgets/appSidebar";
+import {AppSidebar} from "@/widgets/appSidebar";
+import {useIsMobile} from "@/shared/lib/hooks";
 
 const {Content} = Layout;
 
 export const MainLayout = () => {
+    const isMobile = useIsMobile();
+
     return (
-        <Layout hasSider>
+        <Layout hasSider={!isMobile}>
             <AppSidebar/>
             <Layout>
-                <MainHeader/>
                 <Content>
                     <Outlet/>
                 </Content>

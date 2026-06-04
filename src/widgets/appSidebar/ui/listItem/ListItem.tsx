@@ -1,16 +1,16 @@
-import {useContext} from "react";
+import {memo, useContext} from "react";
 import {NavLink} from "react-router-dom";
 
 import Styles from './listItem.module.css';
-import {AppSidebarContext} from "../../context";
+import {AppMenuContext} from "../../context";
 import type {AppSidebarItem} from "@/widgets/appSidebar/types/types";
 
 export type ListItemProps = {
     item: AppSidebarItem
 };
 
-export const ListItem = ({item}: ListItemProps) => {
-    const {collapsed} = useContext(AppSidebarContext);
+export const ListItem = memo(({item}: ListItemProps) => {
+    const {collapsed, closeMenu} = useContext(AppMenuContext);
 
     return (
         <NavLink
@@ -18,6 +18,7 @@ export const ListItem = ({item}: ListItemProps) => {
             end={item.pathname === '/'}
             aria-label={item.title}
             title={item.title}
+            onClick={closeMenu}
             className={({isActive}) => `${Styles.listItem} ${isActive ? Styles.listItem_active : ''} ${collapsed ? Styles.listItem_collapsed : ''}`}
         >
             {item.icon}
@@ -26,4 +27,4 @@ export const ListItem = ({item}: ListItemProps) => {
             </span>
         </NavLink>
     );
-};
+});

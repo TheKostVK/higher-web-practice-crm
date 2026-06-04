@@ -82,6 +82,13 @@
     transition: stroke var(--animation-normal);
 }
 
+.listItem > svg {
+    flex: 0 0 24px;
+
+    width: 24px;
+    height: 24px;
+}
+
 .listItem:hover {
     color: var(--color-accent-blue-600);
     background: var(--color-bg-gray-200);

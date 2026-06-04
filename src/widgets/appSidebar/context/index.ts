@@ -1,2 +1,2 @@
-export * from './AppSidebarContext.ts';
-export * from './AppSidebarProvider.tsx';
+export * from './AppMenuContext.ts';
+export * from './AppMenuProvider.tsx';
