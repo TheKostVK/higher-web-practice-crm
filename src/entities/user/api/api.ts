@@ -1,18 +1,36 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import type {LoginPayload, RegisterPayload, UpdateProfilePayload, User, UserProfile} from "../types";
+import type {
+    TLoginPayload,
+    TRegisterPayload,
+    TUpdateProfilePayload,
+    TUpdateUserAvatarPayload,
+    TUser,
+    TUserAvatar,
+    TUserProfile
+} from "../types";
 
 export const userApi = createApi({
     reducerPath: 'userApi',
     baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:3001'}),
-    tagTypes: ['User'],
+    tagTypes: ['TUser'],
     endpoints: (builder) => ({
-        getUserById: builder.query<UserProfile, string>({
+        getUserById: builder.query<TUserProfile, string>({
             query: (userId: string) => ({
                 url: `/users/${userId}`,
             }),
-            providesTags: (_result, _error, userId) => [{type: 'User', id: userId}],
+            providesTags: (_result, _error, userId) => [{type: 'TUser', id: userId}],
         }),
-        getUsersByEmail: builder.query<User[], string>({
+        getUserAvatarById: builder.query<TUserAvatar, string>({
+            query: (userId: string) => ({
+                url: `/users/${userId}`,
+            }),
+            transformResponse: (user: TUser): TUserAvatar => ({
+                id: user.id,
+                avatarUrl: user.avatarUrl,
+            }),
+            providesTags: (_result, _error, userId) => [{type: 'TUser', id: userId}],
+        }),
+        getUsersByEmail: builder.query<TUser[], string>({
             query: (email: string) => ({
                 url: '/users',
                 params: {
@@ -22,20 +40,20 @@ export const userApi = createApi({
             providesTags: (result) =>
                 result
                     ? [
-                        ...result.map(({id}) => ({type: 'User' as const, id})),
-                        {type: 'User', id: 'LIST'},
+                        ...result.map(({id}) => ({type: 'TUser' as const, id})),
+                        {type: 'TUser', id: 'LIST'},
                     ]
-                    : [{type: 'User', id: 'LIST'}],
+                    : [{type: 'TUser', id: 'LIST'}],
         }),
-        loginUser: builder.mutation<User | undefined, LoginPayload>({
-            query: (loginData: LoginPayload) => ({
+        loginUser: builder.mutation<TUser | undefined, TLoginPayload>({
+            query: (loginData: TLoginPayload) => ({
                 url: '/users',
                 params: loginData
             }),
-            transformResponse: (users: User[]) => users[0],
+            transformResponse: (users: TUser[]) => users[0],
         }),
-        registerUser: builder.mutation<User, RegisterPayload>({
-            query: (newUser: RegisterPayload) => ({
+        registerUser: builder.mutation<TUser, TRegisterPayload>({
+            query: (newUser: TRegisterPayload) => ({
                 url: '/users',
                 method: 'POST',
                 body: {
@@ -44,17 +62,32 @@ export const userApi = createApi({
                     createdAt: new Date().toISOString(),
                 }
             }),
-            invalidatesTags: [{type: 'User', id: 'LIST'}],
+            invalidatesTags: [{type: 'TUser', id: 'LIST'}],
         }),
-        updateUserProfile: builder.mutation<UserProfile, UpdateProfilePayload>({
-            query: ({id, ...profileData}: UpdateProfilePayload) => ({
+        updateUserProfile: builder.mutation<TUserProfile, TUpdateProfilePayload>({
+            query: ({id, ...profileData}: TUpdateProfilePayload) => ({
                 url: `/users/${id}`,
                 method: 'PATCH',
                 body: profileData,
             }),
             invalidatesTags: (_result, _error, {id}) => [
-                {type: 'User', id},
-                {type: 'User', id: 'LIST'},
+                {type: 'TUser', id},
+                {type: 'TUser', id: 'LIST'},
+            ],
+        }),
+        updateUserAvatarById: builder.mutation<TUserAvatar, TUpdateUserAvatarPayload>({
+            query: ({id, avatarUrl}: TUpdateUserAvatarPayload) => ({
+                url: `/users/${id}`,
+                method: 'PATCH',
+                body: {avatarUrl},
+            }),
+            transformResponse: (user: TUser): TUserAvatar => ({
+                id: user.id,
+                avatarUrl: user.avatarUrl,
+            }),
+            invalidatesTags: (_result, _error, {id}) => [
+                {type: 'TUser', id},
+                {type: 'TUser', id: 'LIST'},
             ],
         }),
         deleteUser: builder.mutation<void, string>({
@@ -63,8 +96,8 @@ export const userApi = createApi({
                 method: 'DELETE',
             }),
             invalidatesTags: (_result, _error, userId) => [
-                {type: 'User', id: userId},
-                {type: 'User', id: 'LIST'},
+                {type: 'TUser', id: userId},
+                {type: 'TUser', id: 'LIST'},
             ],
         }),
     })
@@ -72,9 +105,11 @@ export const userApi = createApi({
 
 export const {
     useGetUserByIdQuery,
+    useGetUserAvatarByIdQuery,
     useLazyGetUsersByEmailQuery,
     useLoginUserMutation,
     useRegisterUserMutation,
     useUpdateUserProfileMutation,
+    useUpdateUserAvatarByIdMutation,
     useDeleteUserMutation,
 } = userApi;

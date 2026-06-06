@@ -8,21 +8,22 @@ import {
     clearUserProfileData,
     selectorUserData,
     setUserProfileData,
-    type UserProfile,
+    type TUserProfile,
     useDeleteUserMutation,
     useLazyGetUsersByEmailQuery,
-    useUpdateUserProfileMutation
+    useUpdateUserAvatarByIdMutation,
+    useUpdateUserProfileMutation, logout
 } from "@/entities/user";
 import {AvatarUpload} from "@/shared/ui/avatarUpload";
 import {Button} from "@/shared/ui/button";
 import {Container} from "@/shared/ui/container";
 import {FormPasswordInput, FormTextInput} from "@/shared/ui/formInput";
 import Styles from './profileForm.module.css';
-import {profileFormSchema, type ProfileFormValues} from './model';
+import {profileFormSchema, type TProfileFormValues} from './model';
 
 const PROFILE_FORM_ID = 'profile-form';
 
-const getDefaultValues = (user: UserProfile | undefined): ProfileFormValues => ({
+const getDefaultValues = (user: TUserProfile | undefined): TProfileFormValues => ({
     avatarUrl: user?.avatarUrl || '',
     firstName: user?.firstName || '',
     lastName: user?.lastName || '',
@@ -43,6 +44,10 @@ export const ProfileForm = () => {
         isLoading: isProfileUpdating,
         error: profileUpdateError
     }] = useUpdateUserProfileMutation();
+    const [updateUserAvatarById, {
+        isLoading: isAvatarUpdating,
+        error: avatarUpdateError
+    }] = useUpdateUserAvatarByIdMutation();
     const [deleteUser, {isLoading: isDeleting, error: profileDeleteError}] = useDeleteUserMutation();
     const {
         control,
@@ -52,7 +57,7 @@ export const ProfileForm = () => {
         clearErrors,
         setValue,
         formState: {errors}
-    } = useForm<ProfileFormValues>({
+    } = useForm<TProfileFormValues>({
         resolver: zodResolver(profileFormSchema),
         defaultValues: getDefaultValues(user),
     });
@@ -64,8 +69,8 @@ export const ProfileForm = () => {
     const avatarUrl = useWatch({control, name: 'avatarUrl'});
     const email = useWatch({control, name: 'email'});
     const isEmailConfirmationVisible = user?.emailVerified === false || email !== user?.email;
-    const isFormLoading = isProfileUpdating || isEmailChecking;
-    const requestErrorMessage = profileUpdateError || profileDeleteError
+    const isFormLoading = isProfileUpdating || isAvatarUpdating || isEmailChecking;
+    const requestErrorMessage = profileUpdateError || avatarUpdateError || profileDeleteError
         ? 'Не удалось выполнить запрос. Проверьте, что сервер запущен'
         : '';
     const formErrorMessage = errors.root?.message || requestErrorMessage;
@@ -103,7 +108,7 @@ export const ProfileForm = () => {
         setStatusMessage('Ссылка подтверждения отправлена на email');
     };
 
-    const handleProfileUpdate = async (values: ProfileFormValues) => {
+    const handleProfileUpdate = async (values: TProfileFormValues) => {
         if (!user) {
             setError('root', {
                 message: 'Данные пользователя не найдены',
@@ -137,9 +142,9 @@ export const ProfileForm = () => {
             }
 
             const name = `${values.firstName} ${values.lastName}`.trim();
+            const isAvatarChanged = values.avatarUrl !== (user.avatarUrl || '');
             const updatedUser = await updateUserProfile({
                 id: user.id,
-                avatarUrl: values.avatarUrl,
                 firstName: values.firstName,
                 lastName: values.lastName,
                 accountName: values.accountName,
@@ -148,9 +153,18 @@ export const ProfileForm = () => {
                 name,
                 ...(isPasswordChanged ? {password: values.newPassword} : {}),
             }).unwrap();
+            const nextUser = isAvatarChanged
+                ? {
+                    ...updatedUser,
+                    ...(await updateUserAvatarById({
+                        id: user.id,
+                        avatarUrl: values.avatarUrl || '',
+                    }).unwrap()),
+                }
+                : updatedUser;
 
-            dispatch(setUserProfileData(updatedUser));
-            reset(getDefaultValues(updatedUser));
+            dispatch(setUserProfileData(nextUser));
+            reset(getDefaultValues(nextUser));
             setStatusMessage('Изменения сохранены');
         } catch {
             setError('root', {
@@ -183,6 +197,29 @@ export const ProfileForm = () => {
         }
     };
 
+    const handleLogoutProfile = async () => {
+        if (!user) {
+            return;
+        }
+
+        const isConfirmed = window.confirm('Выйти из аккаунта?');
+
+        if (!isConfirmed) {
+            return;
+        }
+
+        setStatusMessage('');
+
+        try {
+            dispatch(logout());
+            navigate('/auth/login', {replace: true});
+        } catch {
+            setError('root', {
+                message: 'Не удалось удалить аккаунт. Попробуйте ещё раз',
+            });
+        }
+    };
+
     if (!user) {
         return (
             <p className={Styles.profileForm__formError} role="alert">
@@ -205,8 +242,18 @@ export const ProfileForm = () => {
                 </Button>
 
                 <Button
+                    className={Styles.profileForm__logoutButton}
+                    view="outline"
+                    htmlType="button"
+                    loading={isDeleting}
+                    onClick={handleLogoutProfile}
+                >
+                    Выйти из аккаунта
+                </Button>
+
+                <Button
                     className={Styles.profileForm__deleteButton}
-                    view="link"
+                    view="outline"
                     htmlType="button"
                     loading={isDeleting}
                     onClick={handleDeleteProfile}

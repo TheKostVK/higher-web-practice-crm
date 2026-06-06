@@ -65,4 +65,4 @@ export const profileFormSchema = z
         }
     });
 
-export type ProfileFormValues = z.infer<typeof profileFormSchema>;
+export type TProfileFormValues = z.infer<typeof profileFormSchema>;

@@ -6,9 +6,9 @@ import {useLocation, useNavigate} from 'react-router-dom';
 import {setUserProfileData, useLoginUserMutation} from '@/entities/user';
 import {useAppDispatch} from '@/app';
 import Styles from './loginPage.module.css';
-import {loginSchema, type LoginFormValues} from './loginSchema';
+import {loginSchema, type TLoginFormValues} from './loginSchema';
 
-type LocationState = {
+type TLocationState = {
     from?: {
         pathname?: string;
     };
@@ -24,7 +24,7 @@ export const LoginPage = () => {
         handleSubmit,
         setError,
         formState: {errors}
-    } = useForm<LoginFormValues>({
+    } = useForm<TLoginFormValues>({
         resolver: zodResolver(loginSchema),
         defaultValues: {
             email: '',
@@ -32,9 +32,9 @@ export const LoginPage = () => {
         },
     });
 
-    const redirectPath = (location.state as LocationState | null)?.from?.pathname || '/';
+    const redirectPath = (location.state as TLocationState | null)?.from?.pathname || '/';
 
-    const handleLogin = async (values: LoginFormValues) => {
+    const handleLogin = async (values: TLoginFormValues) => {
         try {
             const user = await loginUser(values).unwrap();
 

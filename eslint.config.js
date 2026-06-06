@@ -172,25 +172,22 @@ const checkSource = (sourceNode, context, filename) => {
   })
 }
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    plugins: {
-      'public-api-imports': publicApiImportsPlugin,
-    },
-    extends: [
-      js.configs.recommended,
-      tseslint.configs.recommended,
-      reactHooks.configs.flat.recommended,
-      reactRefresh.configs.vite,
-    ],
-    languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
-    },
-    rules: {
-      'public-api-imports/only-public-api': 'error',
-    },
+export default defineConfig([globalIgnores(['dist']), {
+  files: ['**/*.{ts,tsx}'],
+  plugins: {
+    'public-api-imports': publicApiImportsPlugin,
   },
-])
+  extends: [
+    js.configs.recommended,
+    tseslint.configs.recommended,
+    reactHooks.configs.flat.recommended,
+    reactRefresh.configs.vite,
+  ],
+  languageOptions: {
+    ecmaVersion: 2020,
+    globals: globals.browser,
+  },
+  rules: {
+    'public-api-imports/only-public-api': 'error',
+  },
+}])

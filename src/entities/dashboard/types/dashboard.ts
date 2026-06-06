@@ -1,37 +1,58 @@
-import type { Client } from '../../client';
-import type { Deal } from '../../deal';
-import type { Task } from '../../task';
+import type { TClient } from '../../client';
+import type { TDeal } from '../../deal';
+import type { TTask } from '../../task';
+import type {TDealStatus} from '../../deal';
+import type {TTaskStatus} from '../../task';
 
-export type DashboardStats = {
-  clients: {
-    total: number;
-    today: number;
-    week: number;
-    month: number;
-    quarter: number;
-  };
+export type TDashboardPeriod = 'today' | 'week' | 'month' | 'quarter';
 
-  activeDeals: {
-    total: number;
-    today: number;
-    week: number;
-    month: number;
-  };
-
-  completedDeals: {
-    total: number;
-    today: number;
-    week: number;
-    month: number;
-  };
+export type TDashboardFilters = {
+  period?: TDashboardPeriod;
+  managerId?: string;
 };
 
-export type DashboardData = {
-  stats: DashboardStats;
+export type TDashboardMetricCase = 'increase' | 'decrease' | 'noChange';
 
-  topClients: Client[];
+export type TDashboardMetricItem = {
+  name: string;
+  value: number;
+  case: TDashboardMetricCase;
+};
 
-  recentDeals: Deal[];
+export type TDashboardMetric = {
+  total: TDashboardMetricItem;
+  toDay: TDashboardMetricItem;
+  week: TDashboardMetricItem;
+  month: TDashboardMetricItem;
+  quarter: TDashboardMetricItem;
+};
 
-  recentTasks: Task[];
+export type TDashboardStats = {
+  clients: TDashboardMetric;
+  activeDeals: TDashboardMetric;
+  completedDeals: TDashboardMetric;
+};
+
+export type TDashboardTopClient = TClient & {
+  dealsCount: number;
+};
+
+export type TDashboardTopDeal = Pick<TDeal, 'id' | 'title' | 'amount' | 'status' | 'createdAt'> & {
+  clientName: string;
+  status: TDealStatus;
+};
+
+export type TDashboardRecentTask = Pick<TTask, 'id' | 'title' | 'status' | 'dueDate' | 'createdAt'> & {
+  dealTitle?: string;
+  status: TTaskStatus;
+};
+
+export type TDashboardData = {
+  stats: TDashboardStats;
+
+  topClients: TDashboardTopClient[];
+
+  topDeals: TDashboardTopDeal[];
+
+  recentTasks: TDashboardRecentTask[];
 };

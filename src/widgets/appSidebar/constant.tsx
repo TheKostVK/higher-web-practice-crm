@@ -3,9 +3,9 @@ import ClientsSVG from './assetes/Name=Team.svg?react';
 import DealsSVG from './assetes/Name=Briefcase.svg?react';
 import ReportsSVG from './assetes/Name=Task.svg?react'
 import TasksSVG from './assetes/Name=Project.svg?react';
-import type {AppSidebarItem} from "@/widgets/appSidebar/types/types";
+import type {TAppSidebarItem} from "@/widgets/appSidebar/types/types";
 
-export const appSidebarContentItems: AppSidebarItem[] = [
+export const appSidebarContentItems: TAppSidebarItem[] = [
     {
         title: 'Главная',
         pathname: '/',

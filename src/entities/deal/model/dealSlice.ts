@@ -1,12 +1,12 @@
 import {createSlice} from "@reduxjs/toolkit";
-import type {Deal} from "../types";
+import type {TDeal} from "../types";
 
 
 type TDealState = {
     isLoading: boolean,
     isError: boolean,
     errorText: string | undefined,
-    deals: Deal[],
+    deals: TDeal[],
 };
 
 const initialState: TDealState = {

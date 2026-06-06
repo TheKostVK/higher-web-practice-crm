@@ -6,12 +6,12 @@ import {Preloader} from "../../shared/ui/preloader";
 import type {ReactElement} from "react";
 
 
-type ProtectedRouteProps = {
+type TProtectedRouteProps = {
     onlyUnAuth?: boolean;
     children: ReactElement;
 };
 
-export const ProtectedRoute = ({ onlyUnAuth, children }: ProtectedRouteProps) => {
+export const ProtectedRoute = ({ onlyUnAuth, children }: TProtectedRouteProps) => {
     const isInit = useAppSelector(selectorUserIsInit);
     const user = useAppSelector(selectorUserData);
     const dispatch = useAppDispatch();

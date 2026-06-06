@@ -31,7 +31,7 @@ export const ProfileAvatar = memo(({
             className={`${Styles.profileAvatar__img} ${isActive ? Styles.profileAvatar__img_active : ''}`}
             style={{background: 'transparent'}}
             size={ProfileSize[size]}
-            src={useIcon ? undefined : src}
+            src={!src && useIcon ? undefined : src}
             icon={useIcon || !src ? <ProfileIconFallback/> : undefined}
             alt={alt}
         />

@@ -1,0 +1,37 @@
+.summaryInfo {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+.tableRow {
+    min-width: 250px;
+}
+
+.tableRow__cell:first-child {
+    color: var(--color-neutral-gray-800);
+
+    font-family: Inter;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.tableRow__cell:nth-child(2) {
+    color: var(--color-accent-blue-500);
+
+    /* text-2xl */
+    font-family: Roboto;
+    font-size: 24px;
+    line-height: 32px; /* 133.333% */
+}
+
+@media (max-width: 768px) {
+    .tableRow__cell:nth-child(2) {
+        /* text-xl */
+        font-size: 20px;
+        line-height: 28px; /* 140% */
+    }
+}

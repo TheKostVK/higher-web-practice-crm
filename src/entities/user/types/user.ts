@@ -1,34 +1,34 @@
-export type User = {
+export type TUser = {
     id: string;
     email: string;
     name: string;
-    firstName?: string;
-    lastName?: string;
-    accountName?: string;
-    avatarUrl?: string;
+    firstName: string;
+    lastName: string;
+    accountName: string;
+    avatarUrl: string;
     emailVerified?: boolean;
     createdAt: string;
     password?: string;
 }
 
-export type UserProfile = User & {
-    firstName: string;
-    lastName: string;
+export type TUserAvatar = Pick<TUser, 'id' | 'avatarUrl'>;
+
+export type TUserProfile = TUser & {
     password?: string;
 }
 
-export type RegisterPayload = {
+export type TRegisterPayload = {
     email: string;
     password: string;
     name: string;
 }
 
-export type LoginPayload = {
+export type TLoginPayload = {
     email: string;
     password: string;
 }
 
-export type UpdateProfilePayload = {
+export type TUpdateProfilePayload = {
     id: string;
     email?: string;
     name?: string;
@@ -38,4 +38,9 @@ export type UpdateProfilePayload = {
     avatarUrl?: string;
     emailVerified?: boolean;
     password?: string;
+}
+
+export type TUpdateUserAvatarPayload = {
+    id: string;
+    avatarUrl: string;
 }

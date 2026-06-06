@@ -1,11 +1,11 @@
 import {createSlice} from "@reduxjs/toolkit";
-import type {Client} from "../types";
+import type {TClient} from "../types";
 
 type TClientState = {
     isLoading: boolean,
     isError: boolean,
     errorText: string | undefined,
-    clients: Client[],
+    clients: TClient[],
 };
 
 const initialState: TClientState = {

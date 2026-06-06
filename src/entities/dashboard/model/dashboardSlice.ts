@@ -1,12 +1,12 @@
 import {createSlice} from "@reduxjs/toolkit";
-import type {DashboardData, DashboardStats} from "../types";
+import type {TDashboardData, TDashboardStats} from "../types";
 
 type TDashboardState = {
     isLoading: boolean,
     isError: boolean,
     errorText: string | undefined,
-    dashboardStats: DashboardStats | undefined,
-    dashboardData: DashboardData | undefined,
+    dashboardStats: TDashboardStats | undefined,
+    dashboardData: TDashboardData | undefined,
 };
 
 const initialState: TDashboardState = {

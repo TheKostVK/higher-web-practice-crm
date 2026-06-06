@@ -52,11 +52,11 @@ const theme: ThemeConfig = {
     },
 };
 
-type AntdProviderProps = {
+type TAntdProviderProps = {
     children: ReactNode;
 };
 
-export const AntdProvider = ({children}: AntdProviderProps) => {
+export const AntdProvider = ({children}: TAntdProviderProps) => {
     return (
         <ConfigProvider theme={theme}>
             {children}

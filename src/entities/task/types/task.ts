@@ -1,6 +1,6 @@
-export type TaskStatus = 'new' | 'in_progress' | 'completed';
+export type TTaskStatus = 'new' | 'in_progress' | 'completed';
 
-export type Task = {
+export type TTask = {
   id: string;
 
   title: string;
@@ -10,7 +10,7 @@ export type Task = {
 
   assigneeId: string; // userId
 
-  status: TaskStatus;
+  status: TTaskStatus;
 
   dueDate?: string;
 
@@ -18,7 +18,31 @@ export type Task = {
   createdBy: string;
 };
 
-export type CreateTaskPayload = {
+export type TTaskSortField = 'title' | 'dealId' | 'assigneeId' | 'status' | 'dueDate' | 'createdAt';
+
+export type TTaskListFilters = {
+  search?: string;
+  status?: TTaskStatus;
+  dealId?: string;
+  assigneeId?: string;
+  dueFrom?: string;
+  dueTo?: string;
+  createdFrom?: string;
+  createdTo?: string;
+  overdue?: boolean;
+  managerId?: string;
+  sortBy?: TTaskSortField;
+  order?: 'asc' | 'desc';
+  page?: number;
+  limit?: number;
+};
+
+export type TTaskListRow = TTask & {
+  dealTitle?: string;
+  assigneeName: string;
+};
+
+export type TCreateTaskPayload = {
   title: string;
   description?: string;
   dealId?: string;
@@ -26,11 +50,16 @@ export type CreateTaskPayload = {
   dueDate?: string;
 };
 
-export type UpdateTaskPayload = {
+export type TUpdateTaskPayload = {
   title?: string;
   description?: string;
   dealId?: string;
-  status?: TaskStatus;
+  status?: TTaskStatus;
   dueDate?: string;
   assigneeId?: string;
+};
+
+export type TUpdateTaskByIdPayload = {
+  id: string;
+  data: TUpdateTaskPayload;
 };

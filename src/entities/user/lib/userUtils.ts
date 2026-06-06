@@ -1,4 +1,4 @@
-import type {UserProfile} from "../types";
+import type {TUserProfile} from "../types";
 
 export const getUserLocalStorage = () => {
     const userFromStorage = localStorage.getItem('user');
@@ -8,14 +8,14 @@ export const getUserLocalStorage = () => {
     }
 
     try {
-        return JSON.parse(userFromStorage) as UserProfile;
+        return JSON.parse(userFromStorage) as TUserProfile;
     } catch {
         localStorage.removeItem('user');
         return undefined;
     }
 };
 
-export const setUserLocalStorage = (userData: UserProfile) => {
+export const setUserLocalStorage = (userData: TUserProfile) => {
     try {
         localStorage.setItem('user', JSON.stringify(userData));
     } catch {

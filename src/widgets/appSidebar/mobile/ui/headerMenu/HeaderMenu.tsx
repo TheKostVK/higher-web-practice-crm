@@ -10,11 +10,11 @@ import {AppMenuContext} from "../../../context";
 import {ProfileMenuItem} from "@/widgets/appSidebar/ui/profileMenuItem";
 import {NavLink} from "react-router-dom";
 
-type HeaderMenuProps = {
+type THeaderMenuProps = {
     children: ReactNode;
 }
 
-export const HeaderMenu = ({children}: HeaderMenuProps) => {
+export const HeaderMenu = ({children}: THeaderMenuProps) => {
     const {collapsed, toggleCollapsed} = useContext(AppMenuContext);
 
     useEffect(() => {

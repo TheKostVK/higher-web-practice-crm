@@ -10,9 +10,9 @@ import {
 } from '../../entities/user';
 import {useAppDispatch} from '../../app';
 import Styles from './registrationPage.module.css';
-import {registrationSchema, type RegistrationFormValues} from './registrationSchema';
+import {registrationSchema, type TRegistrationFormValues} from './registrationSchema';
 
-type LocationState = {
+type TLocationState = {
     from?: {
         pathname?: string;
     };
@@ -29,7 +29,7 @@ export const RegistrationPage = () => {
         handleSubmit,
         setError,
         formState: {errors}
-    } = useForm<RegistrationFormValues>({
+    } = useForm<TRegistrationFormValues>({
         resolver: zodResolver(registrationSchema),
         defaultValues: {
             name: '',
@@ -39,9 +39,9 @@ export const RegistrationPage = () => {
         },
     });
 
-    const redirectPath = (location.state as LocationState | null)?.from?.pathname || '/';
+    const redirectPath = (location.state as TLocationState | null)?.from?.pathname || '/';
 
-    const handleRegistration = async ({confirmPassword, ...values}: RegistrationFormValues) => {
+    const handleRegistration = async ({confirmPassword, ...values}: TRegistrationFormValues) => {
         void confirmPassword;
 
         try {

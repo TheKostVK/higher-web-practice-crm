@@ -1,14 +1,14 @@
 import {createSlice} from "@reduxjs/toolkit";
-import type {Task} from "../types";
+import type {TTask} from "../types";
 
-type TaskSliceState = {
+type TTaskSliceState = {
     isLoading: boolean,
     isError: boolean,
     errorText: string | undefined,
-    tasks: Task[],
+    tasks: TTask[],
 };
 
-const initialState: TaskSliceState = {
+const initialState: TTaskSliceState = {
     isLoading: false,
     isError: false,
     errorText: undefined,

@@ -3,14 +3,14 @@ import {Button, Input} from 'antd';
 import {Controller, useForm} from 'react-hook-form';
 
 import Styles from './confirmEmailPage.module.css';
-import {confirmEmailSchema, type ConfirmEmailFormValues} from './confirmEmailSchema';
+import {confirmEmailSchema, type TConfirmEmailFormValues} from './confirmEmailSchema';
 
 export const ConfirmEmailPage = () => {
     const {
         control,
         handleSubmit,
         formState: {errors, isSubmitting}
-    } = useForm<ConfirmEmailFormValues>({
+    } = useForm<TConfirmEmailFormValues>({
         resolver: zodResolver(confirmEmailSchema),
         defaultValues: {
             confirmationLink: '',

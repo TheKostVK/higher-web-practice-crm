@@ -1,14 +1,14 @@
 import {createSlice} from "@reduxjs/toolkit";
-import type {ClientActivityReportRow, DealsStageReportRow, NewClientReportRow, OverdueTaskReportRow} from "../types";
+import type {TClientActivityReportRow, TDealsStageReportRow, TNewClientReportRow, TOverdueTaskReportRow} from "../types";
 
 type TReportsState = {
     isLoading: boolean,
     isError: boolean,
     errorText: string | undefined,
-    reportDealsStage: DealsStageReportRow[],
-    reportNewClient: NewClientReportRow[],
-    reportClientActivity: ClientActivityReportRow[],
-    reportTaskOverdue: OverdueTaskReportRow[],
+    reportDealsStage: TDealsStageReportRow[],
+    reportNewClient: TNewClientReportRow[],
+    reportClientActivity: TClientActivityReportRow[],
+    reportTaskOverdue: TOverdueTaskReportRow[],
 };
 
 const initialState: TReportsState = {

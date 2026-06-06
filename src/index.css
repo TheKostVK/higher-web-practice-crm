@@ -124,7 +124,7 @@ a {
 }
 
 main {
-    padding: 20px;
+    padding: 24px 32px;
 
     display: grid;
     gap: 20px;

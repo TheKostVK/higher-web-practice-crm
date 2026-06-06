@@ -84,9 +84,19 @@
 }
 
 .profileForm__deleteButton {
-    --app-button-height: auto;
-    --app-button-color: var(--color-accent-blue-500);
+    --app-button-width: 180px;
+    --app-button-min-width: 160px;
+    --app-button-height: 40px;
+    --app-button-color: var(--color-accent-red-500);
     --app-button-hover-color: var(--color-accent-blue-600);
+    --app-button-font-size: var(--font-size-text-sm);
+    --app-button-line-height: var(--line-height-text-sm);
+}
+
+.profileForm__logoutButton {
+    --app-button-width: 180px;
+    --app-button-min-width: 160px;
+    --app-button-height: 40px;
     --app-button-font-size: var(--font-size-text-sm);
     --app-button-line-height: var(--line-height-text-sm);
 }

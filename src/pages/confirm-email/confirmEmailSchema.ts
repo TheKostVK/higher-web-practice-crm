@@ -8,4 +8,4 @@ export const confirmEmailSchema = z.object({
         .url('Введите корректную ссылку'),
 });
 
-export type ConfirmEmailFormValues = z.infer<typeof confirmEmailSchema>;
+export type TConfirmEmailFormValues = z.infer<typeof confirmEmailSchema>;

@@ -9,11 +9,11 @@ import {type ReactNode, useContext} from "react";
 import {AppMenuContext} from "../../../context";
 import {ProfileMenuItem} from "@/widgets/appSidebar/ui/profileMenuItem";
 
-type SideMenuProps = {
+type TSideMenuProps = {
     children: ReactNode;
 }
 
-export const SideMenu = ({children}: SideMenuProps) => {
+export const SideMenu = ({children}: TSideMenuProps) => {
     const {collapsed, toggleCollapsed} = useContext(AppMenuContext);
 
     return (

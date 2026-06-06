@@ -3,13 +3,13 @@ import {NavLink} from "react-router-dom";
 
 import Styles from './listItem.module.css';
 import {AppMenuContext} from "../../context";
-import type {AppSidebarItem} from "@/widgets/appSidebar/types/types";
+import type {TAppSidebarItem} from "@/widgets/appSidebar/types/types";
 
-export type ListItemProps = {
-    item: AppSidebarItem
+export type TListItemProps = {
+    item: TAppSidebarItem
 };
 
-export const ListItem = memo(({item}: ListItemProps) => {
+export const ListItem = memo(({item}: TListItemProps) => {
     const {collapsed, closeMenu} = useContext(AppMenuContext);
 
     return (

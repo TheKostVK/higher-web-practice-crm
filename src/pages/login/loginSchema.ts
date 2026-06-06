@@ -11,4 +11,4 @@ export const loginSchema = z.object({
         .min(1, 'Введите пароль'),
 });
 
-export type LoginFormValues = z.infer<typeof loginSchema>;
+export type TLoginFormValues = z.infer<typeof loginSchema>;

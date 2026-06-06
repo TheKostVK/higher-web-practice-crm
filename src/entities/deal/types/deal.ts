@@ -1,6 +1,6 @@
-export type DealStatus = 'new' | 'in_progress' | 'completed' | 'cancelled';
+export type TDealStatus = 'new' | 'in_progress' | 'completed' | 'cancelled';
 
-export type Deal = {
+export type TDeal = {
   id: string;
 
   title: string;
@@ -9,7 +9,7 @@ export type Deal = {
   clientId: string;
   amount: number;
 
-  status: DealStatus;
+  status: TDealStatus;
 
   createdAt: string;
   completedAt?: string;
@@ -17,17 +17,46 @@ export type Deal = {
   createdBy: string; // userId
 };
 
-export type CreateDealPayload = {
+export type TDealSortField = 'title' | 'clientId' | 'status' | 'amount' | 'createdAt' | 'completedAt';
+
+export type TDealListFilters = {
+  search?: string;
+  status?: TDealStatus;
+  clientId?: string;
+  amountFrom?: number;
+  amountTo?: number;
+  createdFrom?: string;
+  createdTo?: string;
+  completedFrom?: string;
+  completedTo?: string;
+  createdBy?: string;
+  managerId?: string;
+  sortBy?: TDealSortField;
+  order?: 'asc' | 'desc';
+  page?: number;
+  limit?: number;
+};
+
+export type TDealListRow = TDeal & {
+  clientName: string;
+};
+
+export type TCreateDealPayload = {
   title: string;
   description?: string;
   clientId: string;
   amount: number;
 };
 
-export type UpdateDealPayload = {
+export type TUpdateDealPayload = {
   title?: string;
   description?: string;
   amount?: number;
-  status?: DealStatus;
+  status?: TDealStatus;
   completedAt?: string;
+};
+
+export type TUpdateDealByIdPayload = {
+  id: string;
+  data: TUpdateDealPayload;
 };

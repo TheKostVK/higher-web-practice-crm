@@ -54,7 +54,9 @@ export const ProfileMenuItem = ({isMobile = false}: TProfileMenuItemProps) => {
                 {({ isActive }) => (
                     <>
                         <ProfileAvatar
+                            useIcon
                             isActive={isActive || isHovered}
+                            src={user?.avatarUrl}
                             alt="Картинка профиля"
                         />
 

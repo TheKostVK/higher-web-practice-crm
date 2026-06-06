@@ -4,6 +4,6 @@ export {
     store,
     useAppDispatch,
     useAppSelector,
-    type AppDispatch,
-    type RootState,
+    type TAppDispatch,
+    type TRootState,
 } from './redux';

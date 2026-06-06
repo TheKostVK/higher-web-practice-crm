@@ -4,7 +4,7 @@ import {Controller, useForm} from 'react-hook-form';
 import {useNavigate} from 'react-router-dom';
 
 import Styles from './forgotPasswordPage.module.css';
-import {forgotPasswordSchema, type ForgotPasswordFormValues} from './forgotPasswordSchema';
+import {forgotPasswordSchema, type TForgotPasswordFormValues} from './forgotPasswordSchema';
 
 export const ForgotPasswordPage = () => {
     const navigate = useNavigate();
@@ -12,7 +12,7 @@ export const ForgotPasswordPage = () => {
         control,
         handleSubmit,
         formState: {errors, isSubmitting}
-    } = useForm<ForgotPasswordFormValues>({
+    } = useForm<TForgotPasswordFormValues>({
         resolver: zodResolver(forgotPasswordSchema),
         defaultValues: {
             email: '',
