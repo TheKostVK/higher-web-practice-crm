@@ -1,0 +1,22 @@
+.section {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 12px;
+}
+
+.content {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.rowInProgress :global(.ant-table-cell) {
+  background: var(--color-bg-blue-100);
+}

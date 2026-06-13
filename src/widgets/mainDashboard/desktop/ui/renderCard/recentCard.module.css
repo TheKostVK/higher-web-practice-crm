@@ -1,0 +1,112 @@
+.section {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 12px;
+}
+
+.content {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.card {
+  padding: 12px 16px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 4px 0 var(--color-bg-gray-200);
+}
+
+.card--new {
+  background: var(--color-bg-blue-100);
+}
+
+.card--inProgress {
+  background: var(--color-bg-white);
+}
+
+.card--completed {
+  background: var(--color-bg-green-100);
+}
+
+.card__top {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.card__title {
+  color: var(--color-neutral-gray-800);
+
+  font-family: var(--font-family-text), sans-serif;
+  font-size: var(--font-size-text-sm);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-text-sm);
+}
+
+.card__dealLabel {
+  color: var(--color-neutral-gray-400);
+
+  font-family: var(--font-family-text), sans-serif;
+  font-size: var(--font-size-text-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-text-xs);
+}
+
+.card__dealTitle {
+  color: var(--color-neutral-gray-500);
+
+  font-family: var(--font-family-text), sans-serif;
+  font-size: var(--font-size-text-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-text-sm);
+}
+
+.card__bottom {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+
+  gap: 4px;
+}
+
+.card__due {
+  color: var(--color-neutral-gray-500);
+
+  font-family: var(--font-family-text), sans-serif;
+  font-size: var(--font-size-text-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-text-sm);
+}
+
+.card__status {
+  font-family: var(--font-family-text), sans-serif;
+  font-size: var(--font-size-text-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-text-sm);
+
+  white-space: nowrap;
+}
