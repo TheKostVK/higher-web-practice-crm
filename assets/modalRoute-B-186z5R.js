@@ -1,0 +1,1 @@
+import{dn as e,pn as t}from"./jsx-runtime-C8jG9JgE.js";import{L as n,R as r}from"./index-BkNt0-Nk.js";var i=(e,t)=>t?`/${e}/${t}`:`/${e}/new`,a=t(e(),1),o=()=>{let e=n(),t=r();return(0,a.useCallback)((n,r)=>{t(i(n,r),{state:{backgroundLocation:e}})},[e,t])};export{o as t};
