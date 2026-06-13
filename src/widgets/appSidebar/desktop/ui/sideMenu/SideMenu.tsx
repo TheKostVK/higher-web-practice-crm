@@ -1,39 +1,37 @@
-import {Button} from "antd";
+import {Button} from 'antd';
 
 import Logo from '../../../assetes/logo/YaPlex+Logo.svg';
 import OpenIcon from './assets/sideMenuOpen.svg?react';
 import CloseIcon from './assets/sideMenuClose.svg?react';
 
 import Styles from './sideMenu.module.css';
-import {type ReactNode, useContext} from "react";
-import {AppMenuContext} from "../../../context";
-import {ProfileMenuItem} from "@/widgets/appSidebar/ui/profileMenuItem";
+import {type ReactNode, useContext} from 'react';
+import {AppMenuContext} from '../../../context';
+import {ProfileMenuItem} from '@/widgets/appSidebar/ui/profileMenuItem';
 
 type TSideMenuProps = {
-    children: ReactNode;
-}
+  children: ReactNode;
+};
 
 export const SideMenu = ({children}: TSideMenuProps) => {
-    const {collapsed, toggleCollapsed} = useContext(AppMenuContext);
+  const {collapsed, toggleCollapsed} = useContext(AppMenuContext);
 
-    return (
-        <div className={`${Styles.sideMenu} ${collapsed ? Styles.sideMenu_collapsed : ''}`}>
-            <div className={Styles.sideMenu__header}>
-                <img className={Styles.sideMenu__logo} src={Logo} alt="YaPlex"/>
-                <Button
-                    aria-label={collapsed ? 'Раскрыть меню' : 'Свернуть меню'}
-                    className={Styles.sideMenu__trigger}
-                    type="text"
-                    icon={collapsed ? <OpenIcon/> : <CloseIcon/>}
-                    onClick={toggleCollapsed}
-                />
-            </div>
-            <div className={Styles.sideMenu__content}>
-                {children}
-            </div>
-            <div className={Styles.sideMenu__footer}>
-                <ProfileMenuItem/>
-            </div>
-        </div>
-    )
+  return (
+    <div className={`${Styles.sideMenu} ${collapsed ? Styles.sideMenu_collapsed : ''}`}>
+      <div className={Styles.sideMenu__header}>
+        <img className={Styles.sideMenu__logo} src={Logo} alt="YaPlex" />
+        <Button
+          aria-label={collapsed ? 'Раскрыть меню' : 'Свернуть меню'}
+          className={Styles.sideMenu__trigger}
+          type="text"
+          icon={collapsed ? <OpenIcon /> : <CloseIcon />}
+          onClick={toggleCollapsed}
+        />
+      </div>
+      <div className={Styles.sideMenu__content}>{children}</div>
+      <div className={Styles.sideMenu__footer}>
+        <ProfileMenuItem />
+      </div>
+    </div>
+  );
 };

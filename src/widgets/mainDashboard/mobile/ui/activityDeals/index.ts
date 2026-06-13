@@ -1,0 +1,1 @@
+export {MobileActivityDeals} from './MobileActivityDeals';

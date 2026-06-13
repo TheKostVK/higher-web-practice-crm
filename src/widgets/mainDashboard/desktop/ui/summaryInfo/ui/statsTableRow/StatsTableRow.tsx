@@ -1,52 +1,51 @@
 import {Skeleton} from 'antd';
-import Styles from './tableRow.module.css';
-import type {TDashboardMetric, TDashboardMetricCase} from '@/entities/dashboard';
-import {memo} from "react";
+import Styles from './statsTableRow.module.css';
+import {METRIC_HEADER_KEY, type TDashboardMetric, type TDashboardMetricCase} from '@/entities/dashboard';
+import {TableRow} from '@/shared/ui/table';
 
 type TTableRowProps = {
-    title: string;
-    data: TDashboardMetric | undefined;
-    isLoading: boolean;
+  title: string;
+  data: TDashboardMetric | undefined;
+  isLoading?: boolean;
 };
 
 const caseClassName: Record<TDashboardMetricCase, string> = {
-    increase: Styles.tableRow__cell_green,
-    decrease: Styles.tableRow__cell_red,
-    noChange: Styles.tableRow__cell_noChange,
+  increase: Styles.tableRow__cell_green,
+  decrease: Styles.tableRow__cell_red,
+  noChange: Styles.tableRow__cell_noChange,
 };
 
-export const TableRow = memo(({title, data, isLoading = false}: TTableRowProps) => {
-    if (isLoading) {
-        return (
-            <tr className={Styles.tableRow}>
-                <td className={Styles.tableRow__cell} colSpan={6}>
-                    <Skeleton.Input active size="small" block/>
-                </td>
-            </tr>
-        );
-    }
+const mainValueIndex = 0;
 
-    if (!data) {
-        return (
-            <tr className={Styles.tableRow}>
-                <td className={Styles.tableRow__cell} colSpan={6}>Отсутствует информация</td>
-            </tr>
-        );
-    }
-
+export const StatsTableRow = ({title, data, isLoading}: TTableRowProps) => {
+  if (isLoading) {
     return (
-        <tr className={Styles.tableRow}>
-            <th className={Styles.tableRow__title} scope="row">
-                {title}
-            </th>
-            {Object.values(data).map((item, index) => (
-                <td
-                    key={item.name}
-                    className={`${Styles.tableRow__cell} ${index !== 0 ? caseClassName[item.case] : Styles.tableRow__cell_value}`}
-                >
-                    {item.value}
-                </td>
-            ))}
-        </tr>
+      <tr className={Styles.tableRow}>
+        <td className={Styles.tableRow__cell} colSpan={6}>
+          <Skeleton.Input active size="small" block />
+        </td>
+      </tr>
     );
-});
+  }
+
+  if (!data) {
+    return (
+      <tr className={Styles.tableRow}>
+        <td className={Styles.tableRow__cell} colSpan={6}>
+          Отсутствует информация
+        </td>
+      </tr>
+    );
+  }
+
+  const rowCells = METRIC_HEADER_KEY.map((key, index) => (
+    <span
+      key={key}
+      className={`${Styles.tableRow__cell} ${index !== mainValueIndex ? caseClassName[data[key].case] : Styles.tableRow__cell_value}`}
+    >
+      {data[key].value}
+    </span>
+  ));
+
+  return <TableRow rowTitle={title} dataSource={rowCells} size={'large'} />;
+};

@@ -1,0 +1,14 @@
+.formStatusMessage {
+    margin: 0;
+
+    font-size: var(--font-size-text-xs);
+    line-height: var(--line-height-text-xs);
+}
+
+.formStatusMessage_error {
+    color: var(--color-accent-red-500);
+}
+
+.formStatusMessage_success {
+    color: var(--color-accent-green-500);
+}

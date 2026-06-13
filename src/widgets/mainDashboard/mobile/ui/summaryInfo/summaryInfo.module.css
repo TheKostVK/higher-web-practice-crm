@@ -1,22 +1,8 @@
 .summaryInfo {
-    width: 100%;
+  width: 100%;
 
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    gap: 2px;
-}
-
-.table__head {
-    display: flex;
-    flex-direction: column;
-
-    gap: 2px;
-}
-
-.table__body {
-    display: flex;
-    flex-direction: column;
-
-    gap: 2px;
+  gap: 4px;
 }

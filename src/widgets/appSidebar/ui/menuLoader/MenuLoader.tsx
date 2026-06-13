@@ -1,13 +1,18 @@
-import {Preloader} from "@/shared/ui/preloader";
-import {useIsMobile} from "@/shared/lib/hooks";
+import {Preloader} from '@/shared/ui/preloader';
+import {useIsMobile} from '@/shared/lib/hooks';
+import {HeaderMenuFallback} from '@/widgets/appSidebar/mobile/ui/headerMenuFallback';
 import Styles from './MenuLoader.module.css';
 
 export const MenuLoader = () => {
-    const isMobile = useIsMobile();
+  const isMobile = useIsMobile();
 
-    return (
-        <div className={`${isMobile ? Styles.mobileLoader : Styles.desktopLoader}`}>
-            <Preloader/>
-        </div>
-    )
-}
+  if (isMobile) {
+    return <HeaderMenuFallback />;
+  }
+
+  return (
+    <div className={Styles.desktopLoader}>
+      <Preloader />
+    </div>
+  );
+};

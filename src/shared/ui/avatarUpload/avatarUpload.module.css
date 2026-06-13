@@ -1,75 +1,75 @@
 .avatarUpload {
-    position: relative;
+  position: relative;
 
-    width: 112px;
-    height: 92px;
+  width: 112px;
+  height: 92px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .avatarUpload__button {
-    position: absolute;
-    right: 0;
-    bottom: 0;
+  position: absolute;
+  right: 0;
+  bottom: 0;
 
-    width: 40px;
-    height: 40px;
+  width: 40px;
+  height: 40px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    color: var(--color-bg-white);
-    background: var(--color-accent-blue-500);
-    border: 0;
-    border-radius: 32px;
-    cursor: pointer;
+  color: var(--color-bg-white);
+  background: var(--color-accent-blue-500);
+  border: 0;
+  border-radius: 32px;
+  cursor: pointer;
 
-    transition:
-            background var(--animation-normal),
-            transform var(--animation-normal);
+  transition:
+    background var(--animation-normal),
+    transform var(--animation-normal);
 }
 
 .avatarUpload__button:hover {
-    background: var(--color-accent-blue-600);
-    transform: translateY(-1px);
+  background: var(--color-accent-blue-600);
+  transform: translateY(-1px);
 }
 
 .avatarUpload__input {
-    position: absolute;
+  position: absolute;
 
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    white-space: nowrap;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .avatarUpload__input:focus-visible + .avatarUpload__icon {
-    outline: 2px solid var(--color-accent-blue-700);
-    outline-offset: 4px;
-    border-radius: 50%;
+  outline: 2px solid var(--color-accent-blue-700);
+  outline-offset: 4px;
+  border-radius: 50%;
 }
 
 .avatarUpload__icon {
-    width: 24px;
-    height: 24px;
+  width: 24px;
+  height: 24px;
 }
 
 .avatarUpload__error {
-    margin: var(--space-1) 0 0;
+  margin: var(--space-1) 0 0;
 
-    color: var(--color-accent-red-500);
-    font-size: var(--font-size-text-xs);
-    line-height: var(--line-height-text-xs);
+  color: var(--color-accent-red-500);
+  font-size: var(--font-size-text-xs);
+  line-height: var(--line-height-text-xs);
 }
 
 @media (max-width: 768px) {
-    .avatarUpload {
-        align-items: center;
-    }
+  .avatarUpload {
+    align-items: center;
+  }
 }

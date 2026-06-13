@@ -11,7 +11,7 @@ export const ForgotPasswordPage = () => {
     const {
         control,
         handleSubmit,
-        formState: {errors, isSubmitting}
+        formState: {errors, isSubmitting},
     } = useForm<TForgotPasswordFormValues>({
         resolver: zodResolver(forgotPasswordSchema),
         defaultValues: {
@@ -30,13 +30,11 @@ export const ForgotPasswordPage = () => {
                 Укажите почту, на которую вы регистрировали аккаунт, и мы отправим вам инструкцию по восстановлению
                 пароля.
             </p>
-            <form
-                className={Styles.forgotPasswordPage__form}
-                onSubmit={handleSubmit(handleRestorePassword)}
-                noValidate
-            >
+            <form className={Styles.forgotPasswordPage__form} onSubmit={handleSubmit(handleRestorePassword)} noValidate>
                 <label className={Styles.forgotPasswordPage__field} htmlFor="forgot-password-email">
-                    <span className={Styles.forgotPasswordPage__label}>Email <span aria-hidden="true">*</span></span>
+                  <span className={Styles.forgotPasswordPage__label}>
+                    Email <span aria-hidden="true">*</span>
+                  </span>
                     <Controller
                         control={control}
                         name="email"
@@ -50,17 +48,11 @@ export const ForgotPasswordPage = () => {
                             />
                         )}
                     />
-                    {errors.email && (
-                        <span className={Styles.forgotPasswordPage__error}>{errors.email.message}</span>
-                    )}
+                    {errors.email && <span className={Styles.forgotPasswordPage__error}>{errors.email.message}</span>}
                 </label>
 
-                <Button
-                    className={Styles.forgotPasswordPage__submit}
-                    type="primary"
-                    htmlType="submit"
-                    loading={isSubmitting}
-                >
+                <Button className={Styles.forgotPasswordPage__submit} type="primary" htmlType="submit"
+                        loading={isSubmitting}>
                     Восстановить
                 </Button>
             </form>

@@ -1,58 +1,58 @@
 .sideMenu {
-    padding: 20px 0;
+  padding: 20px 0;
 
-    height: 100vh;
-    width: 310px;
+  height: 100vh;
+  width: 310px;
 
-    border-right: 1px solid var(--color-neutral-gray-300);
-    background: var(--color-bg-primary-gray-100);
+  border-right: 1px solid var(--color-neutral-gray-300);
+  background: var(--color-bg-primary-gray-100);
 
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    transition: width var(--animation-normal);
+  transition: width var(--animation-normal);
 }
 
 .sideMenu_collapsed {
-    padding-inline: 12px;
-    width: 72px;
+  padding-inline: 12px;
+  width: 72px;
 }
 
 .sideMenu__header {
-    padding: 0 20px;
+  padding: 0 20px;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  height: 24px;
 }
 
 .sideMenu__content {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .sideMenu__footer {
-    margin-top: auto;
+  margin-top: auto;
 }
 
 .sideMenu__logo {
-    width: 102px;
-    height: 24px;
+  width: 102px;
+  height: 24px;
 }
 
 .sideMenu__trigger {
-    flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 
 .sideMenu__menu {
-    border-inline-end: 0;
+  border-inline-end: 0;
 }
 
 .sideMenu_collapsed .sideMenu__header {
-    justify-content: center;
+  justify-content: center;
 }
 
 .sideMenu_collapsed .sideMenu__logo {
-    display: none;
+  display: none;
 }

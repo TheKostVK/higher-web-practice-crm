@@ -1,4 +1,3 @@
-import type {TReportViewProps} from "@/widgets/reportsContent/ui/overdueTasksReport";
 import {type TSalesReportRow, useGetSalesReportQuery} from "@/entities/reports";
 import type {ColumnsType} from "antd/es/table";
 import {formatAmount, formatDate} from "@/shared/lib/formatters";
@@ -6,10 +5,7 @@ import {Table} from "antd";
 import {useReportFilters} from "@/widgets/reportsContent/hook";
 import {ReportToolbar} from "@/widgets/reportsContent/ui/reportToolbar";
 import {PAGE_SIZE} from "@/widgets/reportsContent/model";
-import {lazy, Suspense} from "react";
-import {Preloader} from "@/shared/ui/preloader";
-
-const CompactSalesCards = lazy(() => import('@/widgets/reportsContent/mobile/ui/compactSalesCards').then((module) => ({default: module.CompactSalesCards})))
+import {ApiErrorMessage} from '@/shared/ui/apiErrorMessage';
 
 const columns: ColumnsType<TSalesReportRow> = [
     {title: 'ID сделки', dataIndex: 'dealId', key: 'dealId', sorter: (a, b) => a.dealId.localeCompare(b.dealId)},
@@ -36,27 +32,22 @@ const columns: ColumnsType<TSalesReportRow> = [
     },
 ];
 
-export const SalesReport = ({isMobile = false}: TReportViewProps) => {
-    const {period, applied, handlePeriodChange} = useReportFilters();
-    const {data = [], isLoading} = useGetSalesReportQuery(applied);
+export const SalesReport = () => {
+    const {period, applied, handleFiltersChange, handlePeriodChange} = useReportFilters();
+    const {data = [], isLoading, isError} = useGetSalesReportQuery(applied);
 
     return (
         <>
-            <ReportToolbar period={period} onPeriodChange={handlePeriodChange} reportName="sales" filters={applied}/>
-            {isMobile ?
-                <Suspense fallback={<Preloader/>}>
-                    <CompactSalesCards items={data} emptyText="Нет продаж" isLoading={isLoading}/>
-                </Suspense>
-                :
-                <Table
-                    columns={columns}
-                    dataSource={data}
-                    rowKey="dealId"
-                    loading={isLoading}
-                    size="small"
-                    pagination={{pageSize: PAGE_SIZE, showSizeChanger: false, showTotal: (t) => `Всего: ${t}`}}
-                />
-            }
+            <ReportToolbar period={period} onPeriodChange={handlePeriodChange} onFiltersChange={handleFiltersChange} reportName="sales" filters={applied}/>
+            {isError && <ApiErrorMessage message="Не удалось загрузить отчёт по продажам." />}
+            <Table
+                columns={columns}
+                dataSource={data}
+                rowKey="dealId"
+                loading={isLoading}
+                size="small"
+                pagination={{pageSize: PAGE_SIZE, showSizeChanger: false, showTotal: (t) => `Всего: ${t}`}}
+            />
         </>
     );
 };

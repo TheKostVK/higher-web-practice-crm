@@ -1,15 +1,8 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import type {TDeal} from '../../deal';
 import type {TUser} from '../../user';
-import type {
-  TCreateTaskPayload,
-  TTask,
-  TTaskListFilters,
-  TTaskListRow,
-  TUpdateTaskByIdPayload
-} from '../types';
-
-const API_BASE_URL = 'http://localhost:3001';
+import type {TCreateTaskPayload, TTask, TTaskListFilters, TTaskListRow, TUpdateTaskByIdPayload} from '../types';
+import {getApiBaseUrl} from '@/shared/api';
 
 const isDateInRange = (date: string | undefined, from?: string, to?: string) => {
   if (!date) {
@@ -45,7 +38,12 @@ const isTaskOverdue = (task: TTask) => {
   return new Date(task.dueDate).getTime() < Date.now();
 };
 
-const getTaskRows = (tasks: TTask[], deals: TDeal[], users: TUser[], filters: TTaskListFilters = {}): TTaskListRow[] => {
+const getTaskRows = (
+  tasks: TTask[],
+  deals: TDeal[],
+  users: TUser[],
+  filters: TTaskListFilters = {},
+): TTaskListRow[] => {
   const dealsById = new Map(deals.map((deal) => [deal.id, deal]));
   const usersById = new Map(users.map((user) => [user.id, user]));
   const normalizedSearch = filters.search?.trim().toLowerCase();
@@ -57,26 +55,28 @@ const getTaskRows = (tasks: TTask[], deals: TDeal[], users: TUser[], filters: TT
       assigneeName: usersById.get(task.assigneeId)?.name || '',
     }))
     .filter((task) => {
-      const matchesSearch = !normalizedSearch || [
-        task.title,
-        task.description,
-        task.dealTitle,
-        task.assigneeName,
-      ].some((value) => value?.toLowerCase().includes(normalizedSearch));
+      const matchesSearch =
+        !normalizedSearch ||
+        [task.title, task.description, task.dealTitle, task.assigneeName].some((value) =>
+          value?.toLowerCase().includes(normalizedSearch),
+        );
       const matchesStatus = !filters.status || task.status === filters.status;
       const matchesDeal = !filters.dealId || task.dealId === filters.dealId;
-      const matchesAssignee = !filters.assigneeId && !filters.managerId
-        ? true
-        : task.assigneeId === (filters.assigneeId || filters.managerId);
+      const matchesAssignee =
+        !filters.assigneeId && !filters.managerId
+          ? true
+          : task.assigneeId === (filters.assigneeId || filters.managerId);
       const matchesOverdue = filters.overdue === undefined || isTaskOverdue(task) === filters.overdue;
 
-      return matchesSearch
-        && matchesStatus
-        && matchesDeal
-        && matchesAssignee
-        && matchesOverdue
-        && isDateInRange(task.dueDate, filters.dueFrom, filters.dueTo)
-        && isDateInRange(task.createdAt, filters.createdFrom, filters.createdTo);
+      return (
+        matchesSearch &&
+        matchesStatus &&
+        matchesDeal &&
+        matchesAssignee &&
+        matchesOverdue &&
+        isDateInRange(task.dueDate, filters.dueFrom, filters.dueTo) &&
+        isDateInRange(task.createdAt, filters.createdFrom, filters.createdTo)
+      );
     });
 
   if (filters.sortBy) {
@@ -88,7 +88,7 @@ const getTaskRows = (tasks: TTask[], deals: TDeal[], users: TUser[], filters: TT
 
 export const taskApi = createApi({
   reducerPath: 'taskApi',
-  baseQuery: fetchBaseQuery({baseUrl: API_BASE_URL}),
+  baseQuery: fetchBaseQuery({baseUrl: getApiBaseUrl()}),
   tagTypes: ['TTask'],
   endpoints: (builder) => ({
     getTasks: builder.query<TTaskListRow[], TTaskListFilters | void>({
@@ -122,10 +122,7 @@ export const taskApi = createApi({
       },
       providesTags: (result) =>
         result
-          ? [
-            ...result.map(({id}) => ({type: 'TTask' as const, id})),
-            {type: 'TTask', id: 'LIST'},
-          ]
+          ? [...result.map(({id}) => ({type: 'TTask' as const, id})), {type: 'TTask', id: 'LIST'}]
           : [{type: 'TTask', id: 'LIST'}],
     }),
     getTaskById: builder.query<TTask, string>({

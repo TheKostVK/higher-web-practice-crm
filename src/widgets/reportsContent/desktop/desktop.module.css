@@ -1,10 +1,35 @@
-.dashboardLayout {
+.reportsLayout {
     width: 100%;
+}
 
+.reportsContent {
     display: flex;
+    flex: 1 1 auto;
     flex-direction: column;
+    width: 100%;
+    min-height: 0;
+}
 
-    gap: 32px;
+.reportsContent__tabs {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    width: 100%;
+    min-height: 0;
+    overflow: hidden;
+}
 
-    overflow-y: scroll;
+.reportsContent__tabs :global(.ant-tabs-content-holder),
+.reportsContent__tabs :global(.ant-tabs-content),
+.reportsContent__tabs :global(.ant-tabs-tabpane) {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.reportsContent__tabs :global(.ant-tabs-tabpane-active) {
+    overflow-y: auto;
+    overscroll-behavior: contain;
 }

@@ -1,14 +1,7 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import type {TClient} from '../../client';
-import type {
-  TCreateDealPayload,
-  TDeal,
-  TDealListFilters,
-  TDealListRow,
-  TUpdateDealByIdPayload
-} from '../types';
-
-const API_BASE_URL = 'http://localhost:3001';
+import type {TCreateDealPayload, TDeal, TDealListFilters, TDealListRow, TUpdateDealByIdPayload} from '../types';
+import {getApiBaseUrl} from '@/shared/api';
 
 const isDateInRange = (date: string | undefined, from?: string, to?: string) => {
   if (!date) {
@@ -50,26 +43,28 @@ const getDealRows = (deals: TDeal[], clients: TClient[], filters: TDealListFilte
       clientName: clientsById.get(deal.clientId)?.name || '',
     }))
     .filter((deal) => {
-      const matchesSearch = !normalizedSearch || [
-        deal.title,
-        deal.description,
-        deal.clientName,
-      ].some((value) => value?.toLowerCase().includes(normalizedSearch));
+      const matchesSearch =
+        !normalizedSearch ||
+        [deal.title, deal.description, deal.clientName].some((value) =>
+          value?.toLowerCase().includes(normalizedSearch),
+        );
       const matchesStatus = !filters.status || deal.status === filters.status;
       const matchesClient = !filters.clientId || deal.clientId === filters.clientId;
-      const matchesCreator = !filters.createdBy && !filters.managerId
-        ? true
-        : deal.createdBy === (filters.createdBy || filters.managerId);
-      const matchesAmount = (filters.amountFrom === undefined || deal.amount >= filters.amountFrom)
-        && (filters.amountTo === undefined || deal.amount <= filters.amountTo);
+      const matchesCreator =
+        !filters.createdBy && !filters.managerId ? true : deal.createdBy === (filters.createdBy || filters.managerId);
+      const matchesAmount =
+        (filters.amountFrom === undefined || deal.amount >= filters.amountFrom) &&
+        (filters.amountTo === undefined || deal.amount <= filters.amountTo);
 
-      return matchesSearch
-        && matchesStatus
-        && matchesClient
-        && matchesCreator
-        && matchesAmount
-        && isDateInRange(deal.createdAt, filters.createdFrom, filters.createdTo)
-        && isDateInRange(deal.completedAt, filters.completedFrom, filters.completedTo);
+      return (
+        matchesSearch &&
+        matchesStatus &&
+        matchesClient &&
+        matchesCreator &&
+        matchesAmount &&
+        isDateInRange(deal.createdAt, filters.createdFrom, filters.createdTo) &&
+        isDateInRange(deal.completedAt, filters.completedFrom, filters.completedTo)
+      );
     });
 
   if (filters.sortBy) {
@@ -81,7 +76,7 @@ const getDealRows = (deals: TDeal[], clients: TClient[], filters: TDealListFilte
 
 export const dealApi = createApi({
   reducerPath: 'dealApi',
-  baseQuery: fetchBaseQuery({baseUrl: API_BASE_URL}),
+  baseQuery: fetchBaseQuery({baseUrl: getApiBaseUrl()}),
   tagTypes: ['TDeal'],
   endpoints: (builder) => ({
     getDeals: builder.query<TDealListRow[], TDealListFilters | void>({
@@ -104,10 +99,7 @@ export const dealApi = createApi({
       },
       providesTags: (result) =>
         result
-          ? [
-            ...result.map(({id}) => ({type: 'TDeal' as const, id})),
-            {type: 'TDeal', id: 'LIST'},
-          ]
+          ? [...result.map(({id}) => ({type: 'TDeal' as const, id})), {type: 'TDeal', id: 'LIST'}]
           : [{type: 'TDeal', id: 'LIST'}],
     }),
     getDealById: builder.query<TDeal, string>({
@@ -121,7 +113,7 @@ export const dealApi = createApi({
         body: {
           id: crypto.randomUUID(),
           ...deal,
-          status: 'new',
+          status: deal.status ?? 'new',
           createdAt: new Date().toISOString(),
         },
       }),

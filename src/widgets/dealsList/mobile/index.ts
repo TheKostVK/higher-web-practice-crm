@@ -1,0 +1,1 @@
+export {MobileDealsList} from './MobileDealsList';

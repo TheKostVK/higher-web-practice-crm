@@ -46,6 +46,7 @@ export type TCreateDealPayload = {
   description?: string;
   clientId: string;
   amount: number;
+  status?: TDealStatus;
 };
 
 export type TUpdateDealPayload = {

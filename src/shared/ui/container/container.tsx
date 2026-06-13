@@ -1,33 +1,16 @@
-import type {ReactNode} from "react";
+import type {ReactNode} from 'react';
 
-import Styles from './layoutContainer.module.css';
-import {useIsMobile} from "@/shared/lib/hooks";
+import Styles from './container.module.css';
 
 type TContainerProps = {
-    children: ReactNode;
-    footer?: ReactNode;
-    className?: string;
-}
+  children: ReactNode;
+  className?: string;
+};
 
-export const LayoutContainer = ({children, footer, className = ''}: TContainerProps) => {
-    const isMobile = useIsMobile();
-
-    return (
-        <div className={Styles.container}>
-            {
-                isMobile ?
-                    <div className={Styles.container__content_mobile}>
-                        <div className={`${Styles.container__content} ${className}`}>
-                            {children}
-                        </div>
-                        {footer}
-                    </div>
-                    :
-                    <div className={`${Styles.container__content} ${className}`}>
-                        {children}
-                        {footer}
-                    </div>
-            }
-        </div>
-    )
-}
+export const Container = ({children, className = ''}: TContainerProps) => {
+  return (
+    <div className={Styles.container}>
+      <div className={`${Styles.container__content} ${className}`}>{children}</div>
+    </div>
+  );
+};

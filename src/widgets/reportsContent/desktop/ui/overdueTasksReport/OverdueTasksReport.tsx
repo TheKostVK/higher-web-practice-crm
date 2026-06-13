@@ -5,19 +5,8 @@ import {TASK_STATUS_LABELS, type TTaskStatus} from "@/entities/task";
 import {Table, Tag} from "antd";
 import {useReportFilters} from "@/widgets/reportsContent/hook";
 import {ReportToolbar} from "@/widgets/reportsContent/ui/reportToolbar/ReportToolbar.tsx";
-import {getOverdueTaskCards} from "@/widgets/reportsContent/lib";
 import {PAGE_SIZE} from "@/widgets/reportsContent/model";
-import {lazy, Suspense} from "react";
-import {Preloader} from "@/shared/ui/preloader";
-
-export type TReportViewProps = {
-    isMobile?: boolean;
-};
-
-const MobileReportBody = lazy(() => import("@/widgets/reportsContent/mobile/ui/mobileReportBody").then((module) => ({
-    default:
-    module.MobileReportBody
-})));
+import {ApiErrorMessage} from '@/shared/ui/apiErrorMessage';
 
 const columns: ColumnsType<TOverdueTaskReportRow> = [
     {title: 'ID задачи', dataIndex: 'taskId', key: 'taskId', sorter: (a, b) => a.taskId.localeCompare(b.taskId)},
@@ -43,36 +32,28 @@ const columns: ColumnsType<TOverdueTaskReportRow> = [
     },
 ];
 
-export const OverdueTasksReport = ({isMobile = false}: TReportViewProps) => {
-    const {period, applied, handlePeriodChange} = useReportFilters();
-    const {data = [], isLoading} = useGetOverdueTasksReportQuery(applied);
+export const OverdueTasksReport = () => {
+    const {period, applied, handleFiltersChange, handlePeriodChange} = useReportFilters();
+    const {data = [], isLoading, isError} = useGetOverdueTasksReportQuery(applied);
 
     return (
         <>
             <ReportToolbar
                 period={period}
                 onPeriodChange={handlePeriodChange}
+                onFiltersChange={handleFiltersChange}
                 reportName="overdue-tasks"
                 filters={applied}
             />
-            {isMobile ?
-                <Suspense fallback={<Preloader/>}>
-                    <MobileReportBody
-                        items={getOverdueTaskCards(data)}
-                        emptyText="Нет просроченных задач"
-                        isLoading={isLoading}
-                    />
-                </Suspense>
-                :
-                <Table
-                    columns={columns}
-                    dataSource={data}
-                    rowKey="taskId"
-                    loading={isLoading}
-                    size="small"
-                    pagination={{pageSize: PAGE_SIZE, showSizeChanger: false, showTotal: (t) => `Всего: ${t}`}}
-                />
-            }
+            {isError && <ApiErrorMessage message="Не удалось загрузить отчёт по просроченным задачам." />}
+            <Table
+                columns={columns}
+                dataSource={data}
+                rowKey="taskId"
+                loading={isLoading}
+                size="small"
+                pagination={{pageSize: PAGE_SIZE, showSizeChanger: false, showTotal: (t) => `Всего: ${t}`}}
+            />
         </>
     );
 };

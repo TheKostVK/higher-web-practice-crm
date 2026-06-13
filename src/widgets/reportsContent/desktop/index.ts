@@ -1,1 +1,1 @@
-export * from './DesktopDashboard.tsx';
+export * from './DesktopReportContent.tsx';

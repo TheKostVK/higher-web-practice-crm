@@ -1,0 +1,9 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-white);
+    box-shadow: 0 4px 8px 0 var(--color-bg-gray-200);
+}

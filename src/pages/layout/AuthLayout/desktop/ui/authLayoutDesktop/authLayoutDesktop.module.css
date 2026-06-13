@@ -1,0 +1,56 @@
+.authLayoutDesktop {
+  min-height: 100dvh;
+  width: 100%;
+
+  background: var(--main-gradient);
+}
+
+.authLayoutDesktop__leftSide {
+  grid-column: 2 / span 5;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+
+  gap: 40px;
+}
+
+.authLayoutDesktop__rightSide {
+  grid-column: 8 / span 4;
+}
+
+.authLayoutDesktop__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+
+  gap: 16px;
+}
+
+.content__mainText {
+  max-width: 480px;
+
+  margin: 0;
+
+  color: var(--color-neutral-gray-800);
+}
+
+.authLayoutDesktop__action {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: start;
+}
+
+.action__text {
+  margin: 0;
+  color: var(--neuteral-color);
+}
+
+.action__btn {
+  padding: 0;
+  height: auto;
+}

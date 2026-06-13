@@ -1,59 +1,22 @@
 import {Suspense, type ReactElement} from 'react';
-import {createBrowserRouter, Navigate} from 'react-router-dom'
+import {createBrowserRouter} from 'react-router-dom';
 
-import {ProtectedRoute} from "./ProtectedRoute";
-import {Preloader} from "@/shared/ui/preloader";
-import {AuthLayout} from "@/pages/layout/AuthLayout";
-import {MainLayout} from "@/pages/layout/MainLayout";
-import {DashboardPage} from "@/pages/dashboard";
-import {
-    ConfirmEmailPage,
-    ForgotPasswordPage,
-    LoginPage,
-    RegistrationPage
-} from './lazyAuthPages.tsx';
-import {ProfilePage} from "@/pages/profile";
+import {ProtectedRoute} from './ProtectedRoute';
+import {Preloader} from '@/shared/ui/preloader';
+import {AuthLayout} from '@/pages/layout/AuthLayout';
+import {MainLayout} from '@/pages/layout/MainLayout';
+import {ConfirmEmailPage, ForgotPasswordPage, LoginPage, RegistrationPage, WelcomePage} from './lazyAuthPages.tsx';
 
-const withSuspense = (element: ReactElement) => (
-    <Suspense fallback={<Preloader/>}>
-        {element}
-    </Suspense>
-);
+const withSuspense = (element: ReactElement) => <Suspense fallback={<Preloader/>}>{element}</Suspense>;
 
 export const router = createBrowserRouter([
     {
-        path: '/',
+        path: '/*',
         element: (
             <ProtectedRoute>
                 <MainLayout/>
             </ProtectedRoute>
         ),
-        children: [
-            {
-                index: true,
-                element: <DashboardPage/>
-            },
-            {
-                path: 'clients',
-                element: <DashboardPage/>
-            },
-            {
-                path: 'deals',
-                element: <DashboardPage/>
-            },
-            {
-                path: 'reports',
-                element: <DashboardPage/>
-            },
-            {
-                path: 'tasks',
-                element: <DashboardPage/>
-            },
-            {
-                path: 'profile',
-                element: <ProfilePage/>
-            }
-        ]
     },
     {
         path: '/auth',
@@ -61,40 +24,44 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <Navigate to="login" replace/>
+                element: withSuspense(
+                    <ProtectedRoute onlyUnAuth>
+                        <WelcomePage/>
+                    </ProtectedRoute>,
+                ),
             },
             {
                 path: 'login',
                 element: withSuspense(
                     <ProtectedRoute onlyUnAuth>
                         <LoginPage/>
-                    </ProtectedRoute>
-                )
+                    </ProtectedRoute>,
+                ),
             },
             {
                 path: 'registration',
                 element: withSuspense(
                     <ProtectedRoute onlyUnAuth>
                         <RegistrationPage/>
-                    </ProtectedRoute>
-                )
+                    </ProtectedRoute>,
+                ),
             },
             {
                 path: 'forgot-password',
                 element: withSuspense(
                     <ProtectedRoute onlyUnAuth>
                         <ForgotPasswordPage/>
-                    </ProtectedRoute>
-                )
+                    </ProtectedRoute>,
+                ),
             },
             {
                 path: 'confirm-email',
                 element: withSuspense(
                     <ProtectedRoute onlyUnAuth>
                         <ConfirmEmailPage/>
-                    </ProtectedRoute>
-                )
-            }
-        ]
-    }
-])
+                    </ProtectedRoute>,
+                ),
+            },
+        ],
+    },
+]);

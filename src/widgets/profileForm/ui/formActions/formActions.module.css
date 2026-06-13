@@ -1,0 +1,61 @@
+.formActions {
+  margin-top: auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    'submit submit'
+    'logout delete';
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.formActions__deleteButton {
+  grid-area: delete;
+  --app-button-min-width: 100px;
+  --app-button-height: 40px;
+  --app-button-color: var(--color-accent-red-500);
+  --app-button-hover-color: var(--color-accent-blue-600);
+  --app-button-font-size: var(--font-size-text-sm);
+  --app-button-line-height: var(--line-height-text-sm);
+}
+
+.formActions__logoutButton {
+  grid-area: logout;
+  --app-button-min-width: 100px;
+  --app-button-height: 40px;
+  --app-button-font-size: var(--font-size-text-sm);
+  --app-button-line-height: var(--line-height-text-sm);
+}
+
+.formActions__submitButton {
+  grid-area: submit;
+  --app-button-min-width: 100px;
+  --app-button-height: 40px;
+  --app-button-font-size: var(--font-size-text-sm);
+  --app-button-line-height: var(--line-height-text-sm);
+}
+
+@media (max-width: 768px) {
+  .formActions {
+    width: 100%;
+    margin-top: 0;
+
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .formActions__deleteButton {
+    align-self: center;
+
+    --app-button-font-size: var(--font-size-text-base);
+    --app-button-line-height: var(--line-height-text-base);
+  }
+
+  .formActions__submitButton {
+    --app-button-width: 100%;
+    --app-button-min-width: 160px;
+    --app-button-height: 44px;
+  }
+}

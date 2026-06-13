@@ -1,92 +1,74 @@
-.tableRow {
-    height: 48px;
-    width: 100%;
-    padding: 8px 24px;
-
-    display: flex;
-    align-items: center;
-    align-self: stretch;
-    gap: 8px;
-
-    border-radius: 8px;
-    background: var(--color-bg-white, #FFF);
-
-    /* Shadow card */
-    box-shadow: 0 4px 8px 0 var(--color-bg-gray-200);
-}
-
 .tableRow__title {
-    color: var(--color-neutral-gray-800);
+  color: var(--color-neutral-gray-800);
 
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex: 1 0 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1 0 0;
 
-    /* text-sm B */
-    font-family: Inter;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 20px; /* 142.857% */
+  /* text-sm B */
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px; /* 142.857% */
 
-    text-align: start;
+  text-align: start;
 }
 
 .tableRow__cell {
-    color: var(--color-neutral-gray-800);
+  color: var(--color-neutral-gray-800);
 
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex: 1 0 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1 0 0;
 
-    /* text-xl */
-    font-family: Roboto;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 28px; /* 140% */
+  /* text-xl */
+  font-family: Roboto;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px; /* 140% */
 }
 
 .tableRow__cell_value {
-    color: var(--color-accent-blue-500);
+  color: var(--color-accent-blue-500);
 
-    /* text-2xl */
-    font-family: Roboto;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 32px; /* 133.333% */
+  /* text-2xl */
+  font-family: Roboto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 32px; /* 133.333% */
 }
 
 .tableRow__cell_noChange {
-    color: var(--color-neutral-gray-800);
+  color: var(--color-neutral-gray-800);
 }
 
 .tableRow__cell_noChange::before {
-    content: "~";
-    margin-right: -8px;
-    display: block;
+  content: '~';
+  margin-right: -8px;
+  display: block;
 }
 
-
 .tableRow__cell_green {
-    color: var(--color-accent-green-500);
+  color: var(--color-accent-green-500);
 }
 
 .tableRow__cell_green::before {
-    content: "+";
-    margin-right: -8px;
-    display: block;
+  content: '+';
+  margin-right: -8px;
+  display: block;
 }
 
 .tableRow__cell_red {
-    color: var(--color-accent-red-500);
+  color: var(--color-accent-red-500);
 }
 
 .tableRow__cell_red::before {
-    content: "-";
-    margin-right: -8px;
-    display: block;
+  content: '-';
+  margin-right: -8px;
+  display: block;
 }

@@ -1,1 +1,1 @@
-export * from './MobileDashboard.tsx';
+export * from './MobileReportContent.tsx';

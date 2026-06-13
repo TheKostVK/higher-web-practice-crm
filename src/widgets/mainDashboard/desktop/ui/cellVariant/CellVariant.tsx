@@ -1,58 +1,33 @@
-import type {ReactNode} from "react";
+import type {ReactNode} from 'react';
 
-type TCellCustomStyle = 'default' | 'primaryText' | 'email' | 'phone' | 'secondText' | 'boldText';
+import Styles from './cellVariant.module.css';
 
-export interface CellCustomProps {
-    children: ReactNode;
-    variant: TCellCustomStyle;
+type TCellVariantStyle = 'default' | 'primary' | 'secondary' | 'completed' | 'cancelled' | 'bold';
+
+export interface CellVariantProps {
+  children: ReactNode;
+  variant: TCellVariantStyle;
 }
 
-export const CellCustom = ({children, variant = 'default'}: CellCustomProps) => {
-    switch (variant) {
-        case 'primaryText': {
-            return (
-                <span>
-                    {children}
-                </span>
-            );
-        }
-        case 'email': {
-            return (
-                <span>
-                    {children}
-                </span>
-            );
-        }
-
-        case 'phone': {
-            return (
-                <span>
-                    {children}
-                </span>
-            );
-        }
-
-        case 'secondText': {
-            return (
-                <span>
-                    {children}
-                </span>
-            );
-        }
-
-        case 'boldText': {
-            return (
-                <span>
-                    {children}
-                </span>
-            );
-        }
-        default: {
-            return (
-                <span>
-                    {children}
-                </span>
-            );
-        }
+export const CellVariant = ({children, variant = 'default'}: CellVariantProps) => {
+  switch (variant) {
+    case 'primary': {
+      return <span className={`${Styles.cellValue} ${Styles['cellValue--primaryText']}`}>{children}</span>;
     }
+    case 'secondary': {
+      return <span className={`${Styles.cellValue} ${Styles['cellValue--secondaryText']}`}>{children}</span>;
+    }
+    case 'completed': {
+      return <span className={`${Styles.cellValue} ${Styles['cellValue--secondaryText']}`}>{children}</span>;
+    }
+    case 'cancelled': {
+      return <span className={`${Styles.cellValue} ${Styles['cellValue--secondaryText']}`}>{children}</span>;
+    }
+    case 'bold': {
+      return <span className={`${Styles.cellValue} ${Styles['cellValue--boldText']}`}>{children}</span>;
+    }
+    default: {
+      return <span className={`${Styles.cellValue}`}>{children}</span>;
+    }
+  }
 };

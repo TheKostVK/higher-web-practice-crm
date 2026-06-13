@@ -1,0 +1,183 @@
+.mobileDeals__search {
+  width: 100%;
+}
+
+.mobileDeals__search :global(.ant-input-affix-wrapper) {
+  height: 40px;
+  padding: 10px 14px;
+  border-color: var(--color-neutral-gray-300);
+  border-radius: 4px;
+  background: var(--color-bg-white);
+}
+
+.mobileDeals__search :global(.ant-input) {
+  color: var(--color-neutral-gray-800);
+  font-family: var(--font-family-text);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.mobileDeals__search :global(.ant-input::placeholder) {
+  color: var(--color-neutral-gray-400);
+}
+
+.mobileDeals__search_icon {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+}
+
+.mobileDeals__search_icon::before {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 10px;
+  height: 10px;
+  border: 1.8px solid var(--color-neutral-gray-400);
+  border-radius: 50%;
+}
+
+.mobileDeals__search_icon::after {
+  content: '';
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  width: 6px;
+  height: 1.8px;
+  border-radius: 2px;
+  background: var(--color-neutral-gray-400);
+  transform: rotate(45deg);
+  transform-origin: center;
+}
+
+.mobileDeals__list {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  gap: 2px;
+  overflow-y: auto;
+}
+
+.mobileDeals__card {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 0;
+  background: var(--color-bg-white);
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.mobileDeals__card_blue {
+  background: var(--color-bg-blue-100);
+}
+
+.mobileDeals__card_green {
+  background: var(--color-bg-green-100);
+}
+
+.mobileDeals__card_orange {
+  background: var(--color-bg-yellow-100);
+}
+
+.mobileDeals__card_white {
+  background: var(--color-bg-white);
+}
+
+.mobileDeals__card_row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+}
+
+.mobileDeals__card_title {
+  min-width: 0;
+  margin: 0;
+  color: var(--color-neutral-gray-800);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.mobileDeals__card_client {
+  min-width: 0;
+  margin: 0;
+  color: var(--color-neutral-gray-800);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.mobileDeals__card_status {
+  flex: 0 0 auto;
+  color: var(--color-neutral-gray-800);
+  font-size: 12px;
+  line-height: 16px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.mobileDeals__card_description {
+  margin: 6px 0 0;
+  color: var(--color-neutral-gray-500);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.mobileDeals__card_footer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.mobileDeals__card_amount {
+  flex: 0 0 auto;
+  color: var(--color-neutral-gray-800);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.mobileDeals__date_block {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.mobileDeals__date_block_end {
+  flex: 0 0 auto;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.mobileDeals__date_label {
+  color: var(--color-neutral-gray-400);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.mobileDeals__date_value {
+  color: var(--color-neutral-gray-800);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.mobileDeals__addButton {
+  flex: 0 0 auto;
+  width: 100%;
+  height: 40px;
+  border-radius: 6px;
+  font-family: var(--font-family-text);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+}

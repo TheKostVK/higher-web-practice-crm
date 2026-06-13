@@ -1,0 +1,40 @@
+.formModal {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.formModal__field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.formModal__field--full {
+    grid-column: 1 / -1;
+}
+
+.formModal__label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ant-color-text);
+}
+
+.formModal__error {
+    font-size: 12px;
+    color: var(--ant-color-error);
+}
+
+.formModal__fullWidthControl {
+    width: 100%;
+}
+
+@media (max-width: 640px) {
+    .formModal {
+        grid-template-columns: 1fr;
+    }
+
+    .formModal__field--full {
+        grid-column: auto;
+    }
+}

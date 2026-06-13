@@ -13,7 +13,9 @@ type TFormFieldProps = {
 export const FormField = memo(({id, label, error, className = '', children, extra}: TFormFieldProps) => {
     return (
         <div className={`${Styles.formInput} ${className}`}>
-            <label className={Styles.formInput__label} htmlFor={id}>{label}</label>
+            <label className={Styles.formInput__label} htmlFor={id}>
+                {label}
+            </label>
             {children}
             {error && <span className={Styles.formInput__error}>{error}</span>}
             {extra}

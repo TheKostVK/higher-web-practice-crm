@@ -1,5 +1,7 @@
-import {Spin} from "antd";
+import {Spin} from 'antd';
+
+import Styles from './preloader.module.css';
 
 export const Preloader = () => {
-  return <Spin />;
+  return <Spin className={Styles.preloader} />;
 };

@@ -1,51 +1,69 @@
 import {Skeleton} from 'antd';
-import Styles from './tableRow.module.css';
-import type {TDashboardMetric, TDashboardMetricCase} from '@/entities/dashboard';
+import Styles from './cardData.module.css';
+import {METRIC_HEADER, type MetricKey, type TDashboardMetric, type TDashboardMetricCase} from '@/entities/dashboard';
+import {memo} from 'react';
 
 type TTableRowProps = {
-    title: string;
-    data: TDashboardMetric | undefined;
-    isLoading: boolean;
+  title: string;
+  data: TDashboardMetric | undefined;
+  isLoading: boolean;
 };
 
 const caseClassName: Record<TDashboardMetricCase, string> = {
-    increase: Styles.tableRow__cell_green,
-    decrease: Styles.tableRow__cell_red,
-    noChange: Styles.tableRow__cell_noChange,
+  increase: Styles.cell__value_green,
+  decrease: Styles.cell__value_red,
+  noChange: Styles.cell__value_noChange,
 };
 
-export const TableRow = ({title, data, isLoading = false}: TTableRowProps) => {
-    if (isLoading) {
-        return (
-            <tr className={Styles.tableRow}>
-                <td className={Styles.tableRow__cell} colSpan={6}>
-                    <Skeleton.Input active size="small" block/>
-                </td>
-            </tr>
-        );
-    }
+const metricGroups: MetricKey[][] = [
+  ['toDay', 'week'],
+  ['month', 'quarter'],
+];
 
-    if (!data) {
-        return (
-            <tr className={Styles.tableRow}>
-                <td className={Styles.tableRow__cell} colSpan={6}>Отсутствует информация</td>
-            </tr>
-        );
-    }
-
+export const CardData = memo(({title, data, isLoading = false}: TTableRowProps) => {
+  if (isLoading) {
     return (
-        <tr className={Styles.tableRow}>
-            <th className={Styles.tableRow__title} scope="row">
-                {title}
-            </th>
-            {Object.values(data).map((item, index) => (
-                <td
-                    key={item.name}
-                    className={`${Styles.tableRow__cell} ${index !== 0 ? caseClassName[item.case] : Styles.tableRow__cell_value}`}
-                >
-                    {item.value}
-                </td>
-            ))}
-        </tr>
+      <div className={Styles.cardData}>
+        <Skeleton.Input active size="small" block />
+      </div>
     );
-};
+  }
+
+  if (!data) {
+    return (
+      <div className={Styles.cardData}>
+        <p className={Styles.cardData__title}>{title}</p>
+        <p className={Styles.cardData__empty}>Отсутствует информация</p>
+      </div>
+    );
+  }
+
+  const totalMetric = data.total;
+
+  return (
+    <div className={Styles.cardData}>
+      <p className={Styles.cardData__title}>{title}</p>
+      <div className={Styles.cardData__content}>
+        <div className={Styles.cardData__total}>
+          <span className={Styles.total__value}>{totalMetric.value}</span>
+          <span className={Styles.cell__title}>{METRIC_HEADER[totalMetric.name]}</span>
+        </div>
+
+        {metricGroups.map((group) => (
+          <div className={Styles.cardData__group} key={group.join('-')}>
+            {group.map((metricKey) => {
+              const item = data[metricKey];
+
+              return (
+                <div key={item.name} className={Styles.cardData__content__cell}>
+                  <span className={Styles.cell__title}>{METRIC_HEADER[item.name]}</span>
+                  <span className={`${Styles.cell__value} ${caseClassName[item.case]}`}>{item.value}</span>
+                </div>
+              );
+            })}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+});

@@ -1,0 +1,13 @@
+.homeTab {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    height: 100%;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.quickActions {
+    display: flex;
+    gap: 8px;
+}

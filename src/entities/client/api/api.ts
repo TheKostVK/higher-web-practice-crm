@@ -4,10 +4,9 @@ import type {
   TClientListFilters,
   TClientListRow,
   TCreateClientPayload,
-  TUpdateClientByIdPayload
+  TUpdateClientByIdPayload,
 } from '../types';
-
-const API_BASE_URL = 'http://localhost:3001';
+import {getApiBaseUrl} from '@/shared/api';
 
 const isDateInRange = (date: string, from?: string, to?: string) => {
   const value = new Date(date).getTime();
@@ -39,23 +38,21 @@ const filterClients = (clients: TClient[], filters: TClientListFilters = {}): TC
   const normalizedSearch = filters.search?.trim().toLowerCase();
 
   const filtered = clients.filter((client) => {
-    const matchesSearch = !normalizedSearch || [
-      client.name,
-      client.phone,
-      client.email,
-      client.company,
-      client.website,
-      client.comment,
-    ].some((value) => value?.toLowerCase().includes(normalizedSearch));
+    const matchesSearch =
+      !normalizedSearch ||
+      [client.name, client.phone, client.email, client.company, client.website, client.comment].some((value) =>
+        value?.toLowerCase().includes(normalizedSearch),
+      );
     const matchesDeleted = filters.deleted === undefined ? client.deleted !== true : client.deleted === filters.deleted;
-    const matchesCreator = !filters.createdBy && !filters.managerId
-      ? true
-      : client.createdBy === (filters.createdBy || filters.managerId);
+    const matchesCreator =
+      !filters.createdBy && !filters.managerId ? true : client.createdBy === (filters.createdBy || filters.managerId);
 
-    return matchesSearch
-      && matchesDeleted
-      && matchesCreator
-      && isDateInRange(client.createdAt, filters.createdFrom, filters.createdTo);
+    return (
+      matchesSearch &&
+      matchesDeleted &&
+      matchesCreator &&
+      isDateInRange(client.createdAt, filters.createdFrom, filters.createdTo)
+    );
   });
 
   if (filters.sortBy) {
@@ -67,7 +64,7 @@ const filterClients = (clients: TClient[], filters: TClientListFilters = {}): TC
 
 export const clientApi = createApi({
   reducerPath: 'clientApi',
-  baseQuery: fetchBaseQuery({baseUrl: API_BASE_URL}),
+  baseQuery: fetchBaseQuery({baseUrl: getApiBaseUrl()}),
   tagTypes: ['TClient'],
   endpoints: (builder) => ({
     getClients: builder.query<TClientListRow[], TClientListFilters | void>({
@@ -82,10 +79,7 @@ export const clientApi = createApi({
       },
       providesTags: (result) =>
         result
-          ? [
-            ...result.map(({id}) => ({type: 'TClient' as const, id})),
-            {type: 'TClient', id: 'LIST'},
-          ]
+          ? [...result.map(({id}) => ({type: 'TClient' as const, id})), {type: 'TClient', id: 'LIST'}]
           : [{type: 'TClient', id: 'LIST'}],
     }),
     getClientById: builder.query<TClient, string>({

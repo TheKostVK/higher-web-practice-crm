@@ -1,12 +1,12 @@
-import {createSlice} from "@reduxjs/toolkit";
+import {createSlice} from '@reduxjs/toolkit';
 
 type TAppState = Record<string, never>;
 
-const initialState: TAppState = {}
+const initialState: TAppState = {};
 
 export const appSlice = createSlice({
-    name: 'app',
-    initialState,
-    reducers: {},
-    selectors: {}
+  name: 'app',
+  initialState,
+  reducers: {},
+  selectors: {},
 });

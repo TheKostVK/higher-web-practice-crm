@@ -1,5 +1,5 @@
-import type { TDealStatus } from '../../deal';
-import type { TTaskStatus } from '../../task';
+import type {TDealStatus} from '../../deal';
+import type {TTaskStatus} from '../../task';
 
 export type TReportPeriod = 'week' | 'month' | 'quarter';
 export type TReportView = 'list';
@@ -42,7 +42,7 @@ export type TOverdueTaskReportRow = {
 };
 
 export type TReportFilters = {
-  period?: TReportPeriod;
+  period?: TReportPeriod | '';
   view?: TReportView;
   dateFrom?: string;
   dateTo?: string;

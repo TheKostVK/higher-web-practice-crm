@@ -1,52 +1,38 @@
-import {Skeleton} from 'antd';
 import Styles from './tableRow.module.css';
-import type {TDashboardMetric, TDashboardMetricCase} from '@/entities/dashboard';
-import {memo} from "react";
+import {memo} from 'react';
+import type {TTableRowData, TRowSize, TTableRowProps} from '@/shared/ui/table/types/rowTypes.ts';
 
-type TTableRowProps = {
-    title: string;
-    data: TDashboardMetric | undefined;
-    isLoading: boolean;
+const sizeClassName: Record<TRowSize, string> = {
+  small: Styles['tableRow--small'],
+  medium: Styles['tableRow--medium'],
+  large: Styles['tableRow--large'],
 };
 
-const caseClassName: Record<TDashboardMetricCase, string> = {
-    increase: Styles.tableRow__cell_green,
-    decrease: Styles.tableRow__cell_red,
-    noChange: Styles.tableRow__cell_noChange,
-};
+const getCells = (dataSource: TTableRowData) => (Array.isArray(dataSource) ? dataSource : Object.values(dataSource));
 
-export const TableRow = memo(({title, data, isLoading = false}: TTableRowProps) => {
-    if (isLoading) {
-        return (
-            <tr className={Styles.tableRow}>
-                <td className={Styles.tableRow__cell} colSpan={6}>
-                    <Skeleton.Input active size="small" block/>
-                </td>
-            </tr>
-        );
-    }
-
-    if (!data) {
-        return (
-            <tr className={Styles.tableRow}>
-                <td className={Styles.tableRow__cell} colSpan={6}>Отсутствует информация</td>
-            </tr>
-        );
-    }
-
+export const TableRow = memo(<T extends TTableRowData>({dataSource, size = 'medium', rowTitle}: TTableRowProps<T>) => {
+  if (!dataSource) {
     return (
-        <tr className={Styles.tableRow}>
-            <th className={Styles.tableRow__title} scope="row">
-                {title}
-            </th>
-            {Object.values(data).map((item, index) => (
-                <td
-                    key={item.name}
-                    className={`${Styles.tableRow__cell} ${index !== 0 ? caseClassName[item.case] : Styles.tableRow__cell_value}`}
-                >
-                    {item.value}
-                </td>
-            ))}
-        </tr>
+      <tr className={`${Styles.tableRow} ${sizeClassName[size]}`}>
+        <td className={Styles.tableRow__cell} colSpan={6}>
+          Отсутствует информация
+        </td>
+      </tr>
     );
+  }
+
+  return (
+    <tr className={`${Styles.tableRow} ${sizeClassName[size]}`}>
+      {rowTitle && (
+        <th className={Styles.tableRow__title} scope="row">
+          {rowTitle}
+        </th>
+      )}
+      {getCells(dataSource).map((item, index) => (
+        <td key={index} className={Styles.tableRow__cell}>
+          {item}
+        </td>
+      ))}
+    </tr>
+  );
 });

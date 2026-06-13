@@ -11,10 +11,9 @@ import type {
   TReportExportPayload,
   TReportExportResult,
   TReportFilters,
-  TSalesReportRow
+  TSalesReportRow,
 } from '../types';
-
-const API_BASE_URL = 'http://localhost:3001';
+import {getApiBaseUrl} from '@/shared/api';
 
 const getPeriodRange = (filters: TReportFilters = {}) => {
   if (filters.dateFrom || filters.dateTo) {
@@ -68,13 +67,14 @@ const isTaskOverdue = (task: TTask) => {
   return new Date(task.dueDate).getTime() < Date.now();
 };
 
-const filterDeals = (deals: TDeal[], filters: TReportFilters = {}) => deals.filter((deal) => {
-  const matchesManager = !filters.managerId || deal.createdBy === filters.managerId;
-  const matchesClient = !filters.clientId || deal.clientId === filters.clientId;
-  const matchesStatus = !filters.dealStatus || deal.status === filters.dealStatus;
+const filterDeals = (deals: TDeal[], filters: TReportFilters = {}) =>
+  deals.filter((deal) => {
+    const matchesManager = !filters.managerId || deal.createdBy === filters.managerId;
+    const matchesClient = !filters.clientId || deal.clientId === filters.clientId;
+    const matchesStatus = !filters.dealStatus || deal.status === filters.dealStatus;
 
-  return matchesManager && matchesClient && matchesStatus;
-});
+    return matchesManager && matchesClient && matchesStatus;
+  });
 
 const getSalesReport = (deals: TDeal[], clients: TClient[], filters: TReportFilters = {}): TSalesReportRow[] => {
   const clientsById = new Map(clients.map((client) => [client.id, client]));
@@ -113,57 +113,62 @@ const getDealsStageReport = (deals: TDeal[], filters: TReportFilters = {}): TDea
   return Array.from(rows.values());
 };
 
-const getNewClientsReport = (clients: TClient[], filters: TReportFilters = {}): TNewClientReportRow[] => clients
-  .filter((client) => {
-    const matchesManager = !filters.managerId || client.createdBy === filters.managerId;
+const getNewClientsReport = (clients: TClient[], filters: TReportFilters = {}): TNewClientReportRow[] =>
+  clients
+    .filter((client) => {
+      const matchesManager = !filters.managerId || client.createdBy === filters.managerId;
 
-    return matchesManager && isDateInRange(client.createdAt, filters);
-  })
-  .map((client) => ({
-    clientId: client.id,
-    clientName: client.name,
-    company: client.company,
-    createdAt: client.createdAt,
-  }))
-  .sort((left, right) => new Date(right.createdAt).getTime() - new Date(left.createdAt).getTime());
+      return matchesManager && isDateInRange(client.createdAt, filters);
+    })
+    .map((client) => ({
+      clientId: client.id,
+      clientName: client.name,
+      company: client.company,
+      createdAt: client.createdAt,
+    }))
+    .sort((left, right) => new Date(right.createdAt).getTime() - new Date(left.createdAt).getTime());
 
 const getClientActivityReport = (
   clients: TClient[],
   deals: TDeal[],
   tasks: TTask[],
   filters: TReportFilters = {},
-): TClientActivityReportRow[] => clients
-  .filter((client) => !filters.managerId || client.createdBy === filters.managerId)
-  .map((client) => {
-    const clientDeals = deals.filter((deal) => deal.clientId === client.id);
-    const clientDealIds = new Set(clientDeals.map((deal) => deal.id));
+): TClientActivityReportRow[] =>
+  clients
+    .filter((client) => !filters.managerId || client.createdBy === filters.managerId)
+    .map((client) => {
+      const clientDeals = deals.filter((deal) => deal.clientId === client.id);
+      const clientDealIds = new Set(clientDeals.map((deal) => deal.id));
 
-    return {
-      clientId: client.id,
-      clientName: client.name,
-      dealsCount: clientDeals.filter((deal) => isDateInRange(deal.createdAt, filters)).length,
-      completedTasks: tasks.filter((task) =>
-        task.status === 'completed'
-        && task.dealId
-        && clientDealIds.has(task.dealId)
-        && isDateInRange(task.createdAt, filters),
-      ).length,
-    };
-  })
-  .sort((left, right) => right.dealsCount - left.dealsCount);
+      return {
+        clientId: client.id,
+        clientName: client.name,
+        dealsCount: clientDeals.filter((deal) => isDateInRange(deal.createdAt, filters)).length,
+        completedTasks: tasks.filter(
+          (task) =>
+            task.status === 'completed' &&
+            task.dealId &&
+            clientDealIds.has(task.dealId) &&
+            isDateInRange(task.createdAt, filters),
+        ).length,
+      };
+    })
+    .sort((left, right) => right.dealsCount - left.dealsCount);
 
-const getOverdueTasksReport = (tasks: TTask[], users: TUser[], filters: TReportFilters = {}): TOverdueTaskReportRow[] => {
+const getOverdueTasksReport = (
+  tasks: TTask[],
+  users: TUser[],
+  filters: TReportFilters = {},
+): TOverdueTaskReportRow[] => {
   const usersById = new Map(users.map((user) => [user.id, user]));
 
   return tasks
     .filter((task) => {
-      const matchesManager = !filters.managerId || task.assigneeId === filters.managerId || task.createdBy === filters.managerId;
+      const matchesManager =
+        !filters.managerId || task.assigneeId === filters.managerId || task.createdBy === filters.managerId;
       const matchesStatus = !filters.taskStatus || task.status === filters.taskStatus;
 
-      return matchesManager
-        && matchesStatus
-        && isTaskOverdue(task)
-        && isDateInRange(task.dueDate, filters);
+      return matchesManager && matchesStatus && isTaskOverdue(task) && isDateInRange(task.dueDate, filters);
     })
     .map((task) => ({
       taskId: task.id,
@@ -177,7 +182,7 @@ const getOverdueTasksReport = (tasks: TTask[], users: TUser[], filters: TReportF
 
 export const reportsApi = createApi({
   reducerPath: 'reportsApi',
-  baseQuery: fetchBaseQuery({baseUrl: API_BASE_URL}),
+  baseQuery: fetchBaseQuery({baseUrl: getApiBaseUrl()}),
   tagTypes: ['Reports'],
   endpoints: (builder) => ({
     getSalesReport: builder.query<TSalesReportRow[], TReportFilters | void>({

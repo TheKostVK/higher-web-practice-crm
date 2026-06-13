@@ -1,0 +1,1 @@
+export {DesktopDealsList} from './DesktopDealsList';
