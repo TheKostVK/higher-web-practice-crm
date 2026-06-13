@@ -68,7 +68,7 @@ const columns: ColumnsType<TTaskListRow> = [
 export const DesktopTasksList = () => {
     const [search, setSearch] = useState('');
     const [statusFilter, setStatusFilter] = useState<TTaskStatus | ''>('');
-    const {sortBy, order, handleTableChange} = useTableSort<TTaskSortField>();
+    const {sortBy, order, handleTableChange} = useTableSort<TTaskSortField, TTaskListRow>();
     const openTaskModal = useOpenModalRoute();
 
     const {data: tasks = [], isFetching, isError} = useGetTasksQuery({

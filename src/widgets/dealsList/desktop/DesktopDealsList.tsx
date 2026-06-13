@@ -69,7 +69,7 @@ const columns: ColumnsType<TDealListRow> = [
 export const DesktopDealsList = () => {
     const [search, setSearch] = useState('');
     const [statusFilter, setStatusFilter] = useState<TDealStatus | ''>('');
-    const {sortBy, order, handleTableChange} = useTableSort<TDealSortField>();
+    const {sortBy, order, handleTableChange} = useTableSort<TDealSortField, TDealListRow>();
     const openDealModal = useOpenModalRoute();
 
     const {data: deals = [], isFetching, isError} = useGetDealsQuery({

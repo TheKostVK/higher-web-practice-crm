@@ -70,7 +70,7 @@ const columns: ColumnsType<TClientListRow> = [
  */
 export const DesktopClientsList = () => {
     const [search, setSearch] = useState('');
-    const {sortBy, order, handleTableChange} = useTableSort<TClientSortField>();
+    const {sortBy, order, handleTableChange} = useTableSort<TClientSortField, TClient>();
     const openClientModal = useOpenModalRoute();
 
     const {data: clients = [], isFetching, isError} = useGetClientsQuery({
