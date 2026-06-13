@@ -1,8 +1,8 @@
 import {useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from '../redux';
 import {Navigate, useLocation} from 'react-router-dom';
-import {initUser, selectorUserData, selectorUserIsInit} from '../../entities/user';
-import {Preloader} from '../../shared/ui/preloader';
+import {initUser, selectorUserData, selectorUserIsInit} from '@/entities/user';
+import {Preloader} from '@/shared/ui/preloader';
 import type {ReactElement} from 'react';
 
 type TProtectedRouteProps = {

@@ -3,8 +3,8 @@ import {Button, Input} from 'antd';
 import {Controller, useForm} from 'react-hook-form';
 import {useLocation, useNavigate} from 'react-router-dom';
 
-import {setUserProfileData, useLazyGetUsersByEmailQuery, useRegisterUserMutation} from '../../entities/user';
-import {useAppDispatch} from '../../app';
+import {setUserProfileData, useLazyGetUsersByEmailQuery, useRegisterUserMutation} from '@/entities/user';
+import {useAppDispatch} from '@/app';
 import Styles from './registrationPage.module.css';
 import {registrationSchema, type TRegistrationFormValues} from './registrationSchema';
 

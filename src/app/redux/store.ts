@@ -1,17 +1,11 @@
 import {configureStore} from '@reduxjs/toolkit';
 import {useDispatch, useSelector, type TypedUseSelectorHook} from 'react-redux';
-import {userSlice} from '../../entities/user';
-import {taskSlice} from '../../entities/task';
-import {reportsSlice} from '../../entities/reports';
-import {dealSlice} from '../../entities/deal';
-import {dashboardSlice} from '../../entities/dashboard';
-import {clientSlice} from '../../entities/client';
-import {clientApi} from '../../entities/client';
-import {dashboardApi} from '../../entities/dashboard';
-import {dealApi} from '../../entities/deal';
-import {reportsApi} from '../../entities/reports';
-import {taskApi} from '../../entities/task';
-import {userApi} from '../../entities/user';
+import {userSlice, userApi} from '@/entities/user';
+import {taskSlice, taskApi} from '@/entities/task';
+import {reportsSlice, reportsApi} from '@/entities/reports';
+import {dealSlice, dealApi} from '@/entities/deal';
+import {dashboardSlice, dashboardApi} from '@/entities/dashboard';
+import {clientSlice, clientApi} from '@/entities/client';
 
 export const store = configureStore({
     reducer: {
