@@ -3,7 +3,7 @@ import {DEAL_STATUS_LABELS} from "@/entities/deal";
 import {formatAmount} from "@/shared/lib/formatters";
 import type {TDealsStageReportRow} from "@/entities/reports";
 import {SALES_STAGE_ORDER} from "@/widgets/reportsContent/model";
-import {Skeleton} from "antd";
+import {MobileReportBody} from "@/widgets/reportsContent/mobile/ui/mobileReportBody";
 
 type TCompactDealsStageCardProps = {
     items: TDealsStageReportRow[];
@@ -21,21 +21,19 @@ const LABEL_TONE: Record<string, string> = {
     cancelled: Styles['reportsContent__stageLabel--warning'],
 };
 
+/**
+ * Отображает компактные карточки этапов сделок.
+ * @param props Свойства списка этапов сделок.
+ */
 export const CompactDealsStageCards = ({items, emptyText, isLoading}: TCompactDealsStageCardProps) => {
     const visibleItems = [...items]
         .filter((row) => SALES_STAGE_ORDER.includes(row.stage))
         .sort((a, b) => SALES_STAGE_ORDER.indexOf(a.stage) - SALES_STAGE_ORDER.indexOf(b.stage));
 
-    if (visibleItems.length === 0) {
-        return <div className={Styles.reportsContent__empty}>{emptyText}</div>;
-    }
-
     return (
-        <div className={Styles.reportsContent__cards}>
-            {isLoading ? (
-                <Skeleton active paragraph={{rows: 3}} title={false}/>
-            ) : (
-                visibleItems.map((row) => (
+        <MobileReportBody emptyText={emptyText} isEmpty={visibleItems.length === 0} isLoading={isLoading}>
+            <div className={Styles.reportsContent__cards}>
+                {visibleItems.map((row) => (
                     <article
                         key={row.stage}
                         className={`${Styles.reportsContent__card} ${CARD_TONE[row.stage] ?? Styles['reportsContent__card--default']}`}
@@ -50,8 +48,8 @@ export const CompactDealsStageCards = ({items, emptyText, isLoading}: TCompactDe
                             <span className={Styles.reportsContent__stageCount}>{row.dealsCount} сделок</span>
                         </div>
                     </article>
-                ))
-            )}
-        </div>
+                ))}
+            </div>
+        </MobileReportBody>
     );
 };

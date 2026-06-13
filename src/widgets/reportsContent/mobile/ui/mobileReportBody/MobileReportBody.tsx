@@ -1,14 +1,21 @@
 import {ReportCards, type TReportCardItem} from "@/widgets/reportsContent/ui/reportCards";
 import {Skeleton} from "antd";
 import {ApiErrorMessage} from '@/shared/ui/apiErrorMessage';
+import Styles from "@/widgets/reportsContent/reportsContent.module.css";
+import type {ReactNode} from "react";
 
-type TMobileReportBodyProps = {
-    items: TReportCardItem[];
-    emptyText: string,
+type TMobileReportBodyBaseProps = {
+    emptyText: string;
     isLoading: boolean;
     isError?: boolean;
     errorMessage?: string;
-}
+};
+
+type TMobileReportBodyProps = TMobileReportBodyBaseProps & {
+    items?: TReportCardItem[];
+    children?: ReactNode;
+    isEmpty?: boolean;
+};
 
 /**
  * Отображает тело мобильного отчёта с состояниями загрузки и ошибки.
@@ -16,7 +23,9 @@ type TMobileReportBodyProps = {
  */
 export const MobileReportBody = ({
                                      items,
+                                     children,
                                      emptyText,
+                                     isEmpty,
                                      isLoading,
                                      isError = false,
                                      errorMessage,
@@ -29,5 +38,9 @@ export const MobileReportBody = ({
         return <ApiErrorMessage message={errorMessage}/>;
     }
 
-    return <ReportCards items={items} emptyText={emptyText}/>;
+    if (children !== undefined) {
+        return isEmpty ? <div className={Styles.reportsContent__empty}>{emptyText}</div> : children;
+    }
+
+    return <ReportCards items={items ?? []} emptyText={emptyText}/>;
 };
