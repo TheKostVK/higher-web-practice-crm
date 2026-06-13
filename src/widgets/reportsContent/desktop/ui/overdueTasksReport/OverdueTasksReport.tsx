@@ -2,7 +2,8 @@ import {type TOverdueTaskReportRow, useGetOverdueTasksReportQuery} from "@/entit
 import type {ColumnsType} from "antd/es/table";
 import {formatDate} from "@/shared/lib/formatters";
 import {TASK_STATUS_LABELS, type TTaskStatus} from "@/entities/task";
-import {Table, Tag} from "antd";
+import {Table} from "antd";
+import {StatusTag} from "@/shared/ui/statusTag";
 import {useReportFilters} from "@/widgets/reportsContent/hook";
 import {ReportToolbar} from "@/widgets/reportsContent/ui/reportToolbar/ReportToolbar.tsx";
 import {PAGE_SIZE} from "@/widgets/reportsContent/model";
@@ -28,7 +29,7 @@ const columns: ColumnsType<TOverdueTaskReportRow> = [
         title: 'Статус',
         dataIndex: 'status',
         key: 'status',
-        render: (v: TTaskStatus) => <Tag color="error">{TASK_STATUS_LABELS[v] ?? v}</Tag>,
+        render: (v: TTaskStatus) => <StatusTag color="error" label={TASK_STATUS_LABELS[v] ?? v}/>,
     },
 ];
 

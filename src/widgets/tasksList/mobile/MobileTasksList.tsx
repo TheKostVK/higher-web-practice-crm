@@ -1,11 +1,12 @@
 import {useState} from 'react';
-import {Button, Input, Tag} from 'antd';
+import {Button, Input} from 'antd';
 
 import {TASK_STATUS_LABELS, useGetTasksQuery} from '@/entities/task';
 import type {TTaskListRow, TTaskStatus} from '@/entities/task';
 import {formatDate} from '@/shared/lib/formatters';
 import {useOpenModalRoute} from '@/shared/lib/modalRoute';
 import {ApiErrorMessage} from '@/shared/ui/apiErrorMessage';
+import {StatusTag} from '@/shared/ui/statusTag';
 
 import Styles from './mobile.module.css';
 import {TASK_STATUS_COLORS} from "@/widgets/tasksList/model";
@@ -57,9 +58,10 @@ export const MobileTasksList = () => {
                         {task.dealTitle && <p className={Styles['mobileTasks__cardDeal']}>{task.dealTitle}</p>}
                         <div className={Styles['mobileTasks__cardFooter']}>
                             <span className={Styles['mobileTasks__cardAssignee']}>{task.assigneeName}</span>
-                            <Tag color={TASK_STATUS_COLORS[task.status as TTaskStatus]}>
-                                {TASK_STATUS_LABELS[task.status as TTaskStatus]}
-                            </Tag>
+                            <StatusTag
+                                color={TASK_STATUS_COLORS[task.status as TTaskStatus]}
+                                label={TASK_STATUS_LABELS[task.status as TTaskStatus]}
+                            />
                             <span className={Styles['mobileTasks__cardDue']}>{formatDate(task.dueDate)}</span>
                         </div>
                     </div>

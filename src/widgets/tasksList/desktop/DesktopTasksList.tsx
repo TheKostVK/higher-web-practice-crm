@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {Button, Input, Select, Table, Tag} from 'antd';
+import {Button, Input, Select, Table} from 'antd';
 import type {ColumnsType, TableProps} from 'antd/es/table';
 
 import {TASK_STATUS_LABELS, useGetTasksQuery} from '@/entities/task';
@@ -7,6 +7,7 @@ import type {TTaskListRow, TTaskSortField, TTaskStatus} from '@/entities/task';
 import {formatDate} from '@/shared/lib/formatters';
 import {useOpenModalRoute} from '@/shared/lib/modalRoute';
 import {ApiErrorMessage} from '@/shared/ui/apiErrorMessage';
+import {StatusTag} from '@/shared/ui/statusTag';
 
 import Styles from './desktop.module.css';
 import {STATUS_FILTER_OPTIONS, TASK_STATUS_COLORS} from "@/widgets/tasksList/model";
@@ -50,7 +51,9 @@ const columns: ColumnsType<TTaskListRow> = [
         dataIndex: 'status',
         key: 'status',
         sorter: true,
-        render: (value: TTaskStatus) => <Tag color={TASK_STATUS_COLORS[value]}>{TASK_STATUS_LABELS[value]}</Tag>,
+        render: (value: TTaskStatus) => (
+            <StatusTag color={TASK_STATUS_COLORS[value]} label={TASK_STATUS_LABELS[value]}/>
+        ),
     },
     {
         title: 'Дата создания',
