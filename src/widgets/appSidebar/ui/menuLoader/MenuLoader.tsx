@@ -4,15 +4,15 @@ import {HeaderMenuFallback} from '@/widgets/appSidebar/mobile/ui/headerMenuFallb
 import Styles from './MenuLoader.module.css';
 
 export const MenuLoader = () => {
-  const isMobile = useIsMobile();
+    const isMobile = useIsMobile();
 
-  if (isMobile) {
-    return <HeaderMenuFallback />;
-  }
+    if (isMobile) {
+        return <HeaderMenuFallback />;
+    }
 
-  return (
-    <div className={Styles.desktopLoader}>
-      <Preloader />
-    </div>
-  );
+    return (
+        <div className={Styles.desktopLoader}>
+            <Preloader />
+        </div>
+    );
 };

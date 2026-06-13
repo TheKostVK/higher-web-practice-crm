@@ -15,23 +15,23 @@ type TMainLayoutState = {
 };
 
 export const MainLayout = () => {
-  const location = useLocation();
-  const isMobile = useIsMobile();
-  const state = location.state as TMainLayoutState | null;
-  const backgroundLocation = state?.backgroundLocation;
-  const contentPathname = backgroundLocation?.pathname ?? location.pathname;
+    const location = useLocation();
+    const isMobile = useIsMobile();
+    const state = location.state as TMainLayoutState | null;
+    const backgroundLocation = state?.backgroundLocation;
+    const contentPathname = backgroundLocation?.pathname ?? location.pathname;
 
-  return (
-    <Layout hasSider={!isMobile}>
-      <AppSidebar />
-      <Layout>
-        <Content
-          className={`${Styles.content} ${isMobile && contentPathname === '/profile' ? Styles['content--gradient'] : ''}`}
-        >
-          <PageRoutes location={backgroundLocation || location} />
-          <ModalRouteLayer />
-        </Content>
-      </Layout>
-    </Layout>
-  );
+    return (
+        <Layout hasSider={!isMobile}>
+            <AppSidebar />
+            <Layout>
+                <Content
+                    className={`${Styles.content} ${isMobile && contentPathname === '/profile' ? Styles['content--gradient'] : ''}`}
+                >
+                    <PageRoutes location={backgroundLocation || location} />
+                    <ModalRouteLayer />
+                </Content>
+            </Layout>
+        </Layout>
+    );
 };

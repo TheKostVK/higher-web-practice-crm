@@ -28,16 +28,16 @@ type TFormModalProps = {
  * @param children Содержимое формы.
  */
 export const FormModal = ({
-                              open,
-                              title,
-                              okText,
-                              cancelText = 'Отменить',
-                              confirmLoading,
-                              width = 580,
-                              onOk,
-                              onCancel,
-                              children,
-                          }: TFormModalProps) => (
+    open,
+    title,
+    okText,
+    cancelText = 'Отменить',
+    confirmLoading,
+    width = 580,
+    onOk,
+    onCancel,
+    children,
+}: TFormModalProps) => (
     <Modal
         open={open}
         title={title}

@@ -4,11 +4,11 @@ import './index.css';
 import {AntdProvider, StoreProvider, RouterProvider} from './app';
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <AntdProvider>
-      <StoreProvider>
-        <RouterProvider />
-      </StoreProvider>
-    </AntdProvider>
-  </StrictMode>,
+    <StrictMode>
+        <AntdProvider>
+            <StoreProvider>
+                <RouterProvider />
+            </StoreProvider>
+        </AntdProvider>
+    </StrictMode>,
 );

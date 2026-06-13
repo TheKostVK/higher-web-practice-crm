@@ -8,10 +8,10 @@ const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), svgr()],
-  resolve: {
-    alias: {
-      '@': path.resolve(projectRoot, 'src'),
+    plugins: [react(), svgr()],
+    resolve: {
+        alias: {
+            '@': path.resolve(projectRoot, 'src'),
+        },
     },
-  },
 });

@@ -7,7 +7,7 @@ export interface AppMenuContextValue {
 }
 
 export const AppMenuContext = createContext<AppMenuContextValue>({
-  collapsed: false,
-  toggleCollapsed: () => {},
-  closeMenu: () => {},
+    collapsed: false,
+    toggleCollapsed: () => {},
+    closeMenu: () => {},
 });

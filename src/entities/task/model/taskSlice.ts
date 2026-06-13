@@ -9,22 +9,22 @@ type TTaskSliceState = {
 };
 
 const initialState: TTaskSliceState = {
-  isLoading: false,
-  isError: false,
-  errorText: undefined,
-  tasks: [],
+    isLoading: false,
+    isError: false,
+    errorText: undefined,
+    tasks: [],
 };
 
 export const taskSlice = createSlice({
-  name: 'task',
-  initialState,
-  reducers: {},
-  selectors: {
-    selectorTaskIsLoading: (state) => state.isLoading,
-    selectorTaskIsError: (state) => state.isError,
-    selectorTaskErrorText: (state) => state.errorText,
-    selectorTaskData: (state) => state.tasks,
-  },
+    name: 'task',
+    initialState,
+    reducers: {},
+    selectors: {
+        selectorTaskIsLoading: (state) => state.isLoading,
+        selectorTaskIsError: (state) => state.isError,
+        selectorTaskErrorText: (state) => state.errorText,
+        selectorTaskData: (state) => state.tasks,
+    },
 });
 
 export const {selectorTaskIsLoading, selectorTaskIsError, selectorTaskErrorText, selectorTaskData} =

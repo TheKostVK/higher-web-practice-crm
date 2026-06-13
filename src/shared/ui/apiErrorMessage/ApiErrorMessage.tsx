@@ -14,16 +14,16 @@ type TApiErrorMessageProps = {
  * @param className Дополнительный CSS-класс.
  */
 export const ApiErrorMessage = memo(
-  ({
-    message = 'Не удалось загрузить данные. Попробуйте обновить страницу.',
-    className = '',
-  }: TApiErrorMessageProps) => (
-    <Alert
-      className={`${Styles.apiErrorMessage} ${className}`}
-      message={message}
-      type="error"
-      showIcon
-      role="alert"
-    />
-  ),
+    ({
+        message = 'Не удалось загрузить данные. Попробуйте обновить страницу.',
+        className = '',
+    }: TApiErrorMessageProps) => (
+        <Alert
+            className={`${Styles.apiErrorMessage} ${className}`}
+            message={message}
+            type="error"
+            showIcon
+            role="alert"
+        />
+    ),
 );

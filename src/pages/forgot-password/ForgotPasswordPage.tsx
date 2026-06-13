@@ -32,9 +32,9 @@ export const ForgotPasswordPage = () => {
             </p>
             <form className={Styles.forgotPasswordPage__form} onSubmit={handleSubmit(handleRestorePassword)} noValidate>
                 <label className={Styles.forgotPasswordPage__field} htmlFor="forgot-password-email">
-                  <span className={Styles.forgotPasswordPage__label}>
+                    <span className={Styles.forgotPasswordPage__label}>
                     Email <span aria-hidden="true">*</span>
-                  </span>
+                    </span>
                     <Controller
                         control={control}
                         name="email"
@@ -52,7 +52,7 @@ export const ForgotPasswordPage = () => {
                 </label>
 
                 <Button className={Styles.forgotPasswordPage__submit} type="primary" htmlType="submit"
-                        loading={isSubmitting}>
+                    loading={isSubmitting}>
                     Восстановить
                 </Button>
             </form>

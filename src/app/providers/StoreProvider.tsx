@@ -7,5 +7,5 @@ type TStoreProviderProps = {
 };
 
 export function StoreProvider({children}: TStoreProviderProps) {
-  return <Provider store={store}>{children}</Provider>;
+    return <Provider store={store}>{children}</Provider>;
 }

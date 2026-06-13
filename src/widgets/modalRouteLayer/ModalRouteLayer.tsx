@@ -15,21 +15,21 @@ type TModalRouteLayerState = {
  * Если перехода с сохранением фона не было — модалка не отображается.
  */
 export const ModalRouteLayer = () => {
-  const location = useLocation();
-  const state = location.state as TModalRouteLayerState | null;
+    const location = useLocation();
+    const state = location.state as TModalRouteLayerState | null;
 
-  if (!state?.backgroundLocation) {
-    return null;
-  }
+    if (!state?.backgroundLocation) {
+        return null;
+    }
 
-  return (
-    <Routes>
-      <Route path="/clients/new" element={<ClientModalRoute />} />
-      <Route path="/clients/:id" element={<ClientModalRoute />} />
-      <Route path="/deals/new" element={<DealModalRoute />} />
-      <Route path="/deals/:id" element={<DealModalRoute />} />
-      <Route path="/tasks/new" element={<TaskModalRoute />} />
-      <Route path="/tasks/:id" element={<TaskModalRoute />} />
-    </Routes>
-  );
+    return (
+        <Routes>
+            <Route path="/clients/new" element={<ClientModalRoute />} />
+            <Route path="/clients/:id" element={<ClientModalRoute />} />
+            <Route path="/deals/new" element={<DealModalRoute />} />
+            <Route path="/deals/:id" element={<DealModalRoute />} />
+            <Route path="/tasks/new" element={<TaskModalRoute />} />
+            <Route path="/tasks/:id" element={<TaskModalRoute />} />
+        </Routes>
+    );
 };

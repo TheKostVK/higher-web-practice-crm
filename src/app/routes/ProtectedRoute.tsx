@@ -11,30 +11,30 @@ type TProtectedRouteProps = {
 };
 
 export const ProtectedRoute = ({onlyUnAuth, children}: TProtectedRouteProps) => {
-  const isInit = useAppSelector(selectorUserIsInit);
-  const user = useAppSelector(selectorUserData);
-  const dispatch = useAppDispatch();
-  const location = useLocation();
+    const isInit = useAppSelector(selectorUserIsInit);
+    const user = useAppSelector(selectorUserData);
+    const dispatch = useAppDispatch();
+    const location = useLocation();
 
-  useEffect(() => {
+    useEffect(() => {
+        if (!isInit) {
+            dispatch(initUser());
+        }
+    }, [dispatch, isInit]);
+
     if (!isInit) {
-      dispatch(initUser());
+        return <Preloader />;
     }
-  }, [dispatch, isInit]);
 
-  if (!isInit) {
-    return <Preloader />;
-  }
+    if (!onlyUnAuth && !user) {
+        return <Navigate replace to="/auth/login" state={{from: location}} />;
+    }
 
-  if (!onlyUnAuth && !user) {
-    return <Navigate replace to="/auth/login" state={{from: location}} />;
-  }
+    if (onlyUnAuth && user) {
+        const from = location.state?.from || {pathname: '/'};
 
-  if (onlyUnAuth && user) {
-    const from = location.state?.from || {pathname: '/'};
+        return <Navigate replace to={from} />;
+    }
 
-    return <Navigate replace to={from} />;
-  }
-
-  return children;
+    return children;
 };

@@ -8,9 +8,9 @@ type TContainerProps = {
 };
 
 export const Container = ({children, className = ''}: TContainerProps) => {
-  return (
-    <div className={Styles.container}>
-      <div className={`${Styles.container__content} ${className}`}>{children}</div>
-    </div>
-  );
+    return (
+        <div className={Styles.container}>
+            <div className={`${Styles.container__content} ${className}`}>{children}</div>
+        </div>
+    );
 };

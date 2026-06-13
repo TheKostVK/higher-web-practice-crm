@@ -27,8 +27,8 @@ export const FormModalField = ({label, htmlFor, labelId, required, full, error, 
 
     const labelContent = (
         <span className={Styles.formModal__label} id={labelId}>
-      {label} {required && <span aria-hidden="true">*</span>}
-    </span>
+            {label} {required && <span aria-hidden="true">*</span>}
+        </span>
     );
 
     const errorContent = error && <span className={Styles.formModal__error}>{error}</span>;

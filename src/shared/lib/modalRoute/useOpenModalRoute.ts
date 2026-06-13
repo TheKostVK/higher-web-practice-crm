@@ -8,15 +8,15 @@ import {buildModalRoutePath, type TModalRouteEntity} from './modalRoute';
  * @returns Функция открытия модального окна.
  */
 export const useOpenModalRoute = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
+    const location = useLocation();
+    const navigate = useNavigate();
 
-  return useCallback(
-    (entity: TModalRouteEntity, id?: string) => {
-      navigate(buildModalRoutePath(entity, id), {
-        state: {backgroundLocation: location},
-      });
-    },
-    [location, navigate],
-  );
+    return useCallback(
+        (entity: TModalRouteEntity, id?: string) => {
+            navigate(buildModalRoutePath(entity, id), {
+                state: {backgroundLocation: location},
+            });
+        },
+        [location, navigate],
+    );
 };

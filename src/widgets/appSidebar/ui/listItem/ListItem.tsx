@@ -10,21 +10,21 @@ export type TListItemProps = {
 };
 
 export const ListItem = memo(({item}: TListItemProps) => {
-  const {collapsed, closeMenu} = useContext(AppMenuContext);
+    const {collapsed, closeMenu} = useContext(AppMenuContext);
 
-  return (
-    <NavLink
-      to={item.pathname}
-      end={item.pathname === '/'}
-      aria-label={item.title}
-      title={item.title}
-      onClick={closeMenu}
-      className={({isActive}) =>
-        `${Styles.listItem} ${isActive ? Styles['listItem--active'] : ''} ${collapsed ? Styles['listItem--collapsed'] : ''}`
-      }
-    >
-      {item.icon}
-      <span className={Styles.listItem__title}>{item.title}</span>
-    </NavLink>
-  );
+    return (
+        <NavLink
+            to={item.pathname}
+            end={item.pathname === '/'}
+            aria-label={item.title}
+            title={item.title}
+            onClick={closeMenu}
+            className={({isActive}) =>
+                `${Styles.listItem} ${isActive ? Styles['listItem--active'] : ''} ${collapsed ? Styles['listItem--collapsed'] : ''}`
+            }
+        >
+            {item.icon}
+            <span className={Styles.listItem__title}>{item.title}</span>
+        </NavLink>
+    );
 });

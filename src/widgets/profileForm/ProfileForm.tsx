@@ -48,7 +48,7 @@ export const ProfileForm = () => {
             }
         >
             <form id={PROFILE_FORM_ID} className={Styles.profileForm} onSubmit={handleSubmit(handleProfileUpdate)}
-                  noValidate>
+                noValidate>
                 <AvatarUpload
                     className={Styles.profileForm__avatarUpload}
                     src={avatarUrl}

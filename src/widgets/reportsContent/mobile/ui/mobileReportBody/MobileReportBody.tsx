@@ -22,14 +22,14 @@ type TMobileReportBodyProps = TMobileReportBodyBaseProps & {
  * @param props Свойства тела отчёта.
  */
 export const MobileReportBody = ({
-                                     items,
-                                     children,
-                                     emptyText,
-                                     isEmpty,
-                                     isLoading,
-                                     isError = false,
-                                     errorMessage,
-                                 }: TMobileReportBodyProps) => {
+    items,
+    children,
+    emptyText,
+    isEmpty,
+    isLoading,
+    isError = false,
+    errorMessage,
+}: TMobileReportBodyProps) => {
     if (isLoading) {
         return <Skeleton active paragraph={{rows: 3}} title={false}/>;
     }

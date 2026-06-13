@@ -8,39 +8,39 @@ type TUserState = {
 };
 
 const initialState: TUserState = {
-  isInit: false,
-  user: undefined,
+    isInit: false,
+    user: undefined,
 };
 
 export const userSlice = createSlice({
-  name: 'user',
-  initialState,
-  reducers: {
-    initUser: (state) => {
-      const user = getUserLocalStorage();
+    name: 'user',
+    initialState,
+    reducers: {
+        initUser: (state) => {
+            const user = getUserLocalStorage();
 
-      state.user = user ? user : undefined;
+            state.user = user ? user : undefined;
 
-      state.isInit = true;
-    },
-    logout: (state) => {
-      state.user = undefined;
-      removeUserLocalStorage();
-    },
-    setUserProfileData: (state, action: PayloadAction<TUser>) => {
-      state.user = action.payload;
+            state.isInit = true;
+        },
+        logout: (state) => {
+            state.user = undefined;
+            removeUserLocalStorage();
+        },
+        setUserProfileData: (state, action: PayloadAction<TUser>) => {
+            state.user = action.payload;
 
-      setUserLocalStorage(state.user);
+            setUserLocalStorage(state.user);
+        },
+        clearUserProfileData: (state) => {
+            state.user = undefined;
+            removeUserLocalStorage();
+        },
     },
-    clearUserProfileData: (state) => {
-      state.user = undefined;
-      removeUserLocalStorage();
+    selectors: {
+        selectorUserIsInit: (state) => state.isInit,
+        selectorUserData: (state) => state.user,
     },
-  },
-  selectors: {
-    selectorUserIsInit: (state) => state.isInit,
-    selectorUserData: (state) => state.user,
-  },
 });
 
 export const {initUser, logout, setUserProfileData, clearUserProfileData} = userSlice.actions;

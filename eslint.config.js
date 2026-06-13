@@ -192,6 +192,7 @@ export default defineConfig([
     },
     rules: {
       'public-api-imports/only-public-api': 'error',
+      indent: ['error', 4],
     },
   },
 ]);

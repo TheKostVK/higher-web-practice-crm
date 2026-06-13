@@ -6,15 +6,15 @@ import {defineConfig} from 'vitest/config';
 const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-  plugins: [react()],
-  resolve: {
-    alias: {
-      '@': path.resolve(projectRoot, 'src'),
+    plugins: [react()],
+    resolve: {
+        alias: {
+            '@': path.resolve(projectRoot, 'src'),
+        },
     },
-  },
-  test: {
-    environment: 'jsdom',
-    globals: true,
-    setupFiles: './src/test/setupTests.ts',
-  },
+    test: {
+        environment: 'jsdom',
+        globals: true,
+        setupFiles: './src/test/setupTests.ts',
+    },
 });

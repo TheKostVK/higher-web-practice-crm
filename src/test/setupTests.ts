@@ -5,11 +5,11 @@ const getComputedStyle = window.getComputedStyle;
 window.getComputedStyle = (element: Element) => getComputedStyle(element);
 
 class ResizeObserverMock {
-  observe() {}
+    observe() {}
 
-  unobserve() {}
+    unobserve() {}
 
-  disconnect() {}
+    disconnect() {}
 }
 
 globalThis.ResizeObserver = ResizeObserverMock as typeof ResizeObserver;

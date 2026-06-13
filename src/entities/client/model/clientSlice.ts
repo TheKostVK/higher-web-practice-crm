@@ -9,22 +9,22 @@ type TClientState = {
 };
 
 const initialState: TClientState = {
-  isLoading: false,
-  isError: false,
-  errorText: undefined,
-  clients: [],
+    isLoading: false,
+    isError: false,
+    errorText: undefined,
+    clients: [],
 };
 
 export const clientSlice = createSlice({
-  name: 'client',
-  initialState,
-  reducers: {},
-  selectors: {
-    selectorClientIsLoading: (state) => state.isLoading,
-    selectorClientIsError: (state) => state.isError,
-    selectorClientErrorText: (state) => state.errorText,
-    selectorClientData: (state) => state.clients,
-  },
+    name: 'client',
+    initialState,
+    reducers: {},
+    selectors: {
+        selectorClientIsLoading: (state) => state.isLoading,
+        selectorClientIsError: (state) => state.isError,
+        selectorClientErrorText: (state) => state.errorText,
+        selectorClientData: (state) => state.clients,
+    },
 });
 
 export const {selectorClientIsLoading, selectorClientIsError, selectorClientErrorText, selectorClientData} =

@@ -12,44 +12,44 @@ type TProfileMenuItemProps = {
 };
 
 export const ProfileMenuItem = memo(({isMobile = false}: TProfileMenuItemProps) => {
-  const {collapsed, closeMenu} = useContext(AppMenuContext);
-  const user = useAppSelector(selectorUserData);
+    const {collapsed, closeMenu} = useContext(AppMenuContext);
+    const user = useAppSelector(selectorUserData);
 
-  const [isHovered, setIsHovered] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
 
-  const userName = user?.name ?? 'Имя пользователя';
+    const userName = user?.name ?? 'Имя пользователя';
 
-  return isMobile ? (
-    <NavLink
-      to={'/profile'}
-      aria-label={`Профиль: ${userName}`}
-      title={userName}
-      onClick={closeMenu}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className={({isActive}) => `${Styles['profileMenuItem--mobile']} ${isActive ? Styles['profileMenuItem--active'] : ''}`}
-    >
-      {({isActive}) => <ProfileAvatar useIcon isActive={isActive || isHovered} alt="Картинка профиля" />}
-    </NavLink>
-  ) : (
-    <NavLink
-      to="/profile"
-      aria-label={`Профиль: ${userName}`}
-      title={userName}
-      onClick={closeMenu}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className={({isActive}) =>
-        `${Styles.profileMenuItem} ${isActive ? Styles['profileMenuItem--active'] : ''} ${collapsed ? Styles['profileSidebar--collapsed'] : ''}`
-      }
-    >
-      {({isActive}) => (
-        <>
-          <ProfileAvatar useIcon isActive={isActive || isHovered} src={user?.avatarUrl} alt="Картинка профиля" />
+    return isMobile ? (
+        <NavLink
+            to={'/profile'}
+            aria-label={`Профиль: ${userName}`}
+            title={userName}
+            onClick={closeMenu}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className={({isActive}) => `${Styles['profileMenuItem--mobile']} ${isActive ? Styles['profileMenuItem--active'] : ''}`}
+        >
+            {({isActive}) => <ProfileAvatar useIcon isActive={isActive || isHovered} alt="Картинка профиля" />}
+        </NavLink>
+    ) : (
+        <NavLink
+            to="/profile"
+            aria-label={`Профиль: ${userName}`}
+            title={userName}
+            onClick={closeMenu}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className={({isActive}) =>
+                `${Styles.profileMenuItem} ${isActive ? Styles['profileMenuItem--active'] : ''} ${collapsed ? Styles['profileSidebar--collapsed'] : ''}`
+            }
+        >
+            {({isActive}) => (
+                <>
+                    <ProfileAvatar useIcon isActive={isActive || isHovered} src={user?.avatarUrl} alt="Картинка профиля" />
 
-          <p className={Styles.profileSidebar__userName}>{userName}</p>
-        </>
-      )}
-    </NavLink>
-  );
+                    <p className={Styles.profileSidebar__userName}>{userName}</p>
+                </>
+            )}
+        </NavLink>
+    );
 });

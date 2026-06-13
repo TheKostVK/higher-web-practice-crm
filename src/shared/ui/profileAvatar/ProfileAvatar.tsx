@@ -13,22 +13,22 @@ type TProfileAvatarProps = {
 };
 
 const ProfileSize = {
-  small: 24,
-  medium: 40,
-  large: 64,
-  huge: 92,
+    small: 24,
+    medium: 40,
+    large: 64,
+    huge: 92,
 };
 
 export const ProfileAvatar = memo(
-  ({useIcon = false, isActive = false, size = 'medium', src, alt}: TProfileAvatarProps) => {
-    return (
-      <Avatar
-        className={`${Styles.profileAvatar__img} ${isActive ? Styles['profileAvatar__img--active'] : ''}`}
-        size={ProfileSize[size]}
-        src={!src && useIcon ? undefined : src}
-        icon={useIcon || !src ? <ProfileIconFallback /> : undefined}
-        alt={alt}
-      />
-    );
-  },
+    ({useIcon = false, isActive = false, size = 'medium', src, alt}: TProfileAvatarProps) => {
+        return (
+            <Avatar
+                className={`${Styles.profileAvatar__img} ${isActive ? Styles['profileAvatar__img--active'] : ''}`}
+                size={ProfileSize[size]}
+                src={!src && useIcon ? undefined : src}
+                icon={useIcon || !src ? <ProfileIconFallback /> : undefined}
+                alt={alt}
+            />
+        );
+    },
 );

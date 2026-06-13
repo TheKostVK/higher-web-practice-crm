@@ -22,21 +22,21 @@ type TFormTextInputProps = {
 
 export const FormTextInput = memo(
     ({
-         id,
-         label,
-         name,
-         value,
-         placeholder,
-         autoComplete,
-         error,
-         isError = false,
-         disabled = false,
-         className = '',
-         controlClassName = '',
-         extra,
-         onChange,
-         onBlur,
-     }: TFormTextInputProps) => {
+        id,
+        label,
+        name,
+        value,
+        placeholder,
+        autoComplete,
+        error,
+        isError = false,
+        disabled = false,
+        className = '',
+        controlClassName = '',
+        extra,
+        onChange,
+        onBlur,
+    }: TFormTextInputProps) => {
         return (
             <FormField id={id} label={label} error={error} className={className} extra={extra}>
                 <Input

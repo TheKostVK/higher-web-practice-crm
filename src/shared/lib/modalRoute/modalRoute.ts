@@ -7,4 +7,4 @@ export type TModalRouteEntity = 'clients' | 'deals' | 'tasks';
  * @returns Путь модального окна.
  */
 export const buildModalRoutePath = (entity: TModalRouteEntity, id?: string): string =>
-  id ? `/${entity}/${id}` : `/${entity}/new`;
+    id ? `/${entity}/${id}` : `/${entity}/new`;

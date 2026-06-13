@@ -11,21 +11,21 @@ type TButtonProps = ButtonProps & {
 };
 
 const getViewClassName = (view: TButtonView) => {
-  switch (view) {
+    switch (view) {
     case 'outline':
-      return Styles['button--outline'];
+        return Styles['button--outline'];
     case 'link':
-      return Styles['button--link'];
+        return Styles['button--link'];
     default:
-      return Styles['button--primary'];
-  }
+        return Styles['button--primary'];
+    }
 };
 
 export const Button = memo(({view = 'primary', fullWidth = false, className = '', type, ...props}: TButtonProps) => {
-  const buttonType = type || (view === 'link' ? 'link' : undefined);
-  const classNames = [Styles.button, getViewClassName(view), fullWidth ? Styles['button--fullWidth'] : '', className]
-    .filter(Boolean)
-    .join(' ');
+    const buttonType = type || (view === 'link' ? 'link' : undefined);
+    const classNames = [Styles.button, getViewClassName(view), fullWidth ? Styles['button--fullWidth'] : '', className]
+        .filter(Boolean)
+        .join(' ');
 
-  return <AntButton {...props} type={buttonType} className={classNames} />;
+    return <AntButton {...props} type={buttonType} className={classNames} />;
 });

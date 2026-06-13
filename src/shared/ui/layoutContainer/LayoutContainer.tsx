@@ -10,21 +10,21 @@ type TContainerProps = {
 };
 
 export const LayoutContainer = ({children, footer, className = ''}: TContainerProps) => {
-  const isMobile = useIsMobile();
+    const isMobile = useIsMobile();
 
-  return (
-    <div className={Styles.container}>
-      {isMobile ? (
-        <>
-          <div className={`${Styles.container__content} ${className}`}>{children}</div>
-          {footer}
-        </>
-      ) : (
-        <div className={`${Styles.container__content} ${className}`}>
-          {children}
-          {footer}
+    return (
+        <div className={Styles.container}>
+            {isMobile ? (
+                <>
+                    <div className={`${Styles.container__content} ${className}`}>{children}</div>
+                    {footer}
+                </>
+            ) : (
+                <div className={`${Styles.container__content} ${className}`}>
+                    {children}
+                    {footer}
+                </div>
+            )}
         </div>
-      )}
-    </div>
-  );
+    );
 };

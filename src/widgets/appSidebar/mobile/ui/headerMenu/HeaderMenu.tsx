@@ -15,37 +15,37 @@ type THeaderMenuProps = {
 };
 
 export const HeaderMenu = ({children}: THeaderMenuProps) => {
-  const {collapsed, toggleCollapsed} = useContext(AppMenuContext);
+    const {collapsed, toggleCollapsed} = useContext(AppMenuContext);
 
-  useEffect(() => {
-    if (collapsed) {
-      return;
-    }
+    useEffect(() => {
+        if (collapsed) {
+            return;
+        }
 
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
+        const previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
 
-    return () => {
-      document.body.style.overflow = previousOverflow;
-    };
-  }, [collapsed]);
+        return () => {
+            document.body.style.overflow = previousOverflow;
+        };
+    }, [collapsed]);
 
-  return (
-    <div className={`${Styles.headerMenu} ${collapsed ? '' : Styles['headerMenu--open']}`}>
-      <div className={Styles.headerMenu__header}>
-        <Button
-          aria-label={collapsed ? 'Раскрыть меню' : 'Свернуть меню'}
-          className={Styles.headerMenu__trigger}
-          type="text"
-          icon={collapsed ? <OpenIcon /> : <CloseIcon />}
-          onClick={toggleCollapsed}
-        />
-        <NavLink to={'/'} aria-label={`Главная страница`} title={'Главная страница'}>
-          <img className={Styles.headerMenu__logo} src={Logo} alt="YaPlex" />
-        </NavLink>
-        <ProfileMenuItem isMobile />
-      </div>
-      {!collapsed && <div className={Styles.headerMenu__content}>{children}</div>}
-    </div>
-  );
+    return (
+        <div className={`${Styles.headerMenu} ${collapsed ? '' : Styles['headerMenu--open']}`}>
+            <div className={Styles.headerMenu__header}>
+                <Button
+                    aria-label={collapsed ? 'Раскрыть меню' : 'Свернуть меню'}
+                    className={Styles.headerMenu__trigger}
+                    type="text"
+                    icon={collapsed ? <OpenIcon /> : <CloseIcon />}
+                    onClick={toggleCollapsed}
+                />
+                <NavLink to={'/'} aria-label={`Главная страница`} title={'Главная страница'}>
+                    <img className={Styles.headerMenu__logo} src={Logo} alt="YaPlex" />
+                </NavLink>
+                <ProfileMenuItem isMobile />
+            </div>
+            {!collapsed && <div className={Styles.headerMenu__content}>{children}</div>}
+        </div>
+    );
 };

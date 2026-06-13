@@ -7,11 +7,11 @@ type TPageTitleProps = {
 };
 
 export const PageTitle = memo(({title, subTitle}: TPageTitleProps) => {
-  return (
-    <div className={Styles.pageTitle}>
-      <h1 className={Styles.title}>{title}</h1>
+    return (
+        <div className={Styles.pageTitle}>
+            <h1 className={Styles.title}>{title}</h1>
 
-      {subTitle && <h3 className={Styles.subtitle}>{subTitle}</h3>}
-    </div>
-  );
+            {subTitle && <h3 className={Styles.subtitle}>{subTitle}</h3>}
+        </div>
+    );
 });

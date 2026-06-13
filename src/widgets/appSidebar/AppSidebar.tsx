@@ -8,27 +8,27 @@ import {List} from './ui/list';
 import {MenuLoader} from '@/widgets/appSidebar/ui/menuLoader';
 
 const SideMenu = lazy(() =>
-  import('./desktop/ui/sideMenu').then(({SideMenu}) => ({
-    default: SideMenu,
-  })),
+    import('./desktop/ui/sideMenu').then(({SideMenu}) => ({
+        default: SideMenu,
+    })),
 );
 
 const HeaderMenu = lazy(() =>
-  import('./mobile/ui/headerMenu').then(({HeaderMenu}) => ({
-    default: HeaderMenu,
-  })),
+    import('./mobile/ui/headerMenu').then(({HeaderMenu}) => ({
+        default: HeaderMenu,
+    })),
 );
 
 export const AppSidebar = () => {
-  const isMobile = useIsMobile();
+    const isMobile = useIsMobile();
 
-  const menuContent = <List items={appSidebarContentItems} />;
+    const menuContent = <List items={appSidebarContentItems} />;
 
-  return (
-    <AppMenuProvider>
-      <Suspense fallback={<MenuLoader />}>
-        {isMobile ? <HeaderMenu>{menuContent}</HeaderMenu> : <SideMenu>{menuContent}</SideMenu>}
-      </Suspense>
-    </AppMenuProvider>
-  );
+    return (
+        <AppMenuProvider>
+            <Suspense fallback={<MenuLoader />}>
+                {isMobile ? <HeaderMenu>{menuContent}</HeaderMenu> : <SideMenu>{menuContent}</SideMenu>}
+            </Suspense>
+        </AppMenuProvider>
+    );
 };

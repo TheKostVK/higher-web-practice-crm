@@ -20,19 +20,19 @@ type TFormPasswordInputProps = {
 
 export const FormPasswordInput = memo(
     ({
-         id,
-         label,
-         name,
-         value,
-         placeholder,
-         autoComplete,
-         error,
-         disabled = false,
-         className = '',
-         controlClassName = '',
-         onChange,
-         onBlur,
-     }: TFormPasswordInputProps) => {
+        id,
+        label,
+        name,
+        value,
+        placeholder,
+        autoComplete,
+        error,
+        disabled = false,
+        className = '',
+        controlClassName = '',
+        onChange,
+        onBlur,
+    }: TFormPasswordInputProps) => {
         return (
             <FormField id={id} label={label} error={error} className={className}>
                 <Input.Password

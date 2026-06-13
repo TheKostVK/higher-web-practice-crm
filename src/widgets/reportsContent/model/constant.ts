@@ -11,17 +11,17 @@ export const PERIOD_OPTIONS = [
 export const REPORT_VIEW_OPTIONS = [{value: 'list', label: 'Списком'}];
 
 export const DEAL_STATUS_FILTER_OPTIONS: Array<{value: TDealStatus; label: string}> = Object.entries(
-  DEAL_STATUS_LABELS,
+    DEAL_STATUS_LABELS,
 ).map(([value, label]) => ({
-  value: value as TDealStatus,
-  label,
+    value: value as TDealStatus,
+    label,
 }));
 
 export const TASK_STATUS_FILTER_OPTIONS: Array<{value: TTaskStatus; label: string}> = Object.entries(
-  TASK_STATUS_LABELS,
+    TASK_STATUS_LABELS,
 ).map(([value, label]) => ({
-  value: value as TTaskStatus,
-  label,
+    value: value as TTaskStatus,
+    label,
 }));
 
 export const PAGE_SIZE = 15;

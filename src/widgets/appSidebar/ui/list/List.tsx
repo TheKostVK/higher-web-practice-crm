@@ -8,11 +8,11 @@ type TListProps = {
 };
 
 export const List = memo(({items}: TListProps) => {
-  return (
-    <div className={Styles.listItems}>
-      {items.map((item) => (
-        <ListItem key={item.pathname} item={item} />
-      ))}
-    </div>
-  );
+    return (
+        <div className={Styles.listItems}>
+            {items.map((item) => (
+                <ListItem key={item.pathname} item={item} />
+            ))}
+        </div>
+    );
 });

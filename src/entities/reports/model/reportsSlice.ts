@@ -1,9 +1,9 @@
 import {createSlice} from '@reduxjs/toolkit';
 import type {
-  TClientActivityReportRow,
-  TDealsStageReportRow,
-  TNewClientReportRow,
-  TOverdueTaskReportRow,
+    TClientActivityReportRow,
+    TDealsStageReportRow,
+    TNewClientReportRow,
+    TOverdueTaskReportRow,
 } from '../types';
 
 type TReportsState = {
@@ -17,36 +17,36 @@ type TReportsState = {
 };
 
 const initialState: TReportsState = {
-  isLoading: false,
-  isError: false,
-  errorText: undefined,
-  reportDealsStage: [],
-  reportNewClient: [],
-  reportClientActivity: [],
-  reportTaskOverdue: [],
+    isLoading: false,
+    isError: false,
+    errorText: undefined,
+    reportDealsStage: [],
+    reportNewClient: [],
+    reportClientActivity: [],
+    reportTaskOverdue: [],
 };
 
 export const reportsSlice = createSlice({
-  name: 'reports',
-  initialState,
-  reducers: {},
-  selectors: {
-    selectorReportsIsLoading: (state) => state.isLoading,
-    selectorReportsIsError: (state) => state.isError,
-    selectorReportsErrorText: (state) => state.errorText,
-    selectorReportDealsStageData: (state) => state.reportDealsStage,
-    selectorReportNewClientData: (state) => state.reportNewClient,
-    selectorReportClientActivityData: (state) => state.reportClientActivity,
-    selectorReportTaskOverdueData: (state) => state.reportTaskOverdue,
-  },
+    name: 'reports',
+    initialState,
+    reducers: {},
+    selectors: {
+        selectorReportsIsLoading: (state) => state.isLoading,
+        selectorReportsIsError: (state) => state.isError,
+        selectorReportsErrorText: (state) => state.errorText,
+        selectorReportDealsStageData: (state) => state.reportDealsStage,
+        selectorReportNewClientData: (state) => state.reportNewClient,
+        selectorReportClientActivityData: (state) => state.reportClientActivity,
+        selectorReportTaskOverdueData: (state) => state.reportTaskOverdue,
+    },
 });
 
 export const {
-  selectorReportsIsLoading,
-  selectorReportsIsError,
-  selectorReportsErrorText,
-  selectorReportDealsStageData,
-  selectorReportNewClientData,
-  selectorReportClientActivityData,
-  selectorReportTaskOverdueData,
+    selectorReportsIsLoading,
+    selectorReportsIsError,
+    selectorReportsErrorText,
+    selectorReportDealsStageData,
+    selectorReportNewClientData,
+    selectorReportClientActivityData,
+    selectorReportTaskOverdueData,
 } = reportsSlice.selectors;
