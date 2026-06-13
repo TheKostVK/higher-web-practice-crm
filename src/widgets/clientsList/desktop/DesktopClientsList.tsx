@@ -1,15 +1,13 @@
 import {useState} from 'react';
-import {Button, Input, Table} from 'antd';
-import type {ColumnsType, TableProps} from 'antd/es/table';
+import type {ColumnsType} from 'antd/es/table';
 
 import {useGetClientsQuery} from '@/entities/client';
 import type {TClientListRow, TClientSortField} from '@/entities/client';
 import {formatDate} from '@/shared/lib/formatters';
 import {useOpenModalRoute} from '@/shared/lib/modalRoute';
-import {ApiErrorMessage} from '@/shared/ui/apiErrorMessage';
+import {DesktopTableList} from '@/shared/ui/desktopTableList';
 
-import Styles from './desktop.module.css';
-import {antdOrderToApi, type TSortOrder} from "@/shared/lib/helpers";
+import {useTableSort} from "@/shared/lib/helpers";
 import {ActionsCell} from "@/widgets/clientsList/desktop/ui/actionsCell";
 
 const columns: ColumnsType<TClientListRow> = [
@@ -72,8 +70,7 @@ const columns: ColumnsType<TClientListRow> = [
  */
 export const DesktopClientsList = () => {
     const [search, setSearch] = useState('');
-    const [sortBy, setSortBy] = useState<TClientSortField | undefined>();
-    const [order, setOrder] = useState<TSortOrder>();
+    const {sortBy, order, handleTableChange} = useTableSort<TClientSortField>();
     const openClientModal = useOpenModalRoute();
 
     const {data: clients = [], isFetching, isError} = useGetClientsQuery({
@@ -81,13 +78,6 @@ export const DesktopClientsList = () => {
         sortBy,
         order,
     });
-
-    const handleTableChange: TableProps<TClientListRow>['onChange'] = (_pagination, _filters, sorter) => {
-        const singleSorter = Array.isArray(sorter) ? sorter[0] : sorter;
-
-        setSortBy(singleSorter?.columnKey as TClientSortField | undefined);
-        setOrder(antdOrderToApi(singleSorter?.order));
-    };
 
     const handleRowClick = (client: TClientListRow) => {
         openClientModal('clients', client.id);
@@ -98,33 +88,20 @@ export const DesktopClientsList = () => {
     };
 
     return (
-        <div className={Styles.desktopClients}>
-            <div className={Styles.desktopClients__toolbar}>
-                <Input.Search
-                    className={Styles.desktopClients__search}
-                    placeholder="Поиск по клиентам..."
-                    allowClear
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                />
-                <Button className={Styles.desktopClients__addButton} type="primary" onClick={handleAddClick}>
-                    Новый клиент
-                </Button>
-            </div>
-            {isError && <ApiErrorMessage message="Не удалось загрузить список клиентов." />}
-
-            <Table
-                className={Styles.desktopClients__table}
-                columns={columns}
-                dataSource={clients}
-                rowKey="id"
-                loading={isFetching}
-                size="small"
-                onChange={handleTableChange}
-                onRow={(record) => ({onClick: () => handleRowClick(record)})}
-                pagination={{pageSize: 20, showSizeChanger: false}}
-                rowClassName={(record) => (record.deleted ? 'ant-table-row-disabled' : '')}
-            />
-        </div>
+        <DesktopTableList<TClientListRow>
+            search={search}
+            onSearchChange={setSearch}
+            searchPlaceholder="Поиск по клиентам..."
+            addButtonText="Новый клиент"
+            onAddClick={handleAddClick}
+            isError={isError}
+            errorMessage="Не удалось загрузить список клиентов."
+            columns={columns}
+            dataSource={clients}
+            loading={isFetching}
+            onChange={handleTableChange}
+            onRowClick={handleRowClick}
+            rowClassName={(record) => (record.deleted ? 'ant-table-row-disabled' : '')}
+        />
     );
 };

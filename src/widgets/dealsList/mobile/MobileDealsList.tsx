@@ -1,15 +1,14 @@
 import {useState} from 'react';
-import {Button, Input} from 'antd';
 
 import {DEAL_STATUS_LABELS, useGetDealsQuery} from '@/entities/deal';
 import type {TDealListRow, TDealStatus} from '@/entities/deal';
 import {formatAmount, formatDate} from '@/shared/lib/formatters';
+import {getCardA11yProps} from '@/shared/lib/helpers';
 import {useOpenModalRoute} from '@/shared/lib/modalRoute';
-import {ApiErrorMessage} from '@/shared/ui/apiErrorMessage';
+import {MobileListShell} from '@/shared/ui/mobileListShell';
 import {StatusCard, StatusText, type TStatusCardVariant} from '@/shared/ui/statusCard';
 
 import Styles from './mobile.module.css';
-import {MainSection} from "@/shared/ui/mainSection";
 
 const DEAL_STATUS_VARIANT: Record<TDealStatus, TStatusCardVariant> = {
     new: 'info',
@@ -33,70 +32,54 @@ export const MobileDealsList = () => {
         openDealModal('deals', deal.id);
     };
 
-    const handleAddClick = () => {
-        openDealModal('deals');
-    };
-
     return (
-        <MainSection>
-            <Input
-                className={Styles.mobileDeals__search}
-                placeholder="Искать"
-                allowClear
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                aria-label="Искать сделку"
-                disabled={isFetching}
-                prefix={<span className={Styles['mobileDeals__searchIcon']} aria-hidden="true"/>}
-            />
-            {isError && <ApiErrorMessage message="Не удалось загрузить список сделок." />}
+        <MobileListShell
+            search={search}
+            onSearchChange={setSearch}
+            searchAriaLabel="Искать сделку"
+            isFetching={isFetching}
+            isError={isError}
+            errorMessage="Не удалось загрузить список сделок."
+            addButtonText="Новая сделка"
+            onAddClick={() => openDealModal('deals')}
+        >
+            {deals.map((deal) => (
+                <StatusCard
+                    key={deal.id}
+                    className={Styles.mobileDeals__card}
+                    variant={DEAL_STATUS_VARIANT[deal.status as TDealStatus]}
+                    {...getCardA11yProps(() => handleCardClick(deal))}
+                >
+                    <div className={Styles['mobileDeals__cardRow']}>
+                        <p className={Styles['mobileDeals__cardTitle']}>{deal.title}</p>
+                        <StatusText
+                            className={Styles['mobileDeals__cardStatus']}
+                            tone={DEAL_STATUS_VARIANT[deal.status as TDealStatus]}
+                        >
+                            {DEAL_STATUS_LABELS[deal.status as TDealStatus]}
+                        </StatusText>
+                    </div>
 
-            <div className={Styles.mobileDeals__list}>
-                {deals.map((deal) => (
-                    <StatusCard
-                        key={deal.id}
-                        className={Styles.mobileDeals__card}
-                        variant={DEAL_STATUS_VARIANT[deal.status as TDealStatus]}
-                        role="button"
-                        tabIndex={0}
-                        onClick={() => handleCardClick(deal)}
-                        onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleCardClick(deal)}
-                    >
-                        <div className={Styles['mobileDeals__cardRow']}>
-                            <p className={Styles['mobileDeals__cardTitle']}>{deal.title}</p>
-                            <StatusText
-                                className={Styles['mobileDeals__cardStatus']}
-                                tone={DEAL_STATUS_VARIANT[deal.status as TDealStatus]}
-                            >
-                                {DEAL_STATUS_LABELS[deal.status as TDealStatus]}
-                            </StatusText>
+                    <div className={Styles['mobileDeals__cardRow']}>
+                        <p className={Styles['mobileDeals__cardClient']}>{deal.clientName}</p>
+                        <span className={Styles['mobileDeals__cardAmount']}>{formatAmount(deal.amount)}</span>
+                    </div>
+
+                    <p className={Styles['mobileDeals__cardDescription']}>{deal.description || '—'}</p>
+
+                    <div className={Styles['mobileDeals__cardFooter']}>
+                        <div className={Styles['mobileDeals__dateBlock']}>
+                            <span className={Styles['mobileDeals__dateLabel']}>создана</span>
+                            <span className={Styles['mobileDeals__dateValue']}>{formatDate(deal.createdAt)}</span>
                         </div>
 
-                        <div className={Styles['mobileDeals__cardRow']}>
-                            <p className={Styles['mobileDeals__cardClient']}>{deal.clientName}</p>
-                            <span className={Styles['mobileDeals__cardAmount']}>{formatAmount(deal.amount)}</span>
+                        <div className={`${Styles['mobileDeals__dateBlock']} ${Styles['mobileDeals__dateBlock--end']}`}>
+                            <span className={Styles['mobileDeals__dateLabel']}>завершена</span>
+                            <span className={Styles['mobileDeals__dateValue']}>{formatDate(deal.completedAt)}</span>
                         </div>
-
-                        <p className={Styles['mobileDeals__cardDescription']}>{deal.description || '—'}</p>
-
-                        <div className={Styles['mobileDeals__cardFooter']}>
-                            <div className={Styles['mobileDeals__dateBlock']}>
-                                <span className={Styles['mobileDeals__dateLabel']}>создана</span>
-                                <span className={Styles['mobileDeals__dateValue']}>{formatDate(deal.createdAt)}</span>
-                            </div>
-
-                            <div className={`${Styles['mobileDeals__dateBlock']} ${Styles['mobileDeals__dateBlock--end']}`}>
-                                <span className={Styles['mobileDeals__dateLabel']}>завершена</span>
-                                <span className={Styles['mobileDeals__dateValue']}>{formatDate(deal.completedAt)}</span>
-                            </div>
-                        </div>
-                    </StatusCard>
-                ))}
-            </div>
-
-            <Button className={Styles.mobileDeals__addButton} type="primary" onClick={handleAddClick}>
-                Новая сделка
-            </Button>
-        </MainSection>
+                    </div>
+                </StatusCard>
+            ))}
+        </MobileListShell>
     );
 };

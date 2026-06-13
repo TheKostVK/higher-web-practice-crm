@@ -1,17 +1,15 @@
 import {useState} from 'react';
-import {Button, Input, Select, Table} from 'antd';
-import type {ColumnsType, TableProps} from 'antd/es/table';
+import type {ColumnsType} from 'antd/es/table';
 
 import {TASK_STATUS_LABELS, useGetTasksQuery} from '@/entities/task';
 import type {TTaskListRow, TTaskSortField, TTaskStatus} from '@/entities/task';
 import {formatDate} from '@/shared/lib/formatters';
 import {useOpenModalRoute} from '@/shared/lib/modalRoute';
-import {ApiErrorMessage} from '@/shared/ui/apiErrorMessage';
+import {DesktopTableList} from '@/shared/ui/desktopTableList';
 import {StatusTag} from '@/shared/ui/statusTag';
 
-import Styles from './desktop.module.css';
 import {STATUS_FILTER_OPTIONS, TASK_STATUS_COLORS} from "@/widgets/tasksList/model";
-import {antdOrderToApi, type TSortOrder} from "@/shared/lib/helpers";
+import {useTableSort} from "@/shared/lib/helpers";
 
 const columns: ColumnsType<TTaskListRow> = [
     {
@@ -70,8 +68,7 @@ const columns: ColumnsType<TTaskListRow> = [
 export const DesktopTasksList = () => {
     const [search, setSearch] = useState('');
     const [statusFilter, setStatusFilter] = useState<TTaskStatus | ''>('');
-    const [sortBy, setSortBy] = useState<TTaskSortField | undefined>();
-    const [order, setOrder] = useState<TSortOrder>();
+    const {sortBy, order, handleTableChange} = useTableSort<TTaskSortField>();
     const openTaskModal = useOpenModalRoute();
 
     const {data: tasks = [], isFetching, isError} = useGetTasksQuery({
@@ -80,13 +77,6 @@ export const DesktopTasksList = () => {
         sortBy,
         order,
     });
-
-    const handleTableChange: TableProps<TTaskListRow>['onChange'] = (_pagination, _filters, sorter) => {
-        const singleSorter = Array.isArray(sorter) ? sorter[0] : sorter;
-
-        setSortBy(singleSorter?.columnKey as TTaskSortField | undefined);
-        setOrder(antdOrderToApi(singleSorter?.order));
-    };
 
     const handleRowClick = (task: TTaskListRow) => {
         openTaskModal('tasks', task.id);
@@ -97,38 +87,24 @@ export const DesktopTasksList = () => {
     };
 
     return (
-        <div className={Styles.desktopTasks}>
-            <div className={Styles.desktopTasks__toolbar}>
-                <Input.Search
-                    className={Styles.desktopTasks__search}
-                    placeholder="Поиск по задачам..."
-                    allowClear
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                />
-                <Select
-                    className={Styles.desktopTasks__statusFilter}
-                    options={STATUS_FILTER_OPTIONS}
-                    value={statusFilter}
-                    onChange={(value) => setStatusFilter(value as TTaskStatus | '')}
-                />
-                <Button className={Styles.desktopTasks__addButton} type="primary" onClick={handleAddClick}>
-                    Новая задача
-                </Button>
-            </div>
-            {isError && <ApiErrorMessage message="Не удалось загрузить список задач." />}
-
-            <Table
-                className={Styles.desktopTasks__table}
-                columns={columns}
-                dataSource={tasks}
-                rowKey="id"
-                loading={isFetching}
-                size="small"
-                onChange={handleTableChange}
-                onRow={(record) => ({onClick: () => handleRowClick(record)})}
-                pagination={{pageSize: 20, showSizeChanger: false}}
-            />
-        </div>
+        <DesktopTableList<TTaskListRow>
+            search={search}
+            onSearchChange={setSearch}
+            searchPlaceholder="Поиск по задачам..."
+            statusFilter={{
+                value: statusFilter,
+                options: STATUS_FILTER_OPTIONS,
+                onChange: (value) => setStatusFilter(value as TTaskStatus | ''),
+            }}
+            addButtonText="Новая задача"
+            onAddClick={handleAddClick}
+            isError={isError}
+            errorMessage="Не удалось загрузить список задач."
+            columns={columns}
+            dataSource={tasks}
+            loading={isFetching}
+            onChange={handleTableChange}
+            onRowClick={handleRowClick}
+        />
     );
 };

@@ -1,0 +1,74 @@
+.mobileListShell__search {
+  width: 100%;
+}
+
+.mobileListShell__search :global(.ant-input-affix-wrapper) {
+  height: 40px;
+  padding: 10px 14px;
+  border-color: var(--color-neutral-gray-300);
+  border-radius: 4px;
+  background: var(--color-bg-white);
+}
+
+.mobileListShell__search :global(.ant-input) {
+  color: var(--color-neutral-gray-800);
+  font-family: var(--font-family-text);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.mobileListShell__search :global(.ant-input::placeholder) {
+  color: var(--color-neutral-gray-400);
+}
+
+.mobileListShell__searchIcon {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+}
+
+.mobileListShell__searchIcon::before {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 10px;
+  height: 10px;
+  border: 1.8px solid var(--color-neutral-gray-400);
+  border-radius: 50%;
+}
+
+.mobileListShell__searchIcon::after {
+  content: '';
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  width: 6px;
+  height: 1.8px;
+  border-radius: 2px;
+  background: var(--color-neutral-gray-400);
+  transform: rotate(45deg);
+  transform-origin: center;
+}
+
+.mobileListShell__list {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  gap: 2px;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.mobileListShell__addButton {
+  flex: 0 0 auto;
+  width: 100%;
+  height: 40px;
+  border-radius: 6px;
+  font-family: var(--font-family-text);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+}
