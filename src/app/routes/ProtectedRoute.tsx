@@ -6,8 +6,8 @@ import {Preloader} from '@/shared/ui/preloader';
 import type {ReactElement} from 'react';
 
 type TProtectedRouteProps = {
-  onlyUnAuth?: boolean;
-  children: ReactElement;
+    onlyUnAuth?: boolean;
+    children: ReactElement;
 };
 
 export const ProtectedRoute = ({onlyUnAuth, children}: TProtectedRouteProps) => {

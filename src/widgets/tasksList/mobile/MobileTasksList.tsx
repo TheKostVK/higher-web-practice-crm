@@ -9,7 +9,7 @@ import {MobileListShell} from '@/shared/ui/mobileListShell';
 import {StatusTag} from '@/shared/ui/statusTag';
 
 import Styles from './mobile.module.css';
-import {TASK_STATUS_COLORS} from "@/widgets/tasksList/model";
+import {TASK_STATUS_COLORS} from '@/widgets/tasksList/model';
 
 /**
  * Мобильный список задач в виде карточек.
@@ -18,7 +18,11 @@ export const MobileTasksList = () => {
     const [search, setSearch] = useState('');
     const openTaskModal = useOpenModalRoute();
 
-    const {data: tasks = [], isFetching, isError} = useGetTasksQuery({
+    const {
+        data: tasks = [],
+        isFetching,
+        isError,
+    } = useGetTasksQuery({
         search: search || undefined,
     });
 

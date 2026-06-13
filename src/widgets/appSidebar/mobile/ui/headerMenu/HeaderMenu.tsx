@@ -11,7 +11,7 @@ import {ProfileMenuItem} from '@/widgets/appSidebar/ui/profileMenuItem';
 import {NavLink} from 'react-router-dom';
 
 type THeaderMenuProps = {
-  children: ReactNode;
+    children: ReactNode;
 };
 
 export const HeaderMenu = ({children}: THeaderMenuProps) => {

@@ -1,10 +1,10 @@
-import {type TSalesReportRow, useGetSalesReportQuery} from "@/entities/reports";
-import type {ColumnsType} from "antd/es/table";
-import {formatAmount, formatDate} from "@/shared/lib/formatters";
-import {Table} from "antd";
-import {useReportFilters} from "@/widgets/reportsContent/hook";
-import {ReportToolbar} from "@/widgets/reportsContent/ui/reportToolbar";
-import {PAGE_SIZE} from "@/widgets/reportsContent/model";
+import {type TSalesReportRow, useGetSalesReportQuery} from '@/entities/reports';
+import type {ColumnsType} from 'antd/es/table';
+import {formatAmount, formatDate} from '@/shared/lib/formatters';
+import {Table} from 'antd';
+import {useReportFilters} from '@/widgets/reportsContent/hook';
+import {ReportToolbar} from '@/widgets/reportsContent/ui/reportToolbar';
+import {PAGE_SIZE} from '@/widgets/reportsContent/model';
 import {ApiErrorMessage} from '@/shared/ui/apiErrorMessage';
 
 const columns: ColumnsType<TSalesReportRow> = [
@@ -38,7 +38,7 @@ export const SalesReport = () => {
 
     return (
         <>
-            <ReportToolbar period={period} onPeriodChange={handlePeriodChange} reportName="sales" filters={applied}/>
+            <ReportToolbar period={period} onPeriodChange={handlePeriodChange} reportName="sales" filters={applied} />
             {isError && <ApiErrorMessage message="Не удалось загрузить отчёт по продажам." />}
             <Table
                 columns={columns}

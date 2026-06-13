@@ -3,8 +3,8 @@ import type {TUser, TUserProfile} from '../types';
 import {getUserLocalStorage, removeUserLocalStorage, setUserLocalStorage} from '../lib';
 
 type TUserState = {
-  isInit: boolean;
-  user: TUserProfile | undefined;
+    isInit: boolean;
+    user: TUserProfile | undefined;
 };
 
 const initialState: TUserState = {

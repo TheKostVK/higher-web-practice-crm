@@ -1,7 +1,7 @@
 import Styles from './blockTitle.module.css';
 
 type TBlockTitleProps = {
-  title: string;
+    title: string;
 };
 
 export const BlockTitle = ({title}: TBlockTitleProps) => {

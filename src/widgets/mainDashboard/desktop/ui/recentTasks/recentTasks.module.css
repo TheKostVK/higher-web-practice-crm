@@ -1,30 +1,30 @@
 .section {
-  width: 100%;
+    width: 100%;
 
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 
-  gap: 12px;
+    gap: 12px;
 }
 
 .content {
-  width: 100%;
+    width: 100%;
 
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-  gap: 8px;
+    gap: 8px;
 }
 
 .grid {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 
-  width: 100%;
+    width: 100%;
 
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 8px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
 }

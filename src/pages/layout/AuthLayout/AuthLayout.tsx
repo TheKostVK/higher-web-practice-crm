@@ -18,7 +18,5 @@ const AuthLayoutMobile = lazy(() =>
 export const AuthLayout = () => {
     const isMobile = useIsMobile();
 
-    return (
-        <Suspense fallback={<Preloader />}>{isMobile ? <AuthLayoutMobile /> : <AuthLayoutDesktop />}</Suspense>
-    );
+    return <Suspense fallback={<Preloader />}>{isMobile ? <AuthLayoutMobile /> : <AuthLayoutDesktop />}</Suspense>;
 };

@@ -1,8 +1,8 @@
-import {useReportFilters} from "@/widgets/reportsContent/hook";
-import {ReportToolbar} from "@/widgets/reportsContent/ui/reportToolbar/ReportToolbar.tsx";
-import {getOverdueTaskCards} from "@/widgets/reportsContent/lib";
-import {MobileReportBody} from "@/widgets/reportsContent/mobile/ui/mobileReportBody";
-import {useGetOverdueTasksReportQuery} from "@/entities/reports";
+import {useReportFilters} from '@/widgets/reportsContent/hook';
+import {ReportToolbar} from '@/widgets/reportsContent/ui/reportToolbar/ReportToolbar.tsx';
+import {getOverdueTaskCards} from '@/widgets/reportsContent/lib';
+import {MobileReportBody} from '@/widgets/reportsContent/mobile/ui/mobileReportBody';
+import {useGetOverdueTasksReportQuery} from '@/entities/reports';
 
 export type TReportViewProps = {
     isMobile?: boolean;

@@ -1,9 +1,9 @@
-import {type TClientActivityReportRow, useGetClientActivityReportQuery} from "@/entities/reports";
-import type {ColumnsType} from "antd/es/table";
-import {Table} from "antd";
-import {useReportFilters} from "@/widgets/reportsContent/hook";
-import {PAGE_SIZE} from "@/widgets/reportsContent/model";
-import {ReportToolbar} from "@/widgets/reportsContent/ui/reportToolbar";
+import {type TClientActivityReportRow, useGetClientActivityReportQuery} from '@/entities/reports';
+import type {ColumnsType} from 'antd/es/table';
+import {Table} from 'antd';
+import {useReportFilters} from '@/widgets/reportsContent/hook';
+import {PAGE_SIZE} from '@/widgets/reportsContent/model';
+import {ReportToolbar} from '@/widgets/reportsContent/ui/reportToolbar';
 import {ApiErrorMessage} from '@/shared/ui/apiErrorMessage';
 
 const columns: ColumnsType<TClientActivityReportRow> = [
@@ -32,7 +32,6 @@ const columns: ColumnsType<TClientActivityReportRow> = [
         sorter: (a, b) => a.completedTasks - b.completedTasks,
     },
 ];
-
 
 export const ClientActivityReport = () => {
     const {period, applied, handlePeriodChange} = useReportFilters();

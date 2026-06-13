@@ -78,7 +78,7 @@ const theme: ThemeConfig = {
 };
 
 type TAntdProviderProps = {
-  children: ReactNode;
+    children: ReactNode;
 };
 
 export const AntdProvider = ({children}: TAntdProviderProps) => {

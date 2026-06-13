@@ -1,28 +1,28 @@
 .mobileClients__card {
-  width: 100%;
-  height: 124px;
-  padding: 12px 16px;
-  border: 1px solid var(--color-bg-gray-200);
-  border-radius: 8px;
-  background: var(--color-bg-white);
-  box-shadow: 0 4px 12px rgb(31 41 55 / 8%);
-  cursor: pointer;
+    width: 100%;
+    height: 124px;
+    padding: 12px 16px;
+    border: 1px solid var(--color-bg-gray-200);
+    border-radius: 8px;
+    background: var(--color-bg-white);
+    box-shadow: 0 4px 12px rgb(31 41 55 / 8%);
+    cursor: pointer;
 }
 
 .mobileClients__card--deleted {
-  opacity: 0.6;
+    opacity: 0.6;
 }
 
 .mobileClients__cardHeader,
 .mobileClients__cardContent {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  column-gap: 16px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: 16px;
 }
 
 .mobileClients__cardContent {
-  row-gap: 4px;
-  margin-top: 8px;
+    row-gap: 4px;
+    margin-top: 8px;
 }
 
 .mobileClients__cardName,
@@ -31,53 +31,53 @@
 .mobileClients__cardEmail,
 .mobileClients__cardWebsite,
 .mobileClients__cardComment {
-  margin: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .mobileClients__cardName {
-  color: var(--color-neutral-gray-800);
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 20px;
+    color: var(--color-neutral-gray-800);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
 }
 
 .mobileClients__cardCompany,
 .mobileClients__cardPhone {
-  color: var(--color-neutral-gray-800);
-  font-size: 14px;
-  line-height: 20px;
+    color: var(--color-neutral-gray-800);
+    font-size: 14px;
+    line-height: 20px;
 }
 
 .mobileClients__cardEmail {
-  color: var(--color-accent-blue-500);
-  font-size: 12px;
-  line-height: 16px;
+    color: var(--color-accent-blue-500);
+    font-size: 12px;
+    line-height: 16px;
 }
 
 .mobileClients__cardWebsite {
-  color: var(--color-neutral-gray-800);
-  font-size: 12px;
-  line-height: 16px;
-  text-align: right;
+    color: var(--color-neutral-gray-800);
+    font-size: 12px;
+    line-height: 16px;
+    text-align: right;
 }
 
 .mobileClients__cardCompany,
 .mobileClients__cardDate {
-  text-align: right;
+    text-align: right;
 }
 
 .mobileClients__cardDate {
-  color: var(--color-neutral-gray-500);
-  font-size: 12px;
-  line-height: 16px;
+    color: var(--color-neutral-gray-500);
+    font-size: 12px;
+    line-height: 16px;
 }
 
 .mobileClients__cardComment {
-  margin-top: 8px;
-  color: var(--color-neutral-gray-500);
-  font-size: 12px;
-  line-height: 16px;
+    margin-top: 8px;
+    color: var(--color-neutral-gray-500);
+    font-size: 12px;
+    line-height: 16px;
 }

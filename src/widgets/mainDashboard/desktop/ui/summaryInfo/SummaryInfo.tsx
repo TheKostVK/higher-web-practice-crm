@@ -19,12 +19,12 @@ export const SummaryInfo = memo(() => {
     return (
         <table className={Styles.summaryInfo}>
             <thead className={Styles.table__head}>
-                <TableHeader dataSource={metricsHeader}/>
+                <TableHeader dataSource={metricsHeader} />
             </thead>
             <tbody className={Styles.table__body}>
-                <StatsTableRow title={'Клиенты'} data={stats?.clients} isLoading={isLoading}/>
-                <StatsTableRow title={'Активные сделки'} data={stats?.activeDeals} isLoading={isLoading}/>
-                <StatsTableRow title={'Завершённые сделки'} data={stats?.completedDeals} isLoading={isLoading}/>
+                <StatsTableRow title={'Клиенты'} data={stats?.clients} isLoading={isLoading} />
+                <StatsTableRow title={'Активные сделки'} data={stats?.activeDeals} isLoading={isLoading} />
+                <StatsTableRow title={'Завершённые сделки'} data={stats?.completedDeals} isLoading={isLoading} />
             </tbody>
         </table>
     );

@@ -34,18 +34,18 @@ const columns: ColumnsType<TDashboardTopDeal> = [
         width: '13%',
         render: (value: TDealStatus) => {
             switch (value) {
-            case 'in_progress': {
-                return <CellVariant variant={'primary'}>{DEAL_STATUS_LABELS[value]}</CellVariant>;
-            }
-            case 'completed': {
-                return <CellVariant variant={'completed'}>{DEAL_STATUS_LABELS[value]}</CellVariant>;
-            }
-            case 'cancelled': {
-                return <CellVariant variant={'cancelled'}>{DEAL_STATUS_LABELS[value]}</CellVariant>;
-            }
-            default: {
-                return <CellVariant variant={'default'}>{DEAL_STATUS_LABELS[value]}</CellVariant>;
-            }
+                case 'in_progress': {
+                    return <CellVariant variant={'primary'}>{DEAL_STATUS_LABELS[value]}</CellVariant>;
+                }
+                case 'completed': {
+                    return <CellVariant variant={'completed'}>{DEAL_STATUS_LABELS[value]}</CellVariant>;
+                }
+                case 'cancelled': {
+                    return <CellVariant variant={'cancelled'}>{DEAL_STATUS_LABELS[value]}</CellVariant>;
+                }
+                default: {
+                    return <CellVariant variant={'default'}>{DEAL_STATUS_LABELS[value]}</CellVariant>;
+                }
             }
         },
     },
@@ -66,7 +66,7 @@ export const ActivityDeals = () => {
     return (
         <div className={Styles.section}>
             <div className={Styles.content}>
-                <BlockTitle title={'Топ 10 активных сделок'}/>
+                <BlockTitle title={'Топ 10 активных сделок'} />
                 {isError && <ApiErrorMessage message="Не удалось загрузить топ сделок." />}
                 <Table
                     columns={columns}

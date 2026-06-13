@@ -1,6 +1,6 @@
-import {useOpenModalRoute} from "@/shared/lib/modalRoute";
-import {Button} from "antd";
-import {SummaryInfo} from "@/widgets/mainDashboard/mobile/ui/summaryInfo";
+import {useOpenModalRoute} from '@/shared/lib/modalRoute';
+import {Button} from 'antd';
+import {SummaryInfo} from '@/widgets/mainDashboard/mobile/ui/summaryInfo';
 
 import Styles from './mobileHome.module.css';
 
@@ -20,7 +20,7 @@ export const MobileHome = () => {
                     + Задача
                 </Button>
             </div>
-            <SummaryInfo/>
+            <SummaryInfo />
         </div>
     );
 };

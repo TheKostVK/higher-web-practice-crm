@@ -15,14 +15,7 @@ vi.mock('@/entities/reports', async () => {
 
 describe('ReportToolbar', () => {
     it('показывает только фильтры по периоду и виду отчёта', () => {
-        render(
-            <ReportToolbar
-                period="week"
-                filters={{period: 'week'}}
-                reportName="sales"
-                onPeriodChange={vi.fn()}
-            />,
-        );
+        render(<ReportToolbar period="week" filters={{period: 'week'}} reportName="sales" onPeriodChange={vi.fn()} />);
 
         expect(screen.getByRole('combobox', {name: /период/i})).toBeInTheDocument();
         expect(screen.getByRole('combobox', {name: /вид отчёта/i})).toBeInTheDocument();

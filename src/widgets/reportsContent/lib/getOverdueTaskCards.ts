@@ -1,6 +1,6 @@
-import type {TOverdueTaskReportRow} from "@/entities/reports";
-import type {TReportCardItem} from "@/widgets/reportsContent/ui/reportCards";
-import {formatDate} from "@/shared/lib/formatters";
+import type {TOverdueTaskReportRow} from '@/entities/reports';
+import type {TReportCardItem} from '@/widgets/reportsContent/ui/reportCards';
+import {formatDate} from '@/shared/lib/formatters';
 
 export const getOverdueTaskCards = (data: TOverdueTaskReportRow[]): TReportCardItem[] =>
     data.map((row) => ({

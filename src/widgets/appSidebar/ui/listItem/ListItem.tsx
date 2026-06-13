@@ -6,7 +6,7 @@ import {AppMenuContext} from '../../context';
 import type {TAppSidebarItem} from '@/widgets/appSidebar/types/types';
 
 export type TListItemProps = {
-  item: TAppSidebarItem;
+    item: TAppSidebarItem;
 };
 
 export const ListItem = memo(({item}: TListItemProps) => {

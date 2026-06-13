@@ -1,8 +1,6 @@
 import {lazy} from 'react';
 
-export const WelcomePage = lazy(() =>
-    import('../../pages/welcome').then((module) => ({default: module.WelcomePage})),
-);
+export const WelcomePage = lazy(() => import('../../pages/welcome').then((module) => ({default: module.WelcomePage})));
 export const LoginPage = lazy(() => import('../../pages/login').then((module) => ({default: module.LoginPage})));
 export const RegistrationPage = lazy(() =>
     import('../../pages/registration').then((module) => ({default: module.RegistrationPage})),

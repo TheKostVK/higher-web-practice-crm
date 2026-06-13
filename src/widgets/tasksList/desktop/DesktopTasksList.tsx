@@ -8,8 +8,8 @@ import {useOpenModalRoute} from '@/shared/lib/modalRoute';
 import {DesktopTableList} from '@/shared/ui/desktopTableList';
 import {StatusTag} from '@/shared/ui/statusTag';
 
-import {STATUS_FILTER_OPTIONS, TASK_STATUS_COLORS} from "@/widgets/tasksList/model";
-import {useTableSort} from "@/shared/lib/helpers";
+import {STATUS_FILTER_OPTIONS, TASK_STATUS_COLORS} from '@/widgets/tasksList/model';
+import {useTableSort} from '@/shared/lib/helpers';
 
 const columns: ColumnsType<TTaskListRow> = [
     {
@@ -50,7 +50,7 @@ const columns: ColumnsType<TTaskListRow> = [
         key: 'status',
         sorter: true,
         render: (value: TTaskStatus) => (
-            <StatusTag color={TASK_STATUS_COLORS[value]} label={TASK_STATUS_LABELS[value]}/>
+            <StatusTag color={TASK_STATUS_COLORS[value]} label={TASK_STATUS_LABELS[value]} />
         ),
     },
     {
@@ -71,7 +71,11 @@ export const DesktopTasksList = () => {
     const {sortBy, order, handleTableChange} = useTableSort<TTaskSortField, TTaskListRow>();
     const openTaskModal = useOpenModalRoute();
 
-    const {data: tasks = [], isFetching, isError} = useGetTasksQuery({
+    const {
+        data: tasks = [],
+        isFetching,
+        isError,
+    } = useGetTasksQuery({
         search: search || undefined,
         status: statusFilter || undefined,
         sortBy,

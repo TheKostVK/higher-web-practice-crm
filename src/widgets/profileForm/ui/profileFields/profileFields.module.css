@@ -1,24 +1,24 @@
 .profileFields {
-  width: 632px;
+    width: 632px;
 
-  display: grid;
-  grid-template-columns: repeat(2, 312px);
-  column-gap: var(--space-2);
-  row-gap: var(--space-4);
+    display: grid;
+    grid-template-columns: repeat(2, 312px);
+    column-gap: var(--space-2);
+    row-gap: var(--space-4);
 }
 
 @media (max-width: 920px) {
-  .profileFields {
-    width: 100%;
-    grid-template-columns: 1fr;
-    row-gap: var(--space-3);
-  }
+    .profileFields {
+        width: 100%;
+        grid-template-columns: 1fr;
+        row-gap: var(--space-3);
+    }
 
-  .profileFields__field--accountName {
-    order: 3;
-  }
+    .profileFields__field--accountName {
+        order: 3;
+    }
 
-  .profileFields__field--email {
-    order: 4;
-  }
+    .profileFields__field--email {
+        order: 4;
+    }
 }

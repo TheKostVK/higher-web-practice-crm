@@ -24,7 +24,11 @@ export const MobileDealsList = () => {
     const [search, setSearch] = useState('');
     const openDealModal = useOpenModalRoute();
 
-    const {data: deals = [], isFetching, isError} = useGetDealsQuery({
+    const {
+        data: deals = [],
+        isFetching,
+        isError,
+    } = useGetDealsQuery({
         search: search || undefined,
     });
 

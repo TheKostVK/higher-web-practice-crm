@@ -1,22 +1,22 @@
 .section {
-  width: 100%;
+    width: 100%;
 
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 
-  gap: 12px;
+    gap: 12px;
 }
 
 .content {
-  width: 100%;
+    width: 100%;
 
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-  gap: 8px;
+    gap: 8px;
 }
 
 .rowInProgress :global(.ant-table-cell) {
-  background: var(--color-bg-blue-100);
+    background: var(--color-bg-blue-100);
 }

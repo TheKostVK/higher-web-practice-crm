@@ -8,9 +8,5 @@ const MobileDashboard = lazy(() => import('./mobile').then((module) => ({default
 export const MainDashboard = () => {
     const isMobile = useIsMobile();
 
-    return (
-        <Suspense fallback={<Preloader/>}>
-            {isMobile ? <MobileDashboard/> : <DesktopDashboard/>}
-        </Suspense>
-    );
+    return <Suspense fallback={<Preloader />}>{isMobile ? <MobileDashboard /> : <DesktopDashboard />}</Suspense>;
 };

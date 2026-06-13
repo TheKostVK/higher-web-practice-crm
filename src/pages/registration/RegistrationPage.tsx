@@ -9,9 +9,9 @@ import Styles from './registrationPage.module.css';
 import {registrationSchema, type TRegistrationFormValues} from './registrationSchema';
 
 type TLocationState = {
-  from?: {
-    pathname?: string;
-  };
+    from?: {
+        pathname?: string;
+    };
 };
 
 export const RegistrationPage = () => {
@@ -70,7 +70,7 @@ export const RegistrationPage = () => {
             <form className={Styles.registrationPage__form} onSubmit={handleSubmit(handleRegistration)} noValidate>
                 <label className={Styles.registrationPage__field} htmlFor="registration-first-name">
                     <span className={Styles.registrationPage__label}>
-            Имя <span aria-hidden="true">*</span>
+                        Имя <span aria-hidden="true">*</span>
                     </span>
                     <Controller
                         control={control}
@@ -85,12 +85,14 @@ export const RegistrationPage = () => {
                             />
                         )}
                     />
-                    {errors.firstName && <span className={Styles.registrationPage__error}>{errors.firstName.message}</span>}
+                    {errors.firstName && (
+                        <span className={Styles.registrationPage__error}>{errors.firstName.message}</span>
+                    )}
                 </label>
 
                 <label className={Styles.registrationPage__field} htmlFor="registration-last-name">
                     <span className={Styles.registrationPage__label}>
-            Фамилия <span aria-hidden="true">*</span>
+                        Фамилия <span aria-hidden="true">*</span>
                     </span>
                     <Controller
                         control={control}
@@ -105,12 +107,14 @@ export const RegistrationPage = () => {
                             />
                         )}
                     />
-                    {errors.lastName && <span className={Styles.registrationPage__error}>{errors.lastName.message}</span>}
+                    {errors.lastName && (
+                        <span className={Styles.registrationPage__error}>{errors.lastName.message}</span>
+                    )}
                 </label>
 
                 <label className={Styles.registrationPage__field} htmlFor="registration-email">
                     <span className={Styles.registrationPage__label}>
-            Email <span aria-hidden="true">*</span>
+                        Email <span aria-hidden="true">*</span>
                     </span>
                     <Controller
                         control={control}
@@ -130,7 +134,7 @@ export const RegistrationPage = () => {
 
                 <label className={Styles.registrationPage__field} htmlFor="registration-account-name">
                     <span className={Styles.registrationPage__label}>
-            Имя аккаунта <span aria-hidden="true">*</span>
+                        Имя аккаунта <span aria-hidden="true">*</span>
                     </span>
                     <Controller
                         control={control}
@@ -152,7 +156,7 @@ export const RegistrationPage = () => {
 
                 <label className={Styles.registrationPage__field} htmlFor="registration-password">
                     <span className={Styles.registrationPage__label}>
-            Придумайте пароль <span aria-hidden="true">*</span>
+                        Придумайте пароль <span aria-hidden="true">*</span>
                     </span>
                     <Controller
                         control={control}
@@ -167,12 +171,14 @@ export const RegistrationPage = () => {
                             />
                         )}
                     />
-                    {errors.password && <span className={Styles.registrationPage__error}>{errors.password.message}</span>}
+                    {errors.password && (
+                        <span className={Styles.registrationPage__error}>{errors.password.message}</span>
+                    )}
                 </label>
 
                 <label className={Styles.registrationPage__field} htmlFor="registration-confirm-password">
                     <span className={Styles.registrationPage__label}>
-            Повторите пароль <span aria-hidden="true">*</span>
+                        Повторите пароль <span aria-hidden="true">*</span>
                     </span>
                     <Controller
                         control={control}
@@ -194,8 +200,13 @@ export const RegistrationPage = () => {
 
                 {errors.root && <p className={Styles.registrationPage__formError}>{errors.root.message}</p>}
 
-                <Button className={Styles.registrationPage__submit} type="primary" htmlType="submit" loading={isLoading}>
-          Зарегистрироваться
+                <Button
+                    className={Styles.registrationPage__submit}
+                    type="primary"
+                    htmlType="submit"
+                    loading={isLoading}
+                >
+                    Зарегистрироваться
                 </Button>
             </form>
         </section>

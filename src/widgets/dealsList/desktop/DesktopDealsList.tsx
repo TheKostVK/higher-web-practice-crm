@@ -8,8 +8,8 @@ import {useOpenModalRoute} from '@/shared/lib/modalRoute';
 import {DesktopTableList} from '@/shared/ui/desktopTableList';
 import {StatusTag} from '@/shared/ui/statusTag';
 
-import {useTableSort} from "@/shared/lib/helpers";
-import {DEAL_STATUS_COLORS, STATUS_FILTER_OPTIONS} from "@/widgets/dealsList/model";
+import {useTableSort} from '@/shared/lib/helpers';
+import {DEAL_STATUS_COLORS, STATUS_FILTER_OPTIONS} from '@/widgets/dealsList/model';
 
 const columns: ColumnsType<TDealListRow> = [
     {
@@ -43,7 +43,7 @@ const columns: ColumnsType<TDealListRow> = [
         key: 'status',
         sorter: true,
         render: (value: TDealStatus) => (
-            <StatusTag color={DEAL_STATUS_COLORS[value]} label={DEAL_STATUS_LABELS[value]}/>
+            <StatusTag color={DEAL_STATUS_COLORS[value]} label={DEAL_STATUS_LABELS[value]} />
         ),
     },
     {
@@ -62,7 +62,6 @@ const columns: ColumnsType<TDealListRow> = [
     },
 ];
 
-
 /**
  * Десктопный список сделок с таблицей, фильтрами и сортировкой.
  */
@@ -72,7 +71,11 @@ export const DesktopDealsList = () => {
     const {sortBy, order, handleTableChange} = useTableSort<TDealSortField, TDealListRow>();
     const openDealModal = useOpenModalRoute();
 
-    const {data: deals = [], isFetching, isError} = useGetDealsQuery({
+    const {
+        data: deals = [],
+        isFetching,
+        isError,
+    } = useGetDealsQuery({
         search: search || undefined,
         status: statusFilter || undefined,
         sortBy,

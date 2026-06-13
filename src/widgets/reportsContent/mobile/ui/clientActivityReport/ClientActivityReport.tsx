@@ -1,8 +1,8 @@
-import {useGetClientActivityReportQuery} from "@/entities/reports";
-import {getClientActivityCards} from "@/widgets/reportsContent/lib";
-import {useReportFilters} from "@/widgets/reportsContent/hook";
-import {ReportToolbar} from "@/widgets/reportsContent/ui/reportToolbar";
-import {MobileReportBody} from "@/widgets/reportsContent/mobile/ui/mobileReportBody";
+import {useGetClientActivityReportQuery} from '@/entities/reports';
+import {getClientActivityCards} from '@/widgets/reportsContent/lib';
+import {useReportFilters} from '@/widgets/reportsContent/hook';
+import {ReportToolbar} from '@/widgets/reportsContent/ui/reportToolbar';
+import {MobileReportBody} from '@/widgets/reportsContent/mobile/ui/mobileReportBody';
 
 export const ClientActivityReport = () => {
     const {period, applied, handlePeriodChange} = useReportFilters();

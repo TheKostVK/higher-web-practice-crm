@@ -16,7 +16,11 @@ export const MobileClientsList = () => {
     const [search, setSearch] = useState('');
     const openClientModal = useOpenModalRoute();
 
-    const {data: clients = [], isFetching, isError} = useGetClientsQuery({
+    const {
+        data: clients = [],
+        isFetching,
+        isError,
+    } = useGetClientsQuery({
         search: search || undefined,
     });
 
@@ -42,10 +46,12 @@ export const MobileClientsList = () => {
                     {...getCardA11yProps(() => handleCardClick(client))}
                 >
                     <div className={Styles['mobileClients__cardHeader']}>
-                        <p className={Styles['mobileClients__cardName']}>{client.deleted ?
-                            <s>{client.name}</s> : client.name}</p>
-                        <span
-                            className={Styles['mobileClients__cardDate']}>{formatDate(client.createdAt, 'long')}</span>
+                        <p className={Styles['mobileClients__cardName']}>
+                            {client.deleted ? <s>{client.name}</s> : client.name}
+                        </p>
+                        <span className={Styles['mobileClients__cardDate']}>
+                            {formatDate(client.createdAt, 'long')}
+                        </span>
                     </div>
 
                     <div className={Styles['mobileClients__cardContent']}>

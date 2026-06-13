@@ -1,8 +1,8 @@
-import type {TDashboardRecentTask} from "@/entities/dashboard";
-import {formatDate} from "@/shared/lib/formatters";
-import {TASK_STATUS_LABELS} from "@/entities/task";
-import type {TTaskStatus} from "@/entities/task";
-import {StatusCard, StatusText, type TStatusCardVariant} from "@/shared/ui/statusCard";
+import type {TDashboardRecentTask} from '@/entities/dashboard';
+import {formatDate} from '@/shared/lib/formatters';
+import {TASK_STATUS_LABELS} from '@/entities/task';
+import type {TTaskStatus} from '@/entities/task';
+import {StatusCard, StatusText, type TStatusCardVariant} from '@/shared/ui/statusCard';
 
 import Styles from './recentCard.module.css';
 

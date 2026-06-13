@@ -1,15 +1,15 @@
 .table {
-  width: 100%;
+    width: 100%;
 }
 
 .table__head {
 }
 
 .table__body {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: stretch;
 
-  gap: 4px;
+    gap: 4px;
 }

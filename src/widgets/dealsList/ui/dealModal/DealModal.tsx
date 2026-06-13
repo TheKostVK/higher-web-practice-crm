@@ -21,9 +21,9 @@ const DEAL_STATUS_OPTIONS = [
 ];
 
 type TDealModalProps = {
-  open: boolean;
-  deal?: TDeal | TDealListRow;
-  onClose: () => void;
+    open: boolean;
+    deal?: TDeal | TDealListRow;
+    onClose: () => void;
 };
 
 /**
@@ -36,7 +36,11 @@ export const DealModal = ({open, deal, onClose}: TDealModalProps) => {
     const user = useAppSelector(selectorUserData);
     const [createDeal, {isLoading: isCreating, isError: isCreateError}] = useCreateDealMutation();
     const [updateDeal, {isLoading: isUpdating, isError: isUpdateError}] = useUpdateDealMutation();
-    const {data: clients = [], isFetching: isClientsFetching, isError: isClientsError} = useGetClientsQuery({deleted: false});
+    const {
+        data: clients = [],
+        isFetching: isClientsFetching,
+        isError: isClientsError,
+    } = useGetClientsQuery({deleted: false});
 
     const isEdit = Boolean(deal);
     const isLoading = isCreating || isUpdating;

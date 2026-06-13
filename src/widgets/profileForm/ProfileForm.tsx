@@ -6,7 +6,7 @@ import {ProfileFields} from './ui/profileFields';
 import {PasswordSection} from './ui/passwordSection';
 import {FormActions} from './ui/formActions';
 import Styles from './profileForm.module.css';
-import {useProfileForm} from "@/widgets/profileForm/hook";
+import {useProfileForm} from '@/widgets/profileForm/hook';
 
 export const ProfileForm = () => {
     const {
@@ -47,8 +47,12 @@ export const ProfileForm = () => {
                 />
             }
         >
-            <form id={PROFILE_FORM_ID} className={Styles.profileForm} onSubmit={handleSubmit(handleProfileUpdate)}
-                noValidate>
+            <form
+                id={PROFILE_FORM_ID}
+                className={Styles.profileForm}
+                onSubmit={handleSubmit(handleProfileUpdate)}
+                noValidate
+            >
                 <AvatarUpload
                     className={Styles.profileForm__avatarUpload}
                     src={avatarUrl}
@@ -64,7 +68,7 @@ export const ProfileForm = () => {
                     onSendEmailConfirmation={handleSendEmailConfirmation}
                 />
 
-                <PasswordSection control={control} errors={errors}/>
+                <PasswordSection control={control} errors={errors} />
 
                 {statusMessage && <FormStatusMessage type="success">{statusMessage}</FormStatusMessage>}
                 {formErrorMessage && (

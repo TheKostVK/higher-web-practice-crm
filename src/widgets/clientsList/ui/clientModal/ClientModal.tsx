@@ -13,9 +13,9 @@ import {FormModal, FormModalField} from '@/shared/ui/formModal';
 import {clientSchema, type TClientFormValues} from './clientModalSchema';
 
 type TClientModalProps = {
-  open: boolean;
-  client?: TClient;
-  onClose: () => void;
+    open: boolean;
+    client?: TClient;
+    onClose: () => void;
 };
 
 /**
@@ -92,7 +92,12 @@ export const ClientModal = ({open, client, onClose}: TClientModalProps) => {
                     control={control}
                     name="name"
                     render={({field}) => (
-                        <Input {...field} id="client-name" placeholder="Иван Иванов" status={errors.name ? 'error' : undefined} />
+                        <Input
+                            {...field}
+                            id="client-name"
+                            placeholder="Иван Иванов"
+                            status={errors.name ? 'error' : undefined}
+                        />
                     )}
                 />
             </FormModalField>

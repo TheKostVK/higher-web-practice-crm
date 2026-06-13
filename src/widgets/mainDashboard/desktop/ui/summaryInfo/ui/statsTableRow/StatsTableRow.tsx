@@ -4,9 +4,9 @@ import {METRIC_HEADER_KEY, type TDashboardMetric, type TDashboardMetricCase} fro
 import {TableRow} from '@/shared/ui/table';
 
 type TTableRowProps = {
-  title: string;
-  data: TDashboardMetric | undefined;
-  isLoading?: boolean;
+    title: string;
+    data: TDashboardMetric | undefined;
+    isLoading?: boolean;
 };
 
 const caseClassName: Record<TDashboardMetricCase, string> = {
@@ -32,7 +32,7 @@ export const StatsTableRow = ({title, data, isLoading}: TTableRowProps) => {
         return (
             <tr className={Styles.tableRow}>
                 <td className={Styles.tableRow__cell} colSpan={6}>
-          Отсутствует информация
+                    Отсутствует информация
                 </td>
             </tr>
         );

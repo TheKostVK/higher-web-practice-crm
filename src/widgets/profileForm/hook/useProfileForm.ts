@@ -24,10 +24,8 @@ export const useProfileForm = () => {
     const user = useAppSelector(selectorUserData);
     const [statusMessage, setStatusMessage] = useState('');
     const [getUsersByEmail, {isFetching: isEmailChecking}] = useLazyGetUsersByEmailQuery();
-    const [updateUserProfile, {
-        isLoading: isProfileUpdating,
-        error: profileUpdateError
-    }] = useUpdateUserProfileMutation();
+    const [updateUserProfile, {isLoading: isProfileUpdating, error: profileUpdateError}] =
+        useUpdateUserProfileMutation();
     const [updateUserAvatarById, {isLoading: isAvatarUpdating, error: avatarUpdateError}] =
         useUpdateUserAvatarByIdMutation();
     const [deleteUser, {isLoading: isDeleting, error: profileDeleteError}] = useDeleteUserMutation();
@@ -137,12 +135,12 @@ export const useProfileForm = () => {
             }).unwrap();
             const nextUser = isAvatarChanged
                 ? {
-                    ...updatedUser,
-                    ...(await updateUserAvatarById({
-                        id: user.id,
-                        avatarUrl: values.avatarUrl || '',
-                    }).unwrap()),
-                }
+                      ...updatedUser,
+                      ...(await updateUserAvatarById({
+                          id: user.id,
+                          avatarUrl: values.avatarUrl || '',
+                      }).unwrap()),
+                  }
                 : updatedUser;
 
             dispatch(setUserProfileData(nextUser));

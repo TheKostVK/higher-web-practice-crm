@@ -11,7 +11,7 @@ import Styles from './mainLayout.module.css';
 const {Content} = Layout;
 
 type TMainLayoutState = {
-  backgroundLocation?: Location;
+    backgroundLocation?: Location;
 };
 
 export const MainLayout = () => {

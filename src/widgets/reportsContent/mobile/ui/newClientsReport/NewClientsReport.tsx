@@ -1,8 +1,8 @@
-import {useGetNewClientsReportQuery} from "@/entities/reports";
-import {getNewClientCards} from "@/widgets/reportsContent/lib";
-import {ReportToolbar} from "@/widgets/reportsContent/ui/reportToolbar";
-import {useReportFilters} from "@/widgets/reportsContent/hook";
-import {MobileReportBody} from "@/widgets/reportsContent/mobile/ui/mobileReportBody";
+import {useGetNewClientsReportQuery} from '@/entities/reports';
+import {getNewClientCards} from '@/widgets/reportsContent/lib';
+import {ReportToolbar} from '@/widgets/reportsContent/ui/reportToolbar';
+import {useReportFilters} from '@/widgets/reportsContent/hook';
+import {MobileReportBody} from '@/widgets/reportsContent/mobile/ui/mobileReportBody';
 
 export const NewClientsReport = () => {
     const {period, applied, handlePeriodChange} = useReportFilters();

@@ -7,7 +7,7 @@ export const TableHeader = memo(({dataSource}: TTableHeaderProps) => {
         return (
             <tr className={Styles.tableRow}>
                 <th className={Styles.tableRow__cell} scope="col">
-          Отсутствует информация
+                    Отсутствует информация
                 </th>
             </tr>
         );

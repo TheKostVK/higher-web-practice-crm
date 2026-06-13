@@ -8,10 +8,10 @@ import Style from './desktop.module.css';
 export const DesktopDashboard = () => {
     return (
         <div className={Style.dashboardLayout}>
-            <SummaryInfo/>
-            <TopClients/>
-            <ActivityDeals/>
-            <RecentTasks/>
+            <SummaryInfo />
+            <TopClients />
+            <ActivityDeals />
+            <RecentTasks />
         </div>
     );
 };

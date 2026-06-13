@@ -6,7 +6,7 @@ import {ApiErrorMessage} from '@/shared/ui/apiErrorMessage';
 import {ClientModal} from '@/widgets/clientsList';
 
 type TClientModalRouteState = {
-  backgroundLocation?: Location;
+    backgroundLocation?: Location;
 };
 
 /**

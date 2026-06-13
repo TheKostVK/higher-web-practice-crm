@@ -1,8 +1,8 @@
-import Styles from "@/widgets/reportsContent/reportsContent.module.css";
-import {formatAmount, formatDate} from "@/shared/lib/formatters";
-import type {TSalesReportRow} from "@/entities/reports";
-import {SALES_CARD_PLACEHOLDER_ID} from "@/widgets/reportsContent/model";
-import {MobileReportBody} from "@/widgets/reportsContent/mobile/ui/mobileReportBody";
+import Styles from '@/widgets/reportsContent/reportsContent.module.css';
+import {formatAmount, formatDate} from '@/shared/lib/formatters';
+import type {TSalesReportRow} from '@/entities/reports';
+import {SALES_CARD_PLACEHOLDER_ID} from '@/widgets/reportsContent/model';
+import {MobileReportBody} from '@/widgets/reportsContent/mobile/ui/mobileReportBody';
 
 type TCompactSalesCardProps = {
     items: TSalesReportRow[];
@@ -16,7 +16,8 @@ type TCompactSalesCardProps = {
  */
 export const CompactSalesCards = ({items, emptyText, isLoading}: TCompactSalesCardProps) => {
     const visibleItems = [...items].sort(
-        (left, right) => right.amount - left.amount || new Date(right.completedAt).getTime() - new Date(left.completedAt).getTime(),
+        (left, right) =>
+            right.amount - left.amount || new Date(right.completedAt).getTime() - new Date(left.completedAt).getTime(),
     );
 
     return (
@@ -26,7 +27,8 @@ export const CompactSalesCards = ({items, emptyText, isLoading}: TCompactSalesCa
                     <article key={row.dealId} className={Styles.reportsContent__card}>
                         <div className={Styles.reportsContent__salesRow}>
                             <span
-                                className={`${Styles.reportsContent__salesCell} ${Styles['reportsContent__salesCell--id']}`}>
+                                className={`${Styles.reportsContent__salesCell} ${Styles['reportsContent__salesCell--id']}`}
+                            >
                                 {SALES_CARD_PLACEHOLDER_ID(row.dealId)}
                             </span>
                             <span className={Styles.reportsContent__salesCell}>{row.clientName}</span>

@@ -1,10 +1,10 @@
-import {type TNewClientReportRow, useGetNewClientsReportQuery} from "@/entities/reports";
-import type {ColumnsType} from "antd/es/table";
-import {formatDate} from "@/shared/lib/formatters";
-import {Table} from "antd";
-import {ReportToolbar} from "@/widgets/reportsContent/ui/reportToolbar";
-import {PAGE_SIZE} from "@/widgets/reportsContent/model";
-import {useReportFilters} from "@/widgets/reportsContent/hook";
+import {type TNewClientReportRow, useGetNewClientsReportQuery} from '@/entities/reports';
+import type {ColumnsType} from 'antd/es/table';
+import {formatDate} from '@/shared/lib/formatters';
+import {Table} from 'antd';
+import {ReportToolbar} from '@/widgets/reportsContent/ui/reportToolbar';
+import {PAGE_SIZE} from '@/widgets/reportsContent/model';
+import {useReportFilters} from '@/widgets/reportsContent/hook';
 import {ApiErrorMessage} from '@/shared/ui/apiErrorMessage';
 
 const columns: ColumnsType<TNewClientReportRow> = [

@@ -1,90 +1,90 @@
 .mobileDeals__card {
-  width: 100%;
-  padding: 12px 16px;
-  box-shadow: none;
-  cursor: pointer;
+    width: 100%;
+    padding: 12px 16px;
+    box-shadow: none;
+    cursor: pointer;
 }
 
 .mobileDeals__cardRow {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 8px;
-  width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
 }
 
 .mobileDeals__cardTitle {
-  min-width: 0;
-  margin: 0;
-  color: var(--color-neutral-gray-800);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
+    min-width: 0;
+    margin: 0;
+    color: var(--color-neutral-gray-800);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
 }
 
 .mobileDeals__cardClient {
-  min-width: 0;
-  margin: 0;
-  color: var(--color-neutral-gray-800);
-  font-size: 14px;
-  line-height: 20px;
+    min-width: 0;
+    margin: 0;
+    color: var(--color-neutral-gray-800);
+    font-size: 14px;
+    line-height: 20px;
 }
 
 .mobileDeals__cardStatus {
-  flex: 0 0 auto;
-  color: var(--color-neutral-gray-800);
-  font-size: 12px;
-  line-height: 16px;
-  text-align: right;
-  white-space: nowrap;
+    flex: 0 0 auto;
+    color: var(--color-neutral-gray-800);
+    font-size: 12px;
+    line-height: 16px;
+    text-align: right;
+    white-space: nowrap;
 }
 
 .mobileDeals__cardDescription {
-  margin: 6px 0 0;
-  color: var(--color-neutral-gray-500);
-  font-size: 12px;
-  line-height: 16px;
+    margin: 6px 0 0;
+    color: var(--color-neutral-gray-500);
+    font-size: 12px;
+    line-height: 16px;
 }
 
 .mobileDeals__cardFooter {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: 6px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 6px;
 }
 
 .mobileDeals__cardAmount {
-  flex: 0 0 auto;
-  color: var(--color-neutral-gray-800);
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 20px;
-  text-align: right;
-  white-space: nowrap;
+    flex: 0 0 auto;
+    color: var(--color-neutral-gray-800);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: right;
+    white-space: nowrap;
 }
 
 .mobileDeals__dateBlock {
-  display: flex;
-  min-width: 0;
-  flex-direction: column;
-  gap: 2px;
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 2px;
 }
 
 .mobileDeals__dateBlock--end {
-  flex: 0 0 auto;
-  align-items: flex-end;
-  text-align: right;
+    flex: 0 0 auto;
+    align-items: flex-end;
+    text-align: right;
 }
 
 .mobileDeals__dateLabel {
-  color: var(--color-neutral-gray-400);
-  font-size: 12px;
-  line-height: 16px;
+    color: var(--color-neutral-gray-400);
+    font-size: 12px;
+    line-height: 16px;
 }
 
 .mobileDeals__dateValue {
-  color: var(--color-neutral-gray-800);
-  font-size: 12px;
-  line-height: 16px;
+    color: var(--color-neutral-gray-800);
+    font-size: 12px;
+    line-height: 16px;
 }

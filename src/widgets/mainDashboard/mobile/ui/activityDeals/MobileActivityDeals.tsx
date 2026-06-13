@@ -5,7 +5,7 @@ import {useOpenModalRoute} from '@/shared/lib/modalRoute';
 import {StatusCard, StatusText, type TStatusCardVariant} from '@/shared/ui/statusCard';
 
 import Styles from './mobileActivityDeals.module.css';
-import {MobileTab} from "@/widgets/mainDashboard/mobile/ui/mobileTab";
+import {MobileTab} from '@/widgets/mainDashboard/mobile/ui/mobileTab';
 
 const DEAL_CARD_VARIANT: Record<TDealStatus, TStatusCardVariant> = {
     new: 'info',

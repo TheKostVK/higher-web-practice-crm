@@ -7,8 +7,8 @@ import {formatDate} from '@/shared/lib/formatters';
 import {useOpenModalRoute} from '@/shared/lib/modalRoute';
 import {DesktopTableList} from '@/shared/ui/desktopTableList';
 
-import {useTableSort} from "@/shared/lib/helpers";
-import {ActionsCell} from "@/widgets/clientsList/desktop/ui/actionsCell";
+import {useTableSort} from '@/shared/lib/helpers';
+import {ActionsCell} from '@/widgets/clientsList/desktop/ui/actionsCell';
 
 const columns: ColumnsType<TClientListRow> = [
     {
@@ -73,7 +73,11 @@ export const DesktopClientsList = () => {
     const {sortBy, order, handleTableChange} = useTableSort<TClientSortField, TClient>();
     const openClientModal = useOpenModalRoute();
 
-    const {data: clients = [], isFetching, isError} = useGetClientsQuery({
+    const {
+        data: clients = [],
+        isFetching,
+        isError,
+    } = useGetClientsQuery({
         search: search || undefined,
         sortBy,
         order,

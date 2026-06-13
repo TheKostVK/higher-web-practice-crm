@@ -6,18 +6,18 @@ import Styles from './button.module.css';
 type TButtonView = 'primary' | 'outline' | 'link';
 
 type TButtonProps = ButtonProps & {
-  view?: TButtonView;
-  fullWidth?: boolean;
+    view?: TButtonView;
+    fullWidth?: boolean;
 };
 
 const getViewClassName = (view: TButtonView) => {
     switch (view) {
-    case 'outline':
-        return Styles['button--outline'];
-    case 'link':
-        return Styles['button--link'];
-    default:
-        return Styles['button--primary'];
+        case 'outline':
+            return Styles['button--outline'];
+        case 'link':
+            return Styles['button--link'];
+        default:
+            return Styles['button--primary'];
     }
 };
 

@@ -4,8 +4,8 @@ import {Alert} from 'antd';
 import Styles from './apiErrorMessage.module.css';
 
 type TApiErrorMessageProps = {
-  message?: string;
-  className?: string;
+    message?: string;
+    className?: string;
 };
 
 /**

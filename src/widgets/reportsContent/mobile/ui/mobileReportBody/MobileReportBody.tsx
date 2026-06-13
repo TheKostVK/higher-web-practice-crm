@@ -1,8 +1,8 @@
-import {ReportCards, type TReportCardItem} from "@/widgets/reportsContent/ui/reportCards";
-import {Skeleton} from "antd";
+import {ReportCards, type TReportCardItem} from '@/widgets/reportsContent/ui/reportCards';
+import {Skeleton} from 'antd';
 import {ApiErrorMessage} from '@/shared/ui/apiErrorMessage';
-import Styles from "@/widgets/reportsContent/reportsContent.module.css";
-import type {ReactNode} from "react";
+import Styles from '@/widgets/reportsContent/reportsContent.module.css';
+import type {ReactNode} from 'react';
 
 type TMobileReportBodyBaseProps = {
     emptyText: string;
@@ -31,16 +31,16 @@ export const MobileReportBody = ({
     errorMessage,
 }: TMobileReportBodyProps) => {
     if (isLoading) {
-        return <Skeleton active paragraph={{rows: 3}} title={false}/>;
+        return <Skeleton active paragraph={{rows: 3}} title={false} />;
     }
 
     if (isError) {
-        return <ApiErrorMessage message={errorMessage}/>;
+        return <ApiErrorMessage message={errorMessage} />;
     }
 
     if (children !== undefined) {
         return isEmpty ? <div className={Styles.reportsContent__empty}>{emptyText}</div> : children;
     }
 
-    return <ReportCards items={items ?? []} emptyText={emptyText}/>;
+    return <ReportCards items={items ?? []} emptyText={emptyText} />;
 };

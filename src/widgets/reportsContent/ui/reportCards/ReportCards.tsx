@@ -48,10 +48,7 @@ export const ReportCards = memo(({items, emptyText = 'Нет данных'}: TRe
                         <div className={Styles.reportCards__header}>
                             {item.meta && <span className={Styles.reportCards__meta}>{item.meta}</span>}
                             {item.status && (
-                                <StatusText
-                                    className={Styles.reportCards__status}
-                                    tone={item.tone ?? 'danger'}
-                                >
+                                <StatusText className={Styles.reportCards__status} tone={item.tone ?? 'danger'}>
                                     {item.status}
                                 </StatusText>
                             )}

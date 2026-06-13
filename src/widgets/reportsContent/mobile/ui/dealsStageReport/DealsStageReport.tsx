@@ -1,7 +1,7 @@
-import {useGetDealsStageReportQuery} from "@/entities/reports";
-import {useReportFilters} from "@/widgets/reportsContent/hook";
-import {ReportToolbar} from "@/widgets/reportsContent/ui/reportToolbar";
-import {CompactDealsStageCards} from "@/widgets/reportsContent/mobile/ui/compactDealsStageCards";
+import {useGetDealsStageReportQuery} from '@/entities/reports';
+import {useReportFilters} from '@/widgets/reportsContent/hook';
+import {ReportToolbar} from '@/widgets/reportsContent/ui/reportToolbar';
+import {CompactDealsStageCards} from '@/widgets/reportsContent/mobile/ui/compactDealsStageCards';
 import {ApiErrorMessage} from '@/shared/ui/apiErrorMessage';
 
 export const DealsStageReport = () => {
@@ -19,7 +19,7 @@ export const DealsStageReport = () => {
             {isError ? (
                 <ApiErrorMessage message="Не удалось загрузить отчёт по этапам сделок." />
             ) : (
-                <CompactDealsStageCards items={data} emptyText="Нет этапов" isLoading={isLoading}/>
+                <CompactDealsStageCards items={data} emptyText="Нет этапов" isLoading={isLoading} />
             )}
         </>
     );

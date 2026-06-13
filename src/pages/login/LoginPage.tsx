@@ -9,9 +9,9 @@ import Styles from './loginPage.module.css';
 import {loginSchema, type TLoginFormValues} from './loginSchema';
 
 type TLocationState = {
-  from?: {
-    pathname?: string;
-  };
+    from?: {
+        pathname?: string;
+    };
 };
 
 export const LoginPage = () => {
@@ -60,7 +60,7 @@ export const LoginPage = () => {
             <form className={Styles.loginPage__form} onSubmit={handleSubmit(handleLogin)} noValidate>
                 <label className={Styles.loginPage__field} htmlFor="login-email">
                     <span className={Styles.loginPage__label}>
-            Email <span aria-hidden="true">*</span>
+                        Email <span aria-hidden="true">*</span>
                     </span>
                     <Controller
                         control={control}
@@ -80,7 +80,7 @@ export const LoginPage = () => {
 
                 <label className={Styles.loginPage__field} htmlFor="login-password">
                     <span className={Styles.loginPage__label}>
-            Пароль <span aria-hidden="true">*</span>
+                        Пароль <span aria-hidden="true">*</span>
                     </span>
                     <Controller
                         control={control}
@@ -102,14 +102,14 @@ export const LoginPage = () => {
                         htmlType="button"
                         onClick={() => navigate('/auth/forgot-password')}
                     >
-            Забыли пароль?
+                        Забыли пароль?
                     </Button>
                 </label>
 
                 {errors.root && <p className={Styles.loginPage__formError}>{errors.root.message}</p>}
 
                 <Button className={Styles.loginPage__submit} type="primary" htmlType="submit" loading={isLoading}>
-          Войти
+                    Войти
                 </Button>
             </form>
         </section>

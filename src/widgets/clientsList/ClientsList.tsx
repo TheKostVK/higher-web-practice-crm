@@ -1,7 +1,7 @@
 import {useIsMobile} from '@/shared/lib/hooks';
 
-import {lazy, Suspense} from "react";
-import {Preloader} from "@/shared/ui/preloader";
+import {lazy, Suspense} from 'react';
+import {Preloader} from '@/shared/ui/preloader';
 
 const MobileClientsList = lazy(() => import('./mobile').then((module) => ({default: module.MobileClientsList})));
 const DesktopClientsList = lazy(() => import('./desktop').then((module) => ({default: module.DesktopClientsList})));
@@ -12,9 +12,5 @@ const DesktopClientsList = lazy(() => import('./desktop').then((module) => ({def
 export const ClientsList = () => {
     const isMobile = useIsMobile();
 
-    return (
-        <Suspense fallback={<Preloader/>}>
-            {isMobile ? <MobileClientsList/> : <DesktopClientsList/>}
-        </Suspense>
-    );
+    return <Suspense fallback={<Preloader />}>{isMobile ? <MobileClientsList /> : <DesktopClientsList />}</Suspense>;
 };

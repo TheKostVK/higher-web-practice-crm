@@ -18,9 +18,9 @@ export const TopClients = () => {
     return (
         <div className={Styles.section}>
             <div className={Styles.content}>
-                <BlockTitle title="Топ 10 активных клиентов"/>
+                <BlockTitle title="Топ 10 активных клиентов" />
                 {isLoading ? (
-                    <Skeleton active/>
+                    <Skeleton active />
                 ) : isError ? (
                     <ApiErrorMessage message="Не удалось загрузить топ клиентов." />
                 ) : (

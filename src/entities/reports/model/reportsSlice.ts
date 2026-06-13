@@ -7,13 +7,13 @@ import type {
 } from '../types';
 
 type TReportsState = {
-  isLoading: boolean;
-  isError: boolean;
-  errorText: string | undefined;
-  reportDealsStage: TDealsStageReportRow[];
-  reportNewClient: TNewClientReportRow[];
-  reportClientActivity: TClientActivityReportRow[];
-  reportTaskOverdue: TOverdueTaskReportRow[];
+    isLoading: boolean;
+    isError: boolean;
+    errorText: string | undefined;
+    reportDealsStage: TDealsStageReportRow[];
+    reportNewClient: TNewClientReportRow[];
+    reportClientActivity: TClientActivityReportRow[];
+    reportTaskOverdue: TOverdueTaskReportRow[];
 };
 
 const initialState: TReportsState = {

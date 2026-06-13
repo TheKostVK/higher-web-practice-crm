@@ -1,44 +1,44 @@
 .mobileTasks__card {
-  width: 100%;
-  min-height: 104px;
-  padding: 12px 16px;
-  border: 1px solid #f0f0f0;
-  border-radius: 8px;
-  background: #fff;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
-  cursor: pointer;
+    width: 100%;
+    min-height: 104px;
+    padding: 12px 16px;
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
+    cursor: pointer;
 }
 
 .mobileTasks__cardTitle {
-  margin: 0 0 4px;
-  font-weight: 600;
-  font-size: 15px;
-  line-height: 22px;
+    margin: 0 0 4px;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 22px;
 }
 
 .mobileTasks__cardDeal {
-  margin: 0 0 4px;
-  font-size: 13px;
-  line-height: 18px;
-  color: var(--ant-color-text-secondary);
+    margin: 0 0 4px;
+    font-size: 13px;
+    line-height: 18px;
+    color: var(--ant-color-text-secondary);
 }
 
 .mobileTasks__cardFooter {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 8px;
 }
 
 .mobileTasks__cardAssignee {
-  font-size: 13px;
-  line-height: 18px;
-  color: var(--ant-color-text-secondary);
+    font-size: 13px;
+    line-height: 18px;
+    color: var(--ant-color-text-secondary);
 }
 
 .mobileTasks__cardDue {
-  font-size: 12px;
-  line-height: 16px;
-  color: var(--ant-color-text-quaternary);
+    font-size: 12px;
+    line-height: 16px;
+    color: var(--ant-color-text-quaternary);
 }

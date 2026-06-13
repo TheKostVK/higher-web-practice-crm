@@ -1,12 +1,12 @@
-import {type TOverdueTaskReportRow, useGetOverdueTasksReportQuery} from "@/entities/reports";
-import type {ColumnsType} from "antd/es/table";
-import {formatDate} from "@/shared/lib/formatters";
-import {TASK_STATUS_LABELS, type TTaskStatus} from "@/entities/task";
-import {Table} from "antd";
-import {StatusTag} from "@/shared/ui/statusTag";
-import {useReportFilters} from "@/widgets/reportsContent/hook";
-import {ReportToolbar} from "@/widgets/reportsContent/ui/reportToolbar/ReportToolbar.tsx";
-import {PAGE_SIZE} from "@/widgets/reportsContent/model";
+import {type TOverdueTaskReportRow, useGetOverdueTasksReportQuery} from '@/entities/reports';
+import type {ColumnsType} from 'antd/es/table';
+import {formatDate} from '@/shared/lib/formatters';
+import {TASK_STATUS_LABELS, type TTaskStatus} from '@/entities/task';
+import {Table} from 'antd';
+import {StatusTag} from '@/shared/ui/statusTag';
+import {useReportFilters} from '@/widgets/reportsContent/hook';
+import {ReportToolbar} from '@/widgets/reportsContent/ui/reportToolbar/ReportToolbar.tsx';
+import {PAGE_SIZE} from '@/widgets/reportsContent/model';
 import {ApiErrorMessage} from '@/shared/ui/apiErrorMessage';
 
 const columns: ColumnsType<TOverdueTaskReportRow> = [
@@ -29,7 +29,7 @@ const columns: ColumnsType<TOverdueTaskReportRow> = [
         title: 'Статус',
         dataIndex: 'status',
         key: 'status',
-        render: (v: TTaskStatus) => <StatusTag color="error" label={TASK_STATUS_LABELS[v] ?? v}/>,
+        render: (v: TTaskStatus) => <StatusTag color="error" label={TASK_STATUS_LABELS[v] ?? v} />,
     },
 ];
 

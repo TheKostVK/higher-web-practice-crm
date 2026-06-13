@@ -39,19 +39,22 @@ const filterClients = (clients: TClient[], filters: TClientListFilters = {}): TC
 
     const filtered = clients.filter((client) => {
         const matchesSearch =
-      !normalizedSearch ||
-      [client.name, client.phone, client.email, client.company, client.website, client.comment].some((value) =>
-          value?.toLowerCase().includes(normalizedSearch),
-      );
-        const matchesDeleted = filters.deleted === undefined ? client.deleted !== true : client.deleted === filters.deleted;
+            !normalizedSearch ||
+            [client.name, client.phone, client.email, client.company, client.website, client.comment].some((value) =>
+                value?.toLowerCase().includes(normalizedSearch),
+            );
+        const matchesDeleted =
+            filters.deleted === undefined ? client.deleted !== true : client.deleted === filters.deleted;
         const matchesCreator =
-      !filters.createdBy && !filters.managerId ? true : client.createdBy === (filters.createdBy || filters.managerId);
+            !filters.createdBy && !filters.managerId
+                ? true
+                : client.createdBy === (filters.createdBy || filters.managerId);
 
         return (
             matchesSearch &&
-      matchesDeleted &&
-      matchesCreator &&
-      isDateInRange(client.createdAt, filters.createdFrom, filters.createdTo)
+            matchesDeleted &&
+            matchesCreator &&
+            isDateInRange(client.createdAt, filters.createdFrom, filters.createdTo)
         );
     });
 

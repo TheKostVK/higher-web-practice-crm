@@ -2,10 +2,10 @@ import {createSlice} from '@reduxjs/toolkit';
 import type {TTask} from '../types';
 
 type TTaskSliceState = {
-  isLoading: boolean;
-  isError: boolean;
-  errorText: string | undefined;
-  tasks: TTask[];
+    isLoading: boolean;
+    isError: boolean;
+    errorText: string | undefined;
+    tasks: TTask[];
 };
 
 const initialState: TTaskSliceState = {
@@ -28,4 +28,4 @@ export const taskSlice = createSlice({
 });
 
 export const {selectorTaskIsLoading, selectorTaskIsError, selectorTaskErrorText, selectorTaskData} =
-  taskSlice.selectors;
+    taskSlice.selectors;

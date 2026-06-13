@@ -56,26 +56,26 @@ const getTaskRows = (
         }))
         .filter((task) => {
             const matchesSearch =
-        !normalizedSearch ||
-        [task.title, task.description, task.dealTitle, task.assigneeName].some((value) =>
-            value?.toLowerCase().includes(normalizedSearch),
-        );
+                !normalizedSearch ||
+                [task.title, task.description, task.dealTitle, task.assigneeName].some((value) =>
+                    value?.toLowerCase().includes(normalizedSearch),
+                );
             const matchesStatus = !filters.status || task.status === filters.status;
             const matchesDeal = !filters.dealId || task.dealId === filters.dealId;
             const matchesAssignee =
-        !filters.assigneeId && !filters.managerId
-            ? true
-            : task.assigneeId === (filters.assigneeId || filters.managerId);
+                !filters.assigneeId && !filters.managerId
+                    ? true
+                    : task.assigneeId === (filters.assigneeId || filters.managerId);
             const matchesOverdue = filters.overdue === undefined || isTaskOverdue(task) === filters.overdue;
 
             return (
                 matchesSearch &&
-        matchesStatus &&
-        matchesDeal &&
-        matchesAssignee &&
-        matchesOverdue &&
-        isDateInRange(task.dueDate, filters.dueFrom, filters.dueTo) &&
-        isDateInRange(task.createdAt, filters.createdFrom, filters.createdTo)
+                matchesStatus &&
+                matchesDeal &&
+                matchesAssignee &&
+                matchesOverdue &&
+                isDateInRange(task.dueDate, filters.dueFrom, filters.dueTo) &&
+                isDateInRange(task.createdAt, filters.createdFrom, filters.createdTo)
             );
         });
 
@@ -113,10 +113,10 @@ export const taskApi = createApi({
 
                 return {
                     data: getTaskRows(
-            tasksResult.data as TTask[],
-            dealsResult.data as TDeal[],
-            usersResult.data as TUser[],
-            filters || {},
+                        tasksResult.data as TTask[],
+                        dealsResult.data as TDeal[],
+                        usersResult.data as TUser[],
+                        filters || {},
                     ),
                 };
             },

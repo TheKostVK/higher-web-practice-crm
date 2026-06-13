@@ -7,26 +7,26 @@ import {AuthLayout} from '@/pages/layout/AuthLayout';
 import {MainLayout} from '@/pages/layout/MainLayout';
 import {ConfirmEmailPage, ForgotPasswordPage, LoginPage, RegistrationPage, WelcomePage} from './lazyAuthPages.tsx';
 
-const withSuspense = (element: ReactElement) => <Suspense fallback={<Preloader/>}>{element}</Suspense>;
+const withSuspense = (element: ReactElement) => <Suspense fallback={<Preloader />}>{element}</Suspense>;
 
 export const router = createBrowserRouter([
     {
         path: '/*',
         element: (
             <ProtectedRoute>
-                <MainLayout/>
+                <MainLayout />
             </ProtectedRoute>
         ),
     },
     {
         path: '/auth',
-        element: <AuthLayout/>,
+        element: <AuthLayout />,
         children: [
             {
                 index: true,
                 element: withSuspense(
                     <ProtectedRoute onlyUnAuth>
-                        <WelcomePage/>
+                        <WelcomePage />
                     </ProtectedRoute>,
                 ),
             },
@@ -34,7 +34,7 @@ export const router = createBrowserRouter([
                 path: 'login',
                 element: withSuspense(
                     <ProtectedRoute onlyUnAuth>
-                        <LoginPage/>
+                        <LoginPage />
                     </ProtectedRoute>,
                 ),
             },
@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
                 path: 'registration',
                 element: withSuspense(
                     <ProtectedRoute onlyUnAuth>
-                        <RegistrationPage/>
+                        <RegistrationPage />
                     </ProtectedRoute>,
                 ),
             },
@@ -50,7 +50,7 @@ export const router = createBrowserRouter([
                 path: 'forgot-password',
                 element: withSuspense(
                     <ProtectedRoute onlyUnAuth>
-                        <ForgotPasswordPage/>
+                        <ForgotPasswordPage />
                     </ProtectedRoute>,
                 ),
             },
@@ -58,7 +58,7 @@ export const router = createBrowserRouter([
                 path: 'confirm-email',
                 element: withSuspense(
                     <ProtectedRoute onlyUnAuth>
-                        <ConfirmEmailPage/>
+                        <ConfirmEmailPage />
                     </ProtectedRoute>,
                 ),
             },

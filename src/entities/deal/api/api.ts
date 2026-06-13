@@ -44,26 +44,28 @@ const getDealRows = (deals: TDeal[], clients: TClient[], filters: TDealListFilte
         }))
         .filter((deal) => {
             const matchesSearch =
-        !normalizedSearch ||
-        [deal.title, deal.description, deal.clientName].some((value) =>
-            value?.toLowerCase().includes(normalizedSearch),
-        );
+                !normalizedSearch ||
+                [deal.title, deal.description, deal.clientName].some((value) =>
+                    value?.toLowerCase().includes(normalizedSearch),
+                );
             const matchesStatus = !filters.status || deal.status === filters.status;
             const matchesClient = !filters.clientId || deal.clientId === filters.clientId;
             const matchesCreator =
-        !filters.createdBy && !filters.managerId ? true : deal.createdBy === (filters.createdBy || filters.managerId);
+                !filters.createdBy && !filters.managerId
+                    ? true
+                    : deal.createdBy === (filters.createdBy || filters.managerId);
             const matchesAmount =
-        (filters.amountFrom === undefined || deal.amount >= filters.amountFrom) &&
-        (filters.amountTo === undefined || deal.amount <= filters.amountTo);
+                (filters.amountFrom === undefined || deal.amount >= filters.amountFrom) &&
+                (filters.amountTo === undefined || deal.amount <= filters.amountTo);
 
             return (
                 matchesSearch &&
-        matchesStatus &&
-        matchesClient &&
-        matchesCreator &&
-        matchesAmount &&
-        isDateInRange(deal.createdAt, filters.createdFrom, filters.createdTo) &&
-        isDateInRange(deal.completedAt, filters.completedFrom, filters.completedTo)
+                matchesStatus &&
+                matchesClient &&
+                matchesCreator &&
+                matchesAmount &&
+                isDateInRange(deal.createdAt, filters.createdFrom, filters.createdTo) &&
+                isDateInRange(deal.completedAt, filters.completedFrom, filters.completedTo)
             );
         });
 

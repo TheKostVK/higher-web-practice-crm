@@ -147,9 +147,9 @@ const getClientActivityReport = (
                 completedTasks: tasks.filter(
                     (task) =>
                         task.status === 'completed' &&
-            task.dealId &&
-            clientDealIds.has(task.dealId) &&
-            isDateInRange(task.createdAt, filters),
+                        task.dealId &&
+                        clientDealIds.has(task.dealId) &&
+                        isDateInRange(task.createdAt, filters),
                 ).length,
             };
         })
@@ -165,7 +165,7 @@ const getOverdueTasksReport = (
     return tasks
         .filter((task) => {
             const matchesManager =
-        !filters.managerId || task.assigneeId === filters.managerId || task.createdBy === filters.managerId;
+                !filters.managerId || task.assigneeId === filters.managerId || task.createdBy === filters.managerId;
             const matchesStatus = !filters.taskStatus || task.status === filters.taskStatus;
 
             return matchesManager && matchesStatus && isTaskOverdue(task) && isDateInRange(task.dueDate, filters);
@@ -198,7 +198,9 @@ export const reportsApi = createApi({
                     return {error: clientsResult.error};
                 }
 
-                return {data: getSalesReport(dealsResult.data as TDeal[], clientsResult.data as TClient[], filters || {})};
+                return {
+                    data: getSalesReport(dealsResult.data as TDeal[], clientsResult.data as TClient[], filters || {}),
+                };
             },
             providesTags: [{type: 'Reports', id: 'SALES'}],
         }),
@@ -246,10 +248,10 @@ export const reportsApi = createApi({
 
                 return {
                     data: getClientActivityReport(
-            clientsResult.data as TClient[],
-            dealsResult.data as TDeal[],
-            tasksResult.data as TTask[],
-            filters || {},
+                        clientsResult.data as TClient[],
+                        dealsResult.data as TDeal[],
+                        tasksResult.data as TTask[],
+                        filters || {},
                     ),
                 };
             },
@@ -268,7 +270,13 @@ export const reportsApi = createApi({
                     return {error: usersResult.error};
                 }
 
-                return {data: getOverdueTasksReport(tasksResult.data as TTask[], usersResult.data as TUser[], filters || {})};
+                return {
+                    data: getOverdueTasksReport(
+                        tasksResult.data as TTask[],
+                        usersResult.data as TUser[],
+                        filters || {},
+                    ),
+                };
             },
             providesTags: [{type: 'Reports', id: 'OVERDUE_TASKS'}],
         }),

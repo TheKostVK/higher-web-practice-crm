@@ -11,7 +11,12 @@ type TProfileFieldsProps = {
     onSendEmailConfirmation: () => void;
 };
 
-export const ProfileFields = ({control, errors, isEmailConfirmationVisible, onSendEmailConfirmation}: TProfileFieldsProps) => (
+export const ProfileFields = ({
+    control,
+    errors,
+    isEmailConfirmationVisible,
+    onSendEmailConfirmation,
+}: TProfileFieldsProps) => (
     <div className={Styles.profileFields}>
         <Controller
             control={control}
@@ -66,9 +71,7 @@ export const ProfileFields = ({control, errors, isEmailConfirmationVisible, onSe
                     onChange={field.onChange}
                     onBlur={field.onBlur}
                     extra={
-                        isEmailConfirmationVisible && (
-                            <EmailConfirmation onSendConfirmation={onSendEmailConfirmation} />
-                        )
+                        isEmailConfirmationVisible && <EmailConfirmation onSendConfirmation={onSendEmailConfirmation} />
                     }
                 />
             )}

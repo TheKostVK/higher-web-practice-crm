@@ -5,11 +5,11 @@ import ProfileIconFallback from './assets/profileIcon.svg?react';
 import type {TAvatarSize} from '@/shared/ui/profileAvatar/type.ts';
 
 type TProfileAvatarProps = {
-  useIcon?: boolean;
-  isActive?: boolean;
-  size?: TAvatarSize;
-  src?: string;
-  alt: string;
+    useIcon?: boolean;
+    isActive?: boolean;
+    size?: TAvatarSize;
+    src?: string;
+    alt: string;
 };
 
 const ProfileSize = {

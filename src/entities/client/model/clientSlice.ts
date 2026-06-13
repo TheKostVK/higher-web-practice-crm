@@ -2,10 +2,10 @@ import {createSlice} from '@reduxjs/toolkit';
 import type {TClient} from '../types';
 
 type TClientState = {
-  isLoading: boolean;
-  isError: boolean;
-  errorText: string | undefined;
-  clients: TClient[];
+    isLoading: boolean;
+    isError: boolean;
+    errorText: string | undefined;
+    clients: TClient[];
 };
 
 const initialState: TClientState = {
@@ -28,4 +28,4 @@ export const clientSlice = createSlice({
 });
 
 export const {selectorClientIsLoading, selectorClientIsError, selectorClientErrorText, selectorClientData} =
-  clientSlice.selectors;
+    clientSlice.selectors;

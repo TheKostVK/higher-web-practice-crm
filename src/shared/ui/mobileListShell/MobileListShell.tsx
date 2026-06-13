@@ -44,13 +44,11 @@ export const MobileListShell = ({
             onChange={(e) => onSearchChange(e.target.value)}
             aria-label={searchAriaLabel ?? searchPlaceholder}
             disabled={isFetching}
-            prefix={<span className={Styles.mobileListShell__searchIcon} aria-hidden="true"/>}
+            prefix={<span className={Styles.mobileListShell__searchIcon} aria-hidden="true" />}
         />
-        {isError && <ApiErrorMessage message={errorMessage}/>}
+        {isError && <ApiErrorMessage message={errorMessage} />}
 
-        <div className={Styles.mobileListShell__list}>
-            {children}
-        </div>
+        <div className={Styles.mobileListShell__list}>{children}</div>
 
         <Button className={Styles.mobileListShell__addButton} type="primary" onClick={onAddClick}>
             {addButtonText}

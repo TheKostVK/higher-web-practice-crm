@@ -6,7 +6,7 @@ import {ApiErrorMessage} from '@/shared/ui/apiErrorMessage';
 import {TaskModal} from '@/widgets/tasksList';
 
 type TTaskModalRouteState = {
-  backgroundLocation?: Location;
+    backgroundLocation?: Location;
 };
 
 /**

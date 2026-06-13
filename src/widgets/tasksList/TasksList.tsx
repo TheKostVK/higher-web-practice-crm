@@ -1,7 +1,7 @@
 import {useIsMobile} from '@/shared/lib/hooks';
 
-import {lazy, Suspense} from "react";
-import {Preloader} from "@/shared/ui/preloader";
+import {lazy, Suspense} from 'react';
+import {Preloader} from '@/shared/ui/preloader';
 
 const MobileTasksList = lazy(() => import('./mobile').then((module) => ({default: module.MobileTasksList})));
 const DesktopTasksList = lazy(() => import('./desktop').then((module) => ({default: module.DesktopTasksList})));
@@ -12,9 +12,5 @@ const DesktopTasksList = lazy(() => import('./desktop').then((module) => ({defau
 export const TasksList = () => {
     const isMobile = useIsMobile();
 
-    return (
-        <Suspense fallback={<Preloader/>}>
-            {isMobile ? <MobileTasksList/> : <DesktopTasksList/>}
-        </Suspense>
-    );
+    return <Suspense fallback={<Preloader />}>{isMobile ? <MobileTasksList /> : <DesktopTasksList />}</Suspense>;
 };

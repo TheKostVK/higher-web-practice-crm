@@ -4,9 +4,9 @@ import {METRIC_HEADER, type MetricKey, type TDashboardMetric, type TDashboardMet
 import {memo} from 'react';
 
 type TTableRowProps = {
-  title: string;
-  data: TDashboardMetric | undefined;
-  isLoading: boolean;
+    title: string;
+    data: TDashboardMetric | undefined;
+    isLoading: boolean;
 };
 
 const caseClassName: Record<TDashboardMetricCase, string> = {
@@ -57,7 +57,9 @@ export const CardData = memo(({title, data, isLoading = false}: TTableRowProps) 
                             return (
                                 <div key={item.name} className={Styles['cardData__contentCell']}>
                                     <span className={Styles.cell__title}>{METRIC_HEADER[item.name]}</span>
-                                    <span className={`${Styles.cell__value} ${caseClassName[item.case]}`}>{item.value}</span>
+                                    <span className={`${Styles.cell__value} ${caseClassName[item.case]}`}>
+                                        {item.value}
+                                    </span>
                                 </div>
                             );
                         })}

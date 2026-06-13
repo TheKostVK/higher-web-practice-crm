@@ -191,7 +191,7 @@ export const TaskModal = ({open, task, onClose}: TTaskModalProps) => {
                         control={control}
                         name="status"
                         render={({field}) => (
-                            <Select {...field} aria-labelledby="task-status-label" options={TASK_STATUS_OPTIONS}/>
+                            <Select {...field} aria-labelledby="task-status-label" options={TASK_STATUS_OPTIONS} />
                         )}
                     />
                 </FormModalField>
@@ -202,7 +202,7 @@ export const TaskModal = ({open, task, onClose}: TTaskModalProps) => {
                     control={control}
                     name="description"
                     render={({field}) => (
-                        <Input.TextArea {...field} id="task-description" placeholder="Описание задачи" rows={3}/>
+                        <Input.TextArea {...field} id="task-description" placeholder="Описание задачи" rows={3} />
                     )}
                 />
             </FormModalField>

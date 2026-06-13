@@ -33,7 +33,7 @@ export const PasswordSection = ({control, errors}: TPasswordSectionProps) => (
                 )}
             />
 
-            <span className={Styles.passwordSection__spacer} aria-hidden="true"/>
+            <span className={Styles.passwordSection__spacer} aria-hidden="true" />
 
             <Controller
                 control={control}

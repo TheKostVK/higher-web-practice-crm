@@ -1,7 +1,7 @@
-import {type TClientListRow, useDeleteClientMutation} from "@/entities/client";
-import {Button, Popconfirm} from "antd";
+import {type TClientListRow, useDeleteClientMutation} from '@/entities/client';
+import {Button, Popconfirm} from 'antd';
 
-export const ActionsCell = ({record}: { record: TClientListRow }) => {
+export const ActionsCell = ({record}: {record: TClientListRow}) => {
     const [deleteClient] = useDeleteClientMutation();
 
     const handleDelete = async (event?: React.MouseEvent) => {

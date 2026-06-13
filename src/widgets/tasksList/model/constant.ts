@@ -1,4 +1,4 @@
-import type {TTaskStatus} from "@/entities/task";
+import type {TTaskStatus} from '@/entities/task';
 
 export const TASK_STATUS_COLORS: Record<TTaskStatus, string> = {
     new: 'default',

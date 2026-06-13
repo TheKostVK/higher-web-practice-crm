@@ -1,30 +1,30 @@
 .cellValue {
-  color: var(--color-neutral-gray-800);
+    color: var(--color-neutral-gray-800);
 
-  /* text-sm */
-  font-family: Inter;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 20px; /* 142.857% */
+    /* text-sm */
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 142.857% */
 }
 
 .cellValue--primaryText {
-  color: var(--color-accent-blue-500, #3b82f6);
+    color: var(--color-accent-blue-500, #3b82f6);
 }
 
 .cellValue--secondaryText {
-  color: var(--color-neutral-gray-500);
+    color: var(--color-neutral-gray-500);
 }
 
 .cellValue--completed {
-  color: var(--color-accent-green-500);
+    color: var(--color-accent-green-500);
 }
 
 .cellValue--cancelled {
-  color: var(--color-accent-yellow-500);
+    color: var(--color-accent-yellow-500);
 }
 
 .cellValue--boldText {
-  font-weight: 700;
+    font-weight: 700;
 }

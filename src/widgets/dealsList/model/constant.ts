@@ -1,4 +1,4 @@
-import type {TDealStatus} from "@/entities/deal";
+import type {TDealStatus} from '@/entities/deal';
 
 export const DEAL_STATUS_COLORS: Record<TDealStatus, string> = {
     new: 'default',

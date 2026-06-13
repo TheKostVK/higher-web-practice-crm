@@ -2,8 +2,8 @@ import Styles from './pageTitle.module.css';
 import {memo} from 'react';
 
 type TPageTitleProps = {
-  title: string;
-  subTitle?: string;
+    title: string;
+    subTitle?: string;
 };
 
 export const PageTitle = memo(({title, subTitle}: TPageTitleProps) => {

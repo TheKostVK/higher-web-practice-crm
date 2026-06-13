@@ -2,9 +2,9 @@ import {useGetTopClientsQuery} from '@/entities/dashboard';
 import {formatDate} from '@/shared/lib/formatters';
 
 import Styles from './mobileTopClients.module.css';
-import {useOpenModalRoute} from "@/shared/lib/modalRoute";
-import {MobileTab} from "@/widgets/mainDashboard/mobile/ui/mobileTab";
-import {StatusCard} from "@/shared/ui/statusCard";
+import {useOpenModalRoute} from '@/shared/lib/modalRoute';
+import {MobileTab} from '@/widgets/mainDashboard/mobile/ui/mobileTab';
+import {StatusCard} from '@/shared/ui/statusCard';
 
 /**
  * Карточный список топ-10 активных клиентов для мобильной версии.

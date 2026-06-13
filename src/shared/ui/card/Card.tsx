@@ -13,5 +13,9 @@ type TCardProps = HTMLAttributes<HTMLDivElement> & {
  * @returns Карточка.
  */
 export const Card = ({children, className = '', ...props}: TCardProps) => {
-    return <div {...props} className={`${Styles.card} ${className}`.trim()}>{children}</div>;
+    return (
+        <div {...props} className={`${Styles.card} ${className}`.trim()}>
+            {children}
+        </div>
+    );
 };

@@ -3,14 +3,14 @@ import {ProfileAvatar, type TAvatarSize} from '@/shared/ui/profileAvatar';
 import Styles from './avatarUpload.module.css';
 
 type TAvatarUploadProps = {
-  src?: string;
-  alt: string;
-  error?: string;
-  size?: TAvatarSize;
-  accept?: string;
-  ariaLabel?: string;
-  className?: string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
+    src?: string;
+    alt: string;
+    error?: string;
+    size?: TAvatarSize;
+    accept?: string;
+    ariaLabel?: string;
+    className?: string;
+    onChange: ChangeEventHandler<HTMLInputElement>;
 };
 
 export const AvatarUpload = memo(

@@ -1,3 +1,3 @@
 export type TTableHeaderProps = {
-  dataSource?: string[];
+    dataSource?: string[];
 };

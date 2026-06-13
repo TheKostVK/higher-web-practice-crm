@@ -1,27 +1,27 @@
 .desktopTableList__toolbar {
-  display: flex;
-  align-items: center;
-  flex-direction: row-reverse;
-  gap: 8px;
-  width: 100%;
-  margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .desktopTableList__search {
-  flex: 1 1 auto;
-  min-width: 0;
+    flex: 1 1 auto;
+    min-width: 0;
 }
 
 .desktopTableList__statusFilter {
-  flex: 0 0 160px;
-  min-width: 0;
+    flex: 0 0 160px;
+    min-width: 0;
 }
 
 .desktopTableList__addButton {
-  flex: 0 0 142px;
-  height: 40px;
+    flex: 0 0 142px;
+    height: 40px;
 }
 
 .desktopTableList__table {
-  cursor: pointer;
+    cursor: pointer;
 }

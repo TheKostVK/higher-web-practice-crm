@@ -28,7 +28,7 @@ export const ConfirmEmailPage = () => {
             <form className={Styles.confirmEmailPage__form} onSubmit={handleSubmit(handleConfirmEmail)} noValidate>
                 <label className={Styles.confirmEmailPage__field} htmlFor="confirm-email-link">
                     <span className={Styles.confirmEmailPage__label}>
-            Ссылка подтверждения <span aria-hidden="true">*</span>
+                        Ссылка подтверждения <span aria-hidden="true">*</span>
                     </span>
                     <Controller
                         control={control}
@@ -48,15 +48,20 @@ export const ConfirmEmailPage = () => {
                     )}
                 </label>
 
-                <Button className={Styles.confirmEmailPage__submit} type="primary" htmlType="submit" loading={isSubmitting}>
-          Подтвердить
+                <Button
+                    className={Styles.confirmEmailPage__submit}
+                    type="primary"
+                    htmlType="submit"
+                    loading={isSubmitting}
+                >
+                    Подтвердить
                 </Button>
             </form>
 
             <div className={Styles.confirmEmailPage__resend}>
                 <p className={Styles.confirmEmailPage__resendText}>Не пришло письмо?</p>
                 <Button className={Styles.confirmEmailPage__resendButton} htmlType="button" onClick={handleResend}>
-          Отправить повторно
+                    Отправить повторно
                 </Button>
             </div>
         </section>

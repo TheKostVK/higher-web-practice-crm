@@ -6,7 +6,7 @@ import {DealModalRoute} from './ui/dealModalRoute';
 import {TaskModalRoute} from './ui/taskModalRoute';
 
 type TModalRouteLayerState = {
-  backgroundLocation?: Location;
+    backgroundLocation?: Location;
 };
 
 /**

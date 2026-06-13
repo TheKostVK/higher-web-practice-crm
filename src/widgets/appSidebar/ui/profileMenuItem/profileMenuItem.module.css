@@ -1,76 +1,76 @@
 .profileMenuItem {
-  padding: 8px 20px;
+    padding: 8px 20px;
 
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 12px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
 
-  color: inherit;
-  text-decoration: none;
-  overflow: hidden;
+    color: inherit;
+    text-decoration: none;
+    overflow: hidden;
 
-  transition: color var(--animation-normal) background var(--animation-normal);
+    transition: color var(--animation-normal) background var(--animation-normal);
 }
 
 .profileMenuItem--mobile {
-  width: 40px;
-  height: 40px;
+    width: 40px;
+    height: 40px;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  transition: color var(--animation-normal) background var(--animation-normal);
+    transition: color var(--animation-normal) background var(--animation-normal);
 }
 
 .profileSidebar--collapsed {
-  margin: 0 auto;
-  padding: 0;
-  width: 40px;
-  height: 40px;
+    margin: 0 auto;
+    padding: 0;
+    width: 40px;
+    height: 40px;
 
-  justify-content: center;
-  gap: 0;
+    justify-content: center;
+    gap: 0;
 }
 
 .profileMenuItem:hover:not(.profileSidebar--collapsed) {
-  color: var(--color-accent-blue-600);
-  background: var(--color-bg-gray-200);
+    color: var(--color-accent-blue-600);
+    background: var(--color-bg-gray-200);
 }
 
 .profileMenuItem--active {
-  color: var(--color-accent-blue-600);
+    color: var(--color-accent-blue-600);
 
-  /* text-base B */
-  font-family: Inter;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 24px; /* 150% */
+    /* text-base B */
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; /* 150% */
 }
 
 .profileSidebar__userName {
-  margin: 0;
-  max-width: 180px;
+    margin: 0;
+    max-width: 180px;
 
-  opacity: 1;
-  transform: translateX(0);
+    opacity: 1;
+    transform: translateX(0);
 
-  overflow: hidden;
+    overflow: hidden;
 
-  white-space: nowrap;
-  text-overflow: ellipsis;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 
-  transition:
-    max-width var(--animation-normal),
-    opacity var(--animation-normal),
-    transform var(--animation-normal);
+    transition:
+        max-width var(--animation-normal),
+        opacity var(--animation-normal),
+        transform var(--animation-normal);
 }
 
 .profileSidebar--collapsed .profileSidebar__userName {
-  max-width: 0;
+    max-width: 0;
 
-  opacity: 0;
-  transform: translateX(-8px);
+    opacity: 0;
+    transform: translateX(-8px);
 }

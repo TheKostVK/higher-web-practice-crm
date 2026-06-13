@@ -180,12 +180,12 @@ export const dashboardApi = createApi({
             query: (filters) => ({
                 url: '/dashboardStats',
                 params:
-          filters?.managerId || filters?.period
-              ? {
-                  managerId: filters.managerId,
-                  period: filters.period,
-              }
-              : undefined,
+                    filters?.managerId || filters?.period
+                        ? {
+                              managerId: filters.managerId,
+                              period: filters.period,
+                          }
+                        : undefined,
             }),
             providesTags: [{type: 'Dashboard', id: 'STATS'}],
         }),
@@ -211,10 +211,10 @@ export const dashboardApi = createApi({
 
                 return {
                     data: getDashboardData(
-            clientsResult.data as TClient[],
-            dealsResult.data as TDeal[],
-            tasksResult.data as TTask[],
-            filters || {},
+                        clientsResult.data as TClient[],
+                        dealsResult.data as TDeal[],
+                        tasksResult.data as TTask[],
+                        filters || {},
                     ),
                 };
             },
@@ -239,7 +239,9 @@ export const dashboardApi = createApi({
                 const filteredClients = filters?.managerId
                     ? clients.filter((client) => client.createdBy === filters.managerId)
                     : clients;
-                const filteredDeals = filters?.managerId ? deals.filter((deal) => deal.createdBy === filters.managerId) : deals;
+                const filteredDeals = filters?.managerId
+                    ? deals.filter((deal) => deal.createdBy === filters.managerId)
+                    : deals;
 
                 return {data: getTopClients(filteredClients, filteredDeals)};
             },
@@ -260,8 +262,12 @@ export const dashboardApi = createApi({
                 }
 
                 const deals = dealsResult.data as TDeal[];
-                const filteredDeals = filters?.managerId ? deals.filter((deal) => deal.createdBy === filters.managerId) : deals;
-                const activeDeals = filteredDeals.filter((deal) => deal.status === 'new' || deal.status === 'in_progress');
+                const filteredDeals = filters?.managerId
+                    ? deals.filter((deal) => deal.createdBy === filters.managerId)
+                    : deals;
+                const activeDeals = filteredDeals.filter(
+                    (deal) => deal.status === 'new' || deal.status === 'in_progress',
+                );
                 const clientsById = new Map((clientsResult.data as TClient[]).map((client) => [client.id, client]));
 
                 return {data: getTopDeals(activeDeals, clientsById)};
@@ -284,7 +290,9 @@ export const dashboardApi = createApi({
 
                 const tasks = tasksResult.data as TTask[];
                 const filteredTasks = filters?.managerId
-                    ? tasks.filter((task) => task.assigneeId === filters.managerId || task.createdBy === filters.managerId)
+                    ? tasks.filter(
+                          (task) => task.assigneeId === filters.managerId || task.createdBy === filters.managerId,
+                      )
                     : tasks;
                 const dealsById = new Map((dealsResult.data as TDeal[]).map((deal) => [deal.id, deal]));
 

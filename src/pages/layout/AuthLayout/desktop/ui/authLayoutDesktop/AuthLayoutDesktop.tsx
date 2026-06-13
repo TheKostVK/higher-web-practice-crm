@@ -20,8 +20,9 @@ export const AuthLayoutDesktop = () => {
                 <div className={Styles.authLayoutDesktop__content}>
                     <img className={Styles.content__logo} src={Logo} alt={'Логотип YaPlex'} />
                     <p className={Styles.content__mainText}>
-            Платформа для управления клиентами, сделками и задачами. Эффективно управляйте бизнес-процессами,
-            отслеживайте ключевые показатели и выстраивайте продуктивные отношения с клиентами.
+                        Платформа для управления клиентами, сделками и задачами. Эффективно управляйте
+                        бизнес-процессами, отслеживайте ключевые показатели и выстраивайте продуктивные отношения с
+                        клиентами.
                     </p>
                 </div>
                 <div className={Styles.authLayoutDesktop__action}>

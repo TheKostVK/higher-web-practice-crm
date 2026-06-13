@@ -1,5 +1,5 @@
-import type {TClientActivityReportRow} from "@/entities/reports";
-import type {TReportCardItem} from "@/widgets/reportsContent/ui/reportCards";
+import type {TClientActivityReportRow} from '@/entities/reports';
+import type {TReportCardItem} from '@/widgets/reportsContent/ui/reportCards';
 
 export const getClientActivityCards = (data: TClientActivityReportRow[]): TReportCardItem[] =>
     data.map((row) => ({

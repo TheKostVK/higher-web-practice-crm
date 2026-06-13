@@ -6,7 +6,7 @@ import {ApiErrorMessage} from '@/shared/ui/apiErrorMessage';
 import {DealModal} from '@/widgets/dealsList';
 
 type TDealModalRouteState = {
-  backgroundLocation?: Location;
+    backgroundLocation?: Location;
 };
 
 /**

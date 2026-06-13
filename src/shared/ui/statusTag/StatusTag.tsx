@@ -2,8 +2,8 @@ import {Tag, type TagProps} from 'antd';
 import type {ReactNode} from 'react';
 
 type TStatusTagProps = {
-  label: ReactNode;
-  color?: TagProps['color'];
+    label: ReactNode;
+    color?: TagProps['color'];
 };
 
 /**

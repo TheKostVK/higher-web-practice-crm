@@ -4,7 +4,7 @@ import Styles from './list.module.css';
 import {memo} from 'react';
 
 type TListProps = {
-  items: TAppSidebarItem[];
+    items: TAppSidebarItem[];
 };
 
 export const List = memo(({items}: TListProps) => {

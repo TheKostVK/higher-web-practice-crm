@@ -1,12 +1,12 @@
-import {type TDealsStageReportRow, useGetDealsStageReportQuery} from "@/entities/reports";
-import type {ColumnsType} from "antd/es/table";
-import {DEAL_STATUS_LABELS, type TDealStatus} from "@/entities/deal";
-import {Table} from "antd";
-import {formatAmount} from "@/shared/lib/formatters";
-import {StatusTag} from "@/shared/ui/statusTag";
-import {useReportFilters} from "@/widgets/reportsContent/hook";
-import {ReportToolbar} from "@/widgets/reportsContent/ui/reportToolbar";
-import {PAGE_SIZE} from "@/widgets/reportsContent/model";
+import {type TDealsStageReportRow, useGetDealsStageReportQuery} from '@/entities/reports';
+import type {ColumnsType} from 'antd/es/table';
+import {DEAL_STATUS_LABELS, type TDealStatus} from '@/entities/deal';
+import {Table} from 'antd';
+import {formatAmount} from '@/shared/lib/formatters';
+import {StatusTag} from '@/shared/ui/statusTag';
+import {useReportFilters} from '@/widgets/reportsContent/hook';
+import {ReportToolbar} from '@/widgets/reportsContent/ui/reportToolbar';
+import {PAGE_SIZE} from '@/widgets/reportsContent/model';
 import {ApiErrorMessage} from '@/shared/ui/apiErrorMessage';
 
 const columns: ColumnsType<TDealsStageReportRow> = [
@@ -14,7 +14,7 @@ const columns: ColumnsType<TDealsStageReportRow> = [
         title: 'Этап',
         dataIndex: 'stage',
         key: 'stage',
-        render: (v: TDealStatus) => <StatusTag label={DEAL_STATUS_LABELS[v] ?? v}/>,
+        render: (v: TDealStatus) => <StatusTag label={DEAL_STATUS_LABELS[v] ?? v} />,
     },
     {
         title: 'Кол-во сделок',

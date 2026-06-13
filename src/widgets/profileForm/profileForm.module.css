@@ -1,46 +1,46 @@
 .profileForm {
-  width: 100%;
-  min-height: 640px;
-  max-width: 632px;
+    width: 100%;
+    min-height: 640px;
+    max-width: 632px;
 
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
 }
 
 .profilePage__card {
-  width: 100%;
-  max-width: 680px;
-  min-height: 704px;
-  padding: var(--space-8) var(--space-6);
+    width: 100%;
+    max-width: 680px;
+    min-height: 704px;
+    padding: var(--space-8) var(--space-6);
 
-  border-radius: var(--radius-md);
-  box-shadow: 0 4px 8px 0 var(--color-bg-gray-200);
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 8px 0 var(--color-bg-gray-200);
 }
 
 @media (max-width: 920px) {
-  .profilePage__card {
-    min-height: auto;
-    padding: var(--space-8) var(--space-6);
-  }
+    .profilePage__card {
+        min-height: auto;
+        padding: var(--space-8) var(--space-6);
+    }
 }
 
 @media (max-width: 768px) {
-  .profilePage__card {
-    padding: var(--space-6) var(--space-4);
+    .profilePage__card {
+        padding: var(--space-6) var(--space-4);
 
-    border-radius: var(--radius-md);
-    box-shadow: none;
-  }
+        border-radius: var(--radius-md);
+        box-shadow: none;
+    }
 
-  .profileForm {
-    position: relative;
+    .profileForm {
+        position: relative;
 
-    align-items: stretch;
-    min-height: 0;
-  }
+        align-items: stretch;
+        min-height: 0;
+    }
 
-  .profileForm__avatarUpload {
-    align-self: center;
-  }
+    .profileForm__avatarUpload {
+        align-self: center;
+    }
 }

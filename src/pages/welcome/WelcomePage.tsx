@@ -18,16 +18,16 @@ export const WelcomePage = () => {
             <div className={Styles.welcomePage__content}>
                 <img className={Styles.welcomePage__logo} src={Logo} alt="Логотип YaPlex" />
                 <p className={Styles.welcomePage__text}>
-          Платформа для управления клиентами, сделками и задачами. Эффективно управляйте бизнес-процессами,
-          отслеживайте ключевые показатели и выстраивайте продуктивные отношения с клиентами.
+                    Платформа для управления клиентами, сделками и задачами. Эффективно управляйте бизнес-процессами,
+                    отслеживайте ключевые показатели и выстраивайте продуктивные отношения с клиентами.
                 </p>
             </div>
             <div className={Styles.welcomePage__actions}>
                 <Button fullWidth view="primary" onClick={() => navigate('/auth/login')}>
-          Войти
+                    Войти
                 </Button>
                 <Button fullWidth view="outline" onClick={() => navigate('/auth/registration')}>
-          Регистрация
+                    Регистрация
                 </Button>
             </div>
         </section>

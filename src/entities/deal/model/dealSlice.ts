@@ -2,10 +2,10 @@ import {createSlice} from '@reduxjs/toolkit';
 import type {TDeal} from '../types';
 
 type TDealState = {
-  isLoading: boolean;
-  isError: boolean;
-  errorText: string | undefined;
-  deals: TDeal[];
+    isLoading: boolean;
+    isError: boolean;
+    errorText: string | undefined;
+    deals: TDeal[];
 };
 
 const initialState: TDealState = {
@@ -28,4 +28,4 @@ export const dealSlice = createSlice({
 });
 
 export const {selectorDealIsLoading, selectorDealIsError, selectorDealErrorText, selectorDealData} =
-  dealSlice.selectors;
+    dealSlice.selectors;

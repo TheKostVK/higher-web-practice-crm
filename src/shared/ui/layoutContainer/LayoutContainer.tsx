@@ -4,9 +4,9 @@ import Styles from './layoutContainer.module.css';
 import {useIsMobile} from '@/shared/lib/hooks';
 
 type TContainerProps = {
-  children: ReactNode;
-  footer?: ReactNode;
-  className?: string;
+    children: ReactNode;
+    footer?: ReactNode;
+    className?: string;
 };
 
 export const LayoutContainer = ({children, footer, className = ''}: TContainerProps) => {

@@ -5,7 +5,7 @@ import {useOpenModalRoute} from '@/shared/lib/modalRoute';
 import {StatusCard, StatusText, type TStatusCardVariant} from '@/shared/ui/statusCard';
 
 import Styles from './mobileRecentTasks.module.css';
-import {MobileTab} from "@/widgets/mainDashboard/mobile/ui/mobileTab";
+import {MobileTab} from '@/widgets/mainDashboard/mobile/ui/mobileTab';
 
 const TASK_STATUS_LABELS: Record<TTaskStatus, string> = {
     new: 'Новая',
@@ -55,8 +55,9 @@ export const MobileRecentTasks = () => {
                                 )}
                             </div>
                             <div className={Styles.card__meta}>
-                                <span
-                                    className={Styles.card__due}>до {formatDate(task.dueDate, 'longWithoutYear')}</span>
+                                <span className={Styles.card__due}>
+                                    до {formatDate(task.dueDate, 'longWithoutYear')}
+                                </span>
                                 <StatusText className={Styles.card__status} tone={TASK_STATUS_TONE[task.status]}>
                                     {TASK_STATUS_LABELS[task.status]}
                                 </StatusText>

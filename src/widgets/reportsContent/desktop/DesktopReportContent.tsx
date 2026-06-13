@@ -2,12 +2,12 @@ import {Tabs} from 'antd';
 
 import Styles from './desktop.module.css';
 
-import {OverdueTasksReport} from "@/widgets/reportsContent/desktop/ui/overdueTasksReport";
-import {ReportSection} from "@/widgets/reportsContent/ui/reportSection";
-import {ClientActivityReport} from "@/widgets/reportsContent/desktop/ui/clientActivityReport";
-import {NewClientsReport} from "@/widgets/reportsContent/desktop/ui/newClientsReport";
-import {SalesReport} from "@/widgets/reportsContent/desktop/ui/salesReport";
-import {DealsStageReport} from "@/widgets/reportsContent/desktop/ui/dealsStageReport";
+import {OverdueTasksReport} from '@/widgets/reportsContent/desktop/ui/overdueTasksReport';
+import {ReportSection} from '@/widgets/reportsContent/ui/reportSection';
+import {ClientActivityReport} from '@/widgets/reportsContent/desktop/ui/clientActivityReport';
+import {NewClientsReport} from '@/widgets/reportsContent/desktop/ui/newClientsReport';
+import {SalesReport} from '@/widgets/reportsContent/desktop/ui/salesReport';
+import {DealsStageReport} from '@/widgets/reportsContent/desktop/ui/dealsStageReport';
 
 const REPORT_TABS = [
     {

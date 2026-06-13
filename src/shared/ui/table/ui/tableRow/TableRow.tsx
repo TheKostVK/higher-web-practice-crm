@@ -15,7 +15,7 @@ export const TableRow = memo(<T extends TTableRowData>({dataSource, size = 'medi
         return (
             <tr className={`${Styles.tableRow} ${sizeClassName[size]}`}>
                 <td className={Styles.tableRow__cell} colSpan={6}>
-          Отсутствует информация
+                    Отсутствует информация
                 </td>
             </tr>
         );

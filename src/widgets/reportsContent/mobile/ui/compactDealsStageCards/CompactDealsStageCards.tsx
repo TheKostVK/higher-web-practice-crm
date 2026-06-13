@@ -1,9 +1,9 @@
-import Styles from "@/widgets/reportsContent/reportsContent.module.css";
-import {DEAL_STATUS_LABELS} from "@/entities/deal";
-import {formatAmount} from "@/shared/lib/formatters";
-import type {TDealsStageReportRow} from "@/entities/reports";
-import {SALES_STAGE_ORDER} from "@/widgets/reportsContent/model";
-import {MobileReportBody} from "@/widgets/reportsContent/mobile/ui/mobileReportBody";
+import Styles from '@/widgets/reportsContent/reportsContent.module.css';
+import {DEAL_STATUS_LABELS} from '@/entities/deal';
+import {formatAmount} from '@/shared/lib/formatters';
+import type {TDealsStageReportRow} from '@/entities/reports';
+import {SALES_STAGE_ORDER} from '@/widgets/reportsContent/model';
+import {MobileReportBody} from '@/widgets/reportsContent/mobile/ui/mobileReportBody';
 
 type TCompactDealsStageCardProps = {
     items: TDealsStageReportRow[];
@@ -40,11 +40,13 @@ export const CompactDealsStageCards = ({items, emptyText, isLoading}: TCompactDe
                     >
                         <div className={Styles.reportsContent__stageRow}>
                             <span
-                                className={`${Styles.reportsContent__stageLabel} ${LABEL_TONE[row.stage] ?? Styles['reportsContent__stageLabel--accent']}`}>
+                                className={`${Styles.reportsContent__stageLabel} ${LABEL_TONE[row.stage] ?? Styles['reportsContent__stageLabel--accent']}`}
+                            >
                                 {DEAL_STATUS_LABELS[row.stage] ?? row.stage}
                             </span>
-                            <span
-                                className={Styles.reportsContent__stageAmount}>{formatAmount(row.totalAmount)} сумма</span>
+                            <span className={Styles.reportsContent__stageAmount}>
+                                {formatAmount(row.totalAmount)} сумма
+                            </span>
                             <span className={Styles.reportsContent__stageCount}>{row.dealsCount} сделок</span>
                         </div>
                     </article>

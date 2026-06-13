@@ -10,10 +10,10 @@ import {Select} from 'antd';
 import {PERIOD_OPTIONS, REPORT_VIEW_OPTIONS} from '@/widgets/reportsContent/model';
 
 type TReportToolbarProps = {
-  period: TReportPeriod | '';
-  onPeriodChange: (period: TReportPeriod | '') => void;
-  reportName: string;
-  filters: TReportFilters;
+    period: TReportPeriod | '';
+    onPeriodChange: (period: TReportPeriod | '') => void;
+    reportName: string;
+    filters: TReportFilters;
 };
 
 /**
@@ -23,12 +23,7 @@ type TReportToolbarProps = {
  * @param reportName Имя отчёта для экспорта.
  * @param filters Применённые фильтры отчёта.
  */
-export const ReportToolbar = ({
-    period,
-    onPeriodChange,
-    reportName,
-    filters,
-}: TReportToolbarProps) => {
+export const ReportToolbar = ({period, onPeriodChange, reportName, filters}: TReportToolbarProps) => {
     const [exportPdf, {isLoading: isPdfLoading}] = useExportReportPdfMutation();
     const [exportXlsx, {isLoading: isXlsxLoading}] = useExportReportXlsxMutation();
 
@@ -55,7 +50,7 @@ export const ReportToolbar = ({
                     loading={isPdfLoading}
                     onClick={() => void exportPdf({reportName, filters})}
                 >
-          Экспорт в PDF
+                    Экспорт в PDF
                 </Button>
                 <Button
                     view="outline"
@@ -63,7 +58,7 @@ export const ReportToolbar = ({
                     loading={isXlsxLoading}
                     onClick={() => void exportXlsx({reportName, filters})}
                 >
-          Экспорт в XLSX
+                    Экспорт в XLSX
                 </Button>
             </div>
         </div>

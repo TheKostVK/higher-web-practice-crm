@@ -8,7 +8,7 @@ import {NavLink} from 'react-router-dom';
 import {ProfileAvatar} from '@/shared/ui/profileAvatar';
 
 type TProfileMenuItemProps = {
-  isMobile?: boolean;
+    isMobile?: boolean;
 };
 
 export const ProfileMenuItem = memo(({isMobile = false}: TProfileMenuItemProps) => {
@@ -27,7 +27,9 @@ export const ProfileMenuItem = memo(({isMobile = false}: TProfileMenuItemProps) 
             onClick={closeMenu}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className={({isActive}) => `${Styles['profileMenuItem--mobile']} ${isActive ? Styles['profileMenuItem--active'] : ''}`}
+            className={({isActive}) =>
+                `${Styles['profileMenuItem--mobile']} ${isActive ? Styles['profileMenuItem--active'] : ''}`
+            }
         >
             {({isActive}) => <ProfileAvatar useIcon isActive={isActive || isHovered} alt="Картинка профиля" />}
         </NavLink>
@@ -45,7 +47,12 @@ export const ProfileMenuItem = memo(({isMobile = false}: TProfileMenuItemProps) 
         >
             {({isActive}) => (
                 <>
-                    <ProfileAvatar useIcon isActive={isActive || isHovered} src={user?.avatarUrl} alt="Картинка профиля" />
+                    <ProfileAvatar
+                        useIcon
+                        isActive={isActive || isHovered}
+                        src={user?.avatarUrl}
+                        alt="Картинка профиля"
+                    />
 
                     <p className={Styles.profileSidebar__userName}>{userName}</p>
                 </>

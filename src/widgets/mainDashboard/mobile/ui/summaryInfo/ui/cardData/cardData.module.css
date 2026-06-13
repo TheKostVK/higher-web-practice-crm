@@ -1,126 +1,126 @@
 .cardData {
-  display: flex;
-  padding: 8px 12px;
-  flex-direction: column;
-  align-items: flex-start;
-  align-self: stretch;
+    display: flex;
+    padding: 8px 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
 
-  border-radius: 8px;
-  background: var(--color-bg-white);
+    border-radius: 8px;
+    background: var(--color-bg-white);
 
-  /* Shadow card */
-  box-shadow: 0 4px 8px 0 var(--color-bg-gray-200);
+    /* Shadow card */
+    box-shadow: 0 4px 8px 0 var(--color-bg-gray-200);
 }
 
 .cardData__title {
-  align-self: stretch;
-  color: var(--color-neutral-gray-800);
+    align-self: stretch;
+    color: var(--color-neutral-gray-800);
 
-  /* text-sm B */
-  font-family: Inter;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 20px; /* 142.857% */
+    /* text-sm B */
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px; /* 142.857% */
 }
 
 .cardData__content {
-  display: flex;
-  height: 48px;
-  justify-content: space-between;
-  align-items: flex-end;
-  align-self: stretch;
-  gap: 8px;
+    display: flex;
+    height: 48px;
+    justify-content: space-between;
+    align-items: flex-end;
+    align-self: stretch;
+    gap: 8px;
 }
 
 .cardData__total {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
 }
 
 .total__value {
-  color: var(--color-accent-blue-500);
+    color: var(--color-accent-blue-500);
 
-  /* text-xl */
-  font-family: Roboto;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 28px; /* 140% */
+    /* text-xl */
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px; /* 140% */
 }
 
 .cardData__group {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex-shrink: 0;
 }
 
 .cardData__contentCell {
-  display: flex;
-  align-items: baseline;
-  gap: 2px;
-  white-space: nowrap;
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+    white-space: nowrap;
 }
 
 .cell__title {
-  color: var(--color-neutral-gray-500);
+    color: var(--color-neutral-gray-500);
 
-  /* text-xs */
-  font-family: Inter;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 16px; /* 133.333% */
+    /* text-xs */
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px; /* 133.333% */
 }
 
 .cell__value {
-  color: var(--color-neutral-gray-800);
+    color: var(--color-neutral-gray-800);
 
-  /* text-sm B */
-  font-family: Inter;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 20px; /* 142.857% */
+    /* text-sm B */
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px; /* 142.857% */
 }
 
 .cell__value--noChange {
-  color: var(--color-neutral-gray-800);
+    color: var(--color-neutral-gray-800);
 }
 
 .cell__value--noChange::before {
-  content: '~';
-  margin-right: 2px;
+    content: '~';
+    margin-right: 2px;
 }
 
 .cell__value--green {
-  color: var(--color-accent-green-500);
+    color: var(--color-accent-green-500);
 }
 
 .cell__value--green::before {
-  content: '+';
-  margin-right: 2px;
+    content: '+';
+    margin-right: 2px;
 }
 
 .cell__value--red {
-  color: var(--color-accent-red-500);
+    color: var(--color-accent-red-500);
 }
 
 .cell__value--red::before {
-  content: '-';
-  margin-right: 2px;
+    content: '-';
+    margin-right: 2px;
 }
 
 .cardData__empty {
-  color: var(--color-neutral-gray-500);
+    color: var(--color-neutral-gray-500);
 
-  /* text-xs */
-  font-family: Inter;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 16px; /* 133.333% */
+    /* text-xs */
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px; /* 133.333% */
 }

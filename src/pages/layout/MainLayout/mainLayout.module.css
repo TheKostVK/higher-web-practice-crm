@@ -1,20 +1,20 @@
 .content {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
 
-  height: 100vh;
+    height: 100vh;
 }
 
 .content--gradient {
-  background: var(--main-gradient);
+    background: var(--main-gradient);
 }
 
 @media (max-width: 768px) {
-  .content {
-    height: calc(100vh - 57px);
+    .content {
+        height: calc(100vh - 57px);
 
-    gap: 20px;
-  }
+        gap: 20px;
+    }
 }
