@@ -64,27 +64,8 @@
 .mobileDeals__card {
   width: 100%;
   padding: 12px 16px;
-  border-radius: 8px;
-  border: 0;
-  background: var(--color-bg-white);
   box-shadow: none;
   cursor: pointer;
-}
-
-.mobileDeals__card--blue {
-  background: var(--color-bg-blue-100);
-}
-
-.mobileDeals__card--green {
-  background: var(--color-bg-green-100);
-}
-
-.mobileDeals__card--orange {
-  background: var(--color-bg-yellow-100);
-}
-
-.mobileDeals__card--white {
-  background: var(--color-bg-white);
 }
 
 .mobileDeals__cardRow {

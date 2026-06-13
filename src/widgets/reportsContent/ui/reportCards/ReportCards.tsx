@@ -1,5 +1,7 @@
 import {memo, type ReactNode} from 'react';
 
+import {StatusCard, StatusText} from '@/shared/ui/statusCard';
+
 import Styles from './reportCards.module.css';
 
 export type TReportCardTone = 'default' | 'danger' | 'success';
@@ -35,15 +37,24 @@ export const ReportCards = memo(({items, emptyText = 'Нет данных'}: TRe
     return (
         <div className={Styles.reportCards}>
             {items.map((item) => (
-                <article
+                <StatusCard
                     key={item.id}
-                    className={`${Styles.reportCards__card} ${item.tone ? Styles[`reportCards__card--${item.tone}`] : ''}`}
+                    role="group"
+                    className={Styles.reportCards__card}
+                    variant={item.tone ?? 'default'}
                     aria-label={typeof item.title === 'string' ? item.title : undefined}
                 >
                     {(item.meta || item.status) && (
                         <div className={Styles.reportCards__header}>
                             {item.meta && <span className={Styles.reportCards__meta}>{item.meta}</span>}
-                            {item.status && <span className={Styles.reportCards__status}>{item.status}</span>}
+                            {item.status && (
+                                <StatusText
+                                    className={Styles.reportCards__status}
+                                    tone={item.tone ?? 'danger'}
+                                >
+                                    {item.status}
+                                </StatusText>
+                            )}
                         </div>
                     )}
                     <h3 className={Styles.reportCards__title}>{item.title}</h3>
@@ -55,7 +66,7 @@ export const ReportCards = memo(({items, emptyText = 'Нет данных'}: TRe
                             </div>
                         ))}
                     </dl>
-                </article>
+                </StatusCard>
             ))}
         </div>
     );

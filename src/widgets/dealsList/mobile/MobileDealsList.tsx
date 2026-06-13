@@ -6,15 +6,16 @@ import type {TDealListRow, TDealStatus} from '@/entities/deal';
 import {formatAmount, formatDate} from '@/shared/lib/formatters';
 import {useOpenModalRoute} from '@/shared/lib/modalRoute';
 import {ApiErrorMessage} from '@/shared/ui/apiErrorMessage';
+import {StatusCard, StatusText, type TStatusCardVariant} from '@/shared/ui/statusCard';
 
 import Styles from './mobile.module.css';
 import {MainSection} from "@/shared/ui/mainSection";
 
-const DEAL_STATUS_CLASS_NAMES: Record<TDealStatus, string> = {
-    new: Styles['mobileDeals__card--blue'],
-    in_progress: Styles['mobileDeals__card--green'],
-    completed: Styles['mobileDeals__card--white'],
-    cancelled: Styles['mobileDeals__card--orange'],
+const DEAL_STATUS_VARIANT: Record<TDealStatus, TStatusCardVariant> = {
+    new: 'info',
+    in_progress: 'success',
+    completed: 'default',
+    cancelled: 'warning',
 };
 
 /**
@@ -52,9 +53,10 @@ export const MobileDealsList = () => {
 
             <div className={Styles.mobileDeals__list}>
                 {deals.map((deal) => (
-                    <div
+                    <StatusCard
                         key={deal.id}
-                        className={`${Styles.mobileDeals__card} ${DEAL_STATUS_CLASS_NAMES[deal.status as TDealStatus]}`}
+                        className={Styles.mobileDeals__card}
+                        variant={DEAL_STATUS_VARIANT[deal.status as TDealStatus]}
                         role="button"
                         tabIndex={0}
                         onClick={() => handleCardClick(deal)}
@@ -62,9 +64,12 @@ export const MobileDealsList = () => {
                     >
                         <div className={Styles['mobileDeals__cardRow']}>
                             <p className={Styles['mobileDeals__cardTitle']}>{deal.title}</p>
-                            <span className={Styles['mobileDeals__cardStatus']}>
-                            {DEAL_STATUS_LABELS[deal.status as TDealStatus]}
-                          </span>
+                            <StatusText
+                                className={Styles['mobileDeals__cardStatus']}
+                                tone={DEAL_STATUS_VARIANT[deal.status as TDealStatus]}
+                            >
+                                {DEAL_STATUS_LABELS[deal.status as TDealStatus]}
+                            </StatusText>
                         </div>
 
                         <div className={Styles['mobileDeals__cardRow']}>
@@ -85,7 +90,7 @@ export const MobileDealsList = () => {
                                 <span className={Styles['mobileDeals__dateValue']}>{formatDate(deal.completedAt)}</span>
                             </div>
                         </div>
-                    </div>
+                    </StatusCard>
                 ))}
             </div>
 
