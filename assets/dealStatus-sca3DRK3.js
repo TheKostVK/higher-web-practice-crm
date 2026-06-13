@@ -1,0 +1,1 @@
+var e={new:`Новая`,in_progress:`В работе`,completed:`Завершена`,cancelled:`Отменена`};export{e as t};

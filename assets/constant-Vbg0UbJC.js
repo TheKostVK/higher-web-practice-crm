@@ -1,0 +1,1 @@
+var e={new:`default`,in_progress:`processing`,completed:`success`},t=[{value:``,label:`Все статусы`},{value:`new`,label:`Новая`},{value:`in_progress`,label:`В работе`},{value:`completed`,label:`Завершена`}];export{e as n,t};

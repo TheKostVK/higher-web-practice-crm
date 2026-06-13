@@ -1,0 +1,1 @@
+import{dn as e,pn as t}from"./jsx-runtime-C8jG9JgE.js";var n=t(e(),1),r=`(max-width: 768px)`,i=()=>{let[e,t]=(0,n.useState)(()=>window.matchMedia(r).matches);return(0,n.useEffect)(()=>{let e=window.matchMedia(r),n=()=>t(e.matches);return e.addEventListener(`change`,n),()=>e.removeEventListener(`change`,n)},[]),e};export{i as t};

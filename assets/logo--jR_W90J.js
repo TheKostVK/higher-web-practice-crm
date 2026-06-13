@@ -1,0 +1,1 @@
+var e=`/higher-web-practice-crm/assets/logo-Bi5IaaEl.svg`;export{e as t};

@@ -1,0 +1,1 @@
+var e={short:{day:`numeric`,month:`short`,year:`numeric`},long:{day:`numeric`,month:`long`,year:`numeric`},longWithoutYear:{day:`numeric`,month:`long`}},t=(t,n=`short`)=>t?new Intl.DateTimeFormat(`ru-RU`,e[n]).format(new Date(t)):`—`,n=e=>new Intl.NumberFormat(`ru-RU`,{style:`currency`,currency:`RUB`,maximumFractionDigits:0}).format(e);export{t as n,n as t};

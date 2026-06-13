@@ -1,0 +1,1 @@
+var e={total:`на сегодня`,toDay:`за сегодня`,week:`за неделю`,month:`за месяц`,quarter:`за квартал`},t=[`total`,`toDay`,`week`,`month`,`quarter`];export{t as n,e as t};
