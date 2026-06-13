@@ -7,13 +7,7 @@ on:
     branches: [main, develop]
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  contents: write
 
 jobs:
   lint-test-build:
@@ -44,21 +38,6 @@ jobs:
       - name: Test
         run: npm test
 
-      - name: Upload build artifact
-        uses: actions/upload-pages-artifact@v3
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        with:
-          path: 'dist'
-
-  deploy-to-pages:
-    needs: lint-test-build
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    steps:
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: npx gh-pages -d dist -u "github-actions-bot <support+actions@github.com>"
