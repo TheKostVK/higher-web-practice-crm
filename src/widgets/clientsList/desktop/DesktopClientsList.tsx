@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import type {ColumnsType} from 'antd/es/table';
 
-import {useGetClientsQuery} from '@/entities/client';
+import {type TClient, useGetClientsQuery} from '@/entities/client';
 import type {TClientListRow, TClientSortField} from '@/entities/client';
 import {formatDate} from '@/shared/lib/formatters';
 import {useOpenModalRoute} from '@/shared/lib/modalRoute';
