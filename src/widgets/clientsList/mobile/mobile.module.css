@@ -81,69 +81,69 @@
   opacity: 0.6;
 }
 
-.mobileClients__card_header,
-.mobileClients__card_content {
+.mobileClients__cardHeader,
+.mobileClients__cardContent {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   column-gap: 16px;
 }
 
-.mobileClients__card_content {
+.mobileClients__cardContent {
   row-gap: 4px;
   margin-top: 8px;
 }
 
-.mobileClients__card_name,
-.mobileClients__card_company,
-.mobileClients__card_phone,
-.mobileClients__card_email,
-.mobileClients__card_website,
-.mobileClients__card_comment {
+.mobileClients__cardName,
+.mobileClients__cardCompany,
+.mobileClients__cardPhone,
+.mobileClients__cardEmail,
+.mobileClients__cardWebsite,
+.mobileClients__cardComment {
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.mobileClients__card_name {
+.mobileClients__cardName {
   color: var(--color-neutral-gray-800);
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;
 }
 
-.mobileClients__card_company,
-.mobileClients__card_phone {
+.mobileClients__cardCompany,
+.mobileClients__cardPhone {
   color: var(--color-neutral-gray-800);
   font-size: 14px;
   line-height: 20px;
 }
 
-.mobileClients__card_email {
+.mobileClients__cardEmail {
   color: var(--color-accent-blue-500);
   font-size: 12px;
   line-height: 16px;
 }
 
-.mobileClients__card_website {
+.mobileClients__cardWebsite {
   color: var(--color-neutral-gray-800);
   font-size: 12px;
   line-height: 16px;
   text-align: right;
 }
 
-.mobileClients__card_company,
-.mobileClients__card_date {
+.mobileClients__cardCompany,
+.mobileClients__cardDate {
   text-align: right;
 }
 
-.mobileClients__card_date {
+.mobileClients__cardDate {
   color: var(--color-neutral-gray-500);
   font-size: 12px;
   line-height: 16px;
 }
 
-.mobileClients__card_comment {
+.mobileClients__cardComment {
   margin-top: 8px;
   color: var(--color-neutral-gray-500);
   font-size: 12px;

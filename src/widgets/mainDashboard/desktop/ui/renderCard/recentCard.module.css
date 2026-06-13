@@ -9,18 +9,6 @@
     box-shadow: 0 4px 4px 0 var(--color-bg-gray-200);
 }
 
-.card--new {
-    background: var(--color-bg-blue-100);
-}
-
-.card--inProgress {
-    background: var(--color-bg-white);
-}
-
-.card--completed {
-    background: var(--color-bg-green-100);
-}
-
 .card__top {
     display: flex;
     flex-direction: column;
@@ -78,16 +66,4 @@
     line-height: var(--line-height-text-sm);
 
     white-space: nowrap;
-}
-
-.card__status--new {
-    color: var(--color-neutral-gray-800);
-}
-
-.card__status--in_progress {
-    color: var(--color-accent-blue-500);
-}
-
-.card__status--completed {
-    color: var(--color-accent-green-500);
 }

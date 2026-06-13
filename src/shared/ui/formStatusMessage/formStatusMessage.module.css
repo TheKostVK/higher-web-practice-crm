@@ -5,10 +5,10 @@
     line-height: var(--line-height-text-xs);
 }
 
-.formStatusMessage_error {
+.formStatusMessage--error {
     color: var(--color-accent-red-500);
 }
 
-.formStatusMessage_success {
+.formStatusMessage--success {
     color: var(--color-accent-green-500);
 }

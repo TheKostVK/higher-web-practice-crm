@@ -2,10 +2,10 @@ import {useGetRecentTasksQuery} from '@/entities/dashboard';
 import type {TTaskStatus} from '@/entities/task';
 import {formatDate} from '@/shared/lib/formatters';
 import {useOpenModalRoute} from '@/shared/lib/modalRoute';
+import {StatusCard, StatusText, type TStatusCardVariant} from '@/shared/ui/statusCard';
 
 import Styles from './mobileRecentTasks.module.css';
 import {MobileTab} from "@/widgets/mainDashboard/mobile/ui/mobileTab";
-import {Card} from "@/shared/ui/card";
 
 const TASK_STATUS_LABELS: Record<TTaskStatus, string> = {
     new: 'Новая',
@@ -13,16 +13,16 @@ const TASK_STATUS_LABELS: Record<TTaskStatus, string> = {
     completed: 'Завершена',
 };
 
-const TASK_STATUS_CLASS_NAMES: Record<TTaskStatus, string> = {
-    new: Styles.card_new,
-    in_progress: Styles.card_inProgress,
-    completed: Styles.card_completed,
+const TASK_CARD_VARIANT: Record<TTaskStatus, TStatusCardVariant> = {
+    new: 'info',
+    in_progress: 'default',
+    completed: 'success',
 };
 
-const TASK_STATUS_TEXT_CLASS_NAMES: Record<TTaskStatus, string> = {
-    new: Styles.card__status_new,
-    in_progress: Styles.card__status_inProgress,
-    completed: Styles.card__status_completed,
+const TASK_STATUS_TONE: Record<TTaskStatus, TStatusCardVariant> = {
+    new: 'default',
+    in_progress: 'info',
+    completed: 'success',
 };
 
 /**
@@ -44,7 +44,7 @@ export const MobileRecentTasks = () => {
             <ul className={Styles.list}>
                 {tasks.map((task) => (
                     <li key={task.id}>
-                        <Card className={`${Styles.card} ${TASK_STATUS_CLASS_NAMES[task.status]}`}>
+                        <StatusCard className={Styles.card} variant={TASK_CARD_VARIANT[task.status]}>
                             <div className={Styles.card__content}>
                                 <span className={Styles.card__name}>{task.title}</span>
                                 {task.dealTitle && (
@@ -57,11 +57,11 @@ export const MobileRecentTasks = () => {
                             <div className={Styles.card__meta}>
                                 <span
                                     className={Styles.card__due}>до {formatDate(task.dueDate, 'longWithoutYear')}</span>
-                                <span className={`${Styles.card__status} ${TASK_STATUS_TEXT_CLASS_NAMES[task.status]}`}>
-                                        {TASK_STATUS_LABELS[task.status]}
-                                      </span>
+                                <StatusText className={Styles.card__status} tone={TASK_STATUS_TONE[task.status]}>
+                                    {TASK_STATUS_LABELS[task.status]}
+                                </StatusText>
                             </div>
-                        </Card>
+                        </StatusCard>
                     </li>
                 ))}
             </ul>

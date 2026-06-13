@@ -13,28 +13,23 @@ vi.mock('@/entities/reports', async () => {
   };
 });
 
-vi.mock('@/entities/user', () => ({
-  useGetUsersQuery: () => ({
-    data: [{id: 'user-1', name: 'Менеджер'}],
-  }),
-}));
-
 describe('ReportToolbar', () => {
-  it('показывает фильтры по периоду, датам, менеджеру и этапу сделки', () => {
+  it('показывает только фильтры по периоду и виду отчёта', () => {
     render(
       <ReportToolbar
         period="week"
         filters={{period: 'week'}}
         reportName="sales"
-        onFiltersChange={vi.fn()}
         onPeriodChange={vi.fn()}
       />,
     );
 
     expect(screen.getByRole('combobox', {name: /период/i})).toBeInTheDocument();
-    expect(screen.getByLabelText(/дата с/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/дата по/i)).toBeInTheDocument();
-    expect(screen.getByRole('combobox', {name: /менеджер/i})).toBeInTheDocument();
-    expect(screen.getByRole('combobox', {name: /этап сделки/i})).toBeInTheDocument();
+    expect(screen.getByRole('combobox', {name: /вид отчёта/i})).toBeInTheDocument();
+    expect(screen.queryByLabelText(/дата с/i)).not.toBeInTheDocument();
+    expect(screen.queryByLabelText(/дата по/i)).not.toBeInTheDocument();
+    expect(screen.queryByRole('combobox', {name: /менеджер/i})).not.toBeInTheDocument();
+    expect(screen.queryByRole('combobox', {name: /этап сделки/i})).not.toBeInTheDocument();
+    expect(screen.queryByRole('combobox', {name: /статус задачи/i})).not.toBeInTheDocument();
   });
 });

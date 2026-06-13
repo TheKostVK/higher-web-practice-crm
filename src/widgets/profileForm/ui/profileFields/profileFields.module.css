@@ -14,11 +14,11 @@
     row-gap: var(--space-3);
   }
 
-  .profileFields__field_accountName {
+  .profileFields__field--accountName {
     order: 3;
   }
 
-  .profileFields__field_email {
+  .profileFields__field--email {
     order: 4;
   }
 }

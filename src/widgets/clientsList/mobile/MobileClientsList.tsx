@@ -54,21 +54,21 @@ export const MobileClientsList = () => {
                         onClick={() => handleCardClick(client)}
                         onKeyDown={(e) => e.key === 'Enter' && handleCardClick(client)}
                     >
-                        <div className={Styles.mobileClients__card_header}>
-                            <p className={Styles.mobileClients__card_name}>{client.deleted ?
+                        <div className={Styles['mobileClients__cardHeader']}>
+                            <p className={Styles['mobileClients__cardName']}>{client.deleted ?
                                 <s>{client.name}</s> : client.name}</p>
                             <span
-                                className={Styles.mobileClients__card_date}>{formatDate(client.createdAt, 'long')}</span>
+                                className={Styles['mobileClients__cardDate']}>{formatDate(client.createdAt, 'long')}</span>
                         </div>
 
-                        <div className={Styles.mobileClients__card_content}>
-                            <p className={Styles.mobileClients__card_phone}>{client.phone}</p>
-                            <p className={Styles.mobileClients__card_company}>{client.company}</p>
-                            <p className={Styles.mobileClients__card_email}>{client.email}</p>
-                            <p className={Styles.mobileClients__card_website}>{client.website}</p>
+                        <div className={Styles['mobileClients__cardContent']}>
+                            <p className={Styles['mobileClients__cardPhone']}>{client.phone}</p>
+                            <p className={Styles['mobileClients__cardCompany']}>{client.company}</p>
+                            <p className={Styles['mobileClients__cardEmail']}>{client.email}</p>
+                            <p className={Styles['mobileClients__cardWebsite']}>{client.website}</p>
                         </div>
 
-                        {client.comment && <p className={Styles.mobileClients__card_comment}>{client.comment}</p>}
+                        {client.comment && <p className={Styles['mobileClients__cardComment']}>{client.comment}</p>}
                     </div>
                 ))}
             </div>

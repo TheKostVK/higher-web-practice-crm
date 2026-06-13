@@ -33,12 +33,12 @@ const columns: ColumnsType<TSalesReportRow> = [
 ];
 
 export const SalesReport = () => {
-    const {period, applied, handleFiltersChange, handlePeriodChange} = useReportFilters();
+    const {period, applied, handlePeriodChange} = useReportFilters();
     const {data = [], isLoading, isError} = useGetSalesReportQuery(applied);
 
     return (
         <>
-            <ReportToolbar period={period} onPeriodChange={handlePeriodChange} onFiltersChange={handleFiltersChange} reportName="sales" filters={applied}/>
+            <ReportToolbar period={period} onPeriodChange={handlePeriodChange} reportName="sales" filters={applied}/>
             {isError && <ApiErrorMessage message="Не удалось загрузить отчёт по продажам." />}
             <Table
                 columns={columns}

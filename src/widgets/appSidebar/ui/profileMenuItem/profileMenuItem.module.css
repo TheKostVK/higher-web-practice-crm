@@ -13,7 +13,7 @@
   transition: color var(--animation-normal) background var(--animation-normal);
 }
 
-.profileMenuItem_mobile {
+.profileMenuItem--mobile {
   width: 40px;
   height: 40px;
 
@@ -24,7 +24,7 @@
   transition: color var(--animation-normal) background var(--animation-normal);
 }
 
-.profileSidebar_collapsed {
+.profileSidebar--collapsed {
   margin: 0 auto;
   padding: 0;
   width: 40px;
@@ -34,12 +34,12 @@
   gap: 0;
 }
 
-.profileMenuItem:hover:not(.profileSidebar_collapsed) {
+.profileMenuItem:hover:not(.profileSidebar--collapsed) {
   color: var(--color-accent-blue-600);
   background: var(--color-bg-gray-200);
 }
 
-.profileMenuItem_active {
+.profileMenuItem--active {
   color: var(--color-accent-blue-600);
 
   /* text-base B */
@@ -68,7 +68,7 @@
     transform var(--animation-normal);
 }
 
-.profileSidebar_collapsed .profileSidebar__userName {
+.profileSidebar--collapsed .profileSidebar__userName {
   max-width: 0;
 
   opacity: 0;

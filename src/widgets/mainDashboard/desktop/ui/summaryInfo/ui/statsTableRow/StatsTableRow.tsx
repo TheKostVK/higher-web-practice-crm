@@ -10,9 +10,9 @@ type TTableRowProps = {
 };
 
 const caseClassName: Record<TDashboardMetricCase, string> = {
-  increase: Styles.tableRow__cell_green,
-  decrease: Styles.tableRow__cell_red,
-  noChange: Styles.tableRow__cell_noChange,
+  increase: Styles['tableRow__cell--green'],
+  decrease: Styles['tableRow__cell--red'],
+  noChange: Styles['tableRow__cell--noChange'],
 };
 
 const mainValueIndex = 0;
@@ -41,7 +41,7 @@ export const StatsTableRow = ({title, data, isLoading}: TTableRowProps) => {
   const rowCells = METRIC_HEADER_KEY.map((key, index) => (
     <span
       key={key}
-      className={`${Styles.tableRow__cell} ${index !== mainValueIndex ? caseClassName[data[key].case] : Styles.tableRow__cell_value}`}
+      className={`${Styles.tableRow__cell} ${index !== mainValueIndex ? caseClassName[data[key].case] : Styles['tableRow__cell--value']}`}
     >
       {data[key].value}
     </span>

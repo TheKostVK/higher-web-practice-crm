@@ -36,10 +36,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
-  border-radius: var(--radius-sm);
-  background: var(--color-bg-white);
-  box-shadow: 0 4px 4px 0 var(--color-bg-gray-200);
 }
 
 .card__info {

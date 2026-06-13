@@ -4,6 +4,7 @@ import {useGetTopClientsQuery} from '@/entities/dashboard';
 import {useOpenModalRoute} from '@/shared/lib/modalRoute';
 import {BlockTitle} from '@/widgets/mainDashboard/desktop/ui/blockTitle';
 import {ApiErrorMessage} from '@/shared/ui/apiErrorMessage';
+import {StatusCard} from '@/shared/ui/statusCard';
 
 import Styles from './topClients.module.css';
 
@@ -25,15 +26,17 @@ export const TopClients = () => {
                 ) : (
                     <ul className={Styles.grid}>
                         {clients.map((client) => (
-                            <li key={client.id} className={Styles.card}>
-                                <div className={Styles.card__info}>
-                                    <span className={Styles.card__name}>{client.name}</span>
-                                    <span className={Styles.card__company}>«{client.company}»</span>
-                                </div>
-                                <div className={Styles.card__deals}>
-                                    <span className={Styles.card__dealsCount}>{client.dealsCount}</span>
-                                    <span className={Styles.card__dealsLabel}>сделок</span>
-                                </div>
+                            <li key={client.id}>
+                                <StatusCard className={Styles.card}>
+                                    <div className={Styles.card__info}>
+                                        <span className={Styles.card__name}>{client.name}</span>
+                                        <span className={Styles.card__company}>«{client.company}»</span>
+                                    </div>
+                                    <div className={Styles.card__deals}>
+                                        <span className={Styles.card__dealsCount}>{client.dealsCount}</span>
+                                        <span className={Styles.card__dealsLabel}>сделок</span>
+                                    </div>
+                                </StatusCard>
                             </li>
                         ))}
                     </ul>

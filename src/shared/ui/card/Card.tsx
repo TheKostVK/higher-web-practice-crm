@@ -1,12 +1,17 @@
-import type {ReactNode} from 'react';
+import type {HTMLAttributes, ReactNode} from 'react';
 
 import Styles from './card.module.css';
 
-type TCardProps = {
+type TCardProps = HTMLAttributes<HTMLDivElement> & {
     children: ReactNode;
     className?: string;
 };
 
-export const Card = ({children, className = ''}: TCardProps) => {
-    return <div className={`${Styles.card} ${className}`.trim()}>{children}</div>;
+/**
+ * Отображает базовую карточку.
+ * @param props Параметры карточки.
+ * @returns Карточка.
+ */
+export const Card = ({children, className = '', ...props}: TCardProps) => {
+    return <div {...props} className={`${Styles.card} ${className}`.trim()}>{children}</div>;
 };

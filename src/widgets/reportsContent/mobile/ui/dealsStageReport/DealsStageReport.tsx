@@ -5,7 +5,7 @@ import {CompactDealsStageCards} from "@/widgets/reportsContent/mobile/ui/compact
 import {ApiErrorMessage} from '@/shared/ui/apiErrorMessage';
 
 export const DealsStageReport = () => {
-    const {period, applied, handleFiltersChange, handlePeriodChange} = useReportFilters();
+    const {period, applied, handlePeriodChange} = useReportFilters();
     const {data = [], isLoading, isError} = useGetDealsStageReportQuery(applied);
 
     return (
@@ -13,7 +13,6 @@ export const DealsStageReport = () => {
             <ReportToolbar
                 period={period}
                 onPeriodChange={handlePeriodChange}
-                onFiltersChange={handleFiltersChange}
                 reportName="deals-stage"
                 filters={applied}
             />

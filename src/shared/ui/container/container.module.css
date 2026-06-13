@@ -19,7 +19,7 @@
   align-items: start;
 }
 
-.container__content_mobile {
+.container__content--mobile {
   width: 100%;
   overflow-y: scroll;
 }

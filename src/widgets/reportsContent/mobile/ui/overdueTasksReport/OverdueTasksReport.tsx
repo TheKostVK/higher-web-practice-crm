@@ -9,7 +9,7 @@ export type TReportViewProps = {
 };
 
 export const OverdueTasksReport = () => {
-    const {period, applied, handleFiltersChange, handlePeriodChange} = useReportFilters();
+    const {period, applied, handlePeriodChange} = useReportFilters();
     const {data = [], isLoading, isError} = useGetOverdueTasksReportQuery(applied);
 
     return (
@@ -17,7 +17,6 @@ export const OverdueTasksReport = () => {
             <ReportToolbar
                 period={period}
                 onPeriodChange={handlePeriodChange}
-                onFiltersChange={handleFiltersChange}
                 reportName="overdue-tasks"
                 filters={applied}
             />

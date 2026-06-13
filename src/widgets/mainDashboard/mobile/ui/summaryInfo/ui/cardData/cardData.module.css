@@ -58,7 +58,7 @@
   flex-shrink: 0;
 }
 
-.cardData__content__cell {
+.cardData__contentCell {
   display: flex;
   align-items: baseline;
   gap: 2px;
@@ -87,29 +87,29 @@
   line-height: 20px; /* 142.857% */
 }
 
-.cell__value_noChange {
+.cell__value--noChange {
   color: var(--color-neutral-gray-800);
 }
 
-.cell__value_noChange::before {
+.cell__value--noChange::before {
   content: '~';
   margin-right: 2px;
 }
 
-.cell__value_green {
+.cell__value--green {
   color: var(--color-accent-green-500);
 }
 
-.cell__value_green::before {
+.cell__value--green::before {
   content: '+';
   margin-right: 2px;
 }
 
-.cell__value_red {
+.cell__value--red {
   color: var(--color-accent-red-500);
 }
 
-.cell__value_red::before {
+.cell__value--red::before {
   content: '-';
   margin-right: 2px;
 }

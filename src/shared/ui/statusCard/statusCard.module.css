@@ -1,0 +1,31 @@
+.card.card--info {
+    background: var(--color-bg-blue-100);
+}
+
+.card.card--success {
+    background: var(--color-bg-green-100);
+}
+
+.card.card--warning {
+    background: var(--color-bg-yellow-100);
+}
+
+.card.card--danger {
+    background: var(--color-bg-red-100);
+}
+
+.text--info {
+    color: var(--color-accent-blue-500);
+}
+
+.text--success {
+    color: var(--color-accent-green-500);
+}
+
+.text--warning {
+    color: var(--color-accent-yellow-500);
+}
+
+.text--danger {
+    color: var(--color-accent-red-500);
+}

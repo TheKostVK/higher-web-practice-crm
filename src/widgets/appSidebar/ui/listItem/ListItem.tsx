@@ -20,7 +20,7 @@ export const ListItem = memo(({item}: TListItemProps) => {
       title={item.title}
       onClick={closeMenu}
       className={({isActive}) =>
-        `${Styles.listItem} ${isActive ? Styles.listItem_active : ''} ${collapsed ? Styles.listItem_collapsed : ''}`
+        `${Styles.listItem} ${isActive ? Styles['listItem--active'] : ''} ${collapsed ? Styles['listItem--collapsed'] : ''}`
       }
     >
       {item.icon}

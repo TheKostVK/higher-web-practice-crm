@@ -10,9 +10,9 @@ type TTableRowProps = {
 };
 
 const caseClassName: Record<TDashboardMetricCase, string> = {
-  increase: Styles.cell__value_green,
-  decrease: Styles.cell__value_red,
-  noChange: Styles.cell__value_noChange,
+  increase: Styles['cell__value--green'],
+  decrease: Styles['cell__value--red'],
+  noChange: Styles['cell__value--noChange'],
 };
 
 const metricGroups: MetricKey[][] = [
@@ -55,7 +55,7 @@ export const CardData = memo(({title, data, isLoading = false}: TTableRowProps) 
               const item = data[metricKey];
 
               return (
-                <div key={item.name} className={Styles.cardData__content__cell}>
+                <div key={item.name} className={Styles['cardData__contentCell']}>
                   <span className={Styles.cell__title}>{METRIC_HEADER[item.name]}</span>
                   <span className={`${Styles.cell__value} ${caseClassName[item.case]}`}>{item.value}</span>
                 </div>

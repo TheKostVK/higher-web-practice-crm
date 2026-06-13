@@ -160,7 +160,7 @@
   white-space: nowrap;
 }
 
-.reportsContent__salesCell_id {
+.reportsContent__salesCell--id {
   color: var(--color-accent-blue-500);
 }
 

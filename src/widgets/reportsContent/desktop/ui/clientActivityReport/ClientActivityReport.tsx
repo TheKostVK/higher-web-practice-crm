@@ -35,7 +35,7 @@ const columns: ColumnsType<TClientActivityReportRow> = [
 
 
 export const ClientActivityReport = () => {
-    const {period, applied, handleFiltersChange, handlePeriodChange} = useReportFilters();
+    const {period, applied, handlePeriodChange} = useReportFilters();
     const {data = [], isLoading, isError} = useGetClientActivityReportQuery(applied);
 
     return (
@@ -43,7 +43,6 @@ export const ClientActivityReport = () => {
             <ReportToolbar
                 period={period}
                 onPeriodChange={handlePeriodChange}
-                onFiltersChange={handleFiltersChange}
                 reportName="client-activity"
                 filters={applied}
             />

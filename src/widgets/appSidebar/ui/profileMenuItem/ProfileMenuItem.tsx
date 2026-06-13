@@ -27,7 +27,7 @@ export const ProfileMenuItem = memo(({isMobile = false}: TProfileMenuItemProps) 
       onClick={closeMenu}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={({isActive}) => `${Styles.profileMenuItem_mobile} ${isActive ? Styles.profileMenuItem_active : ''}`}
+      className={({isActive}) => `${Styles['profileMenuItem--mobile']} ${isActive ? Styles['profileMenuItem--active'] : ''}`}
     >
       {({isActive}) => <ProfileAvatar useIcon isActive={isActive || isHovered} alt="Картинка профиля" />}
     </NavLink>
@@ -40,7 +40,7 @@ export const ProfileMenuItem = memo(({isMobile = false}: TProfileMenuItemProps) 
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={({isActive}) =>
-        `${Styles.profileMenuItem} ${isActive ? Styles.profileMenuItem_active : ''} ${collapsed ? Styles.profileSidebar_collapsed : ''}`
+        `${Styles.profileMenuItem} ${isActive ? Styles['profileMenuItem--active'] : ''} ${collapsed ? Styles['profileSidebar--collapsed'] : ''}`
       }
     >
       {({isActive}) => (

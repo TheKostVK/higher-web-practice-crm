@@ -17,7 +17,7 @@ export const SideMenu = ({children}: TSideMenuProps) => {
   const {collapsed, toggleCollapsed} = useContext(AppMenuContext);
 
   return (
-    <div className={`${Styles.sideMenu} ${collapsed ? Styles.sideMenu_collapsed : ''}`}>
+    <div className={`${Styles.sideMenu} ${collapsed ? Styles['sideMenu--collapsed'] : ''}`}>
       <div className={Styles.sideMenu__header}>
         <img className={Styles.sideMenu__logo} src={Logo} alt="YaPlex" />
         <Button

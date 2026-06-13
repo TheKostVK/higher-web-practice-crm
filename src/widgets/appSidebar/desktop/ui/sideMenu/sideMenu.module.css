@@ -13,7 +13,7 @@
   transition: width var(--animation-normal);
 }
 
-.sideMenu_collapsed {
+.sideMenu--collapsed {
   padding-inline: 12px;
   width: 72px;
 }
@@ -49,10 +49,10 @@
   border-inline-end: 0;
 }
 
-.sideMenu_collapsed .sideMenu__header {
+.sideMenu--collapsed .sideMenu__header {
   justify-content: center;
 }
 
-.sideMenu_collapsed .sideMenu__logo {
+.sideMenu--collapsed .sideMenu__logo {
   display: none;
 }

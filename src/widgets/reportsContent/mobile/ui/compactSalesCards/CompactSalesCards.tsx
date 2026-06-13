@@ -24,7 +24,7 @@ export const CompactSalesCards = ({items, emptyText, isLoading}: TCompactSalesCa
                         <article key={row.dealId} className={Styles.reportsContent__card}>
                             <div className={Styles.reportsContent__salesRow}>
                               <span
-                                  className={`${Styles.reportsContent__salesCell} ${Styles.reportsContent__salesCell_id}`}>
+                                  className={`${Styles.reportsContent__salesCell} ${Styles['reportsContent__salesCell--id']}`}>
                                 {SALES_CARD_PLACEHOLDER_ID(row.dealId)}
                               </span>
                                 <span className={Styles.reportsContent__salesCell}>{row.clientName}</span>

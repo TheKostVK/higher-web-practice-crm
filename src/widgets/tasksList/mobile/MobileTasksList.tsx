@@ -33,14 +33,14 @@ export const MobileTasksList = () => {
     return (
         <MainSection>
             <Input
-                className={Styles.mobileDeals__search}
+                className={Styles.mobileTasks__search}
                 placeholder="Искать"
                 allowClear
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 aria-label="Искать сделку"
                 disabled={isFetching}
-                prefix={<span className={Styles.mobileTasks__search_icon} aria-hidden="true"/>}
+                prefix={<span className={Styles['mobileTasks__searchIcon']} aria-hidden="true"/>}
             />
             {isError && <ApiErrorMessage message="Не удалось загрузить список задач." />}
             <div className={Styles.mobileTasks__list}>
@@ -53,14 +53,14 @@ export const MobileTasksList = () => {
                         onClick={() => handleCardClick(task)}
                         onKeyDown={(e) => e.key === 'Enter' && handleCardClick(task)}
                     >
-                        <p className={Styles.mobileTasks__card_title}>{task.title}</p>
-                        {task.dealTitle && <p className={Styles.mobileTasks__card_deal}>{task.dealTitle}</p>}
-                        <div className={Styles.mobileTasks__card_footer}>
-                            <span className={Styles.mobileTasks__card_assignee}>{task.assigneeName}</span>
+                        <p className={Styles['mobileTasks__cardTitle']}>{task.title}</p>
+                        {task.dealTitle && <p className={Styles['mobileTasks__cardDeal']}>{task.dealTitle}</p>}
+                        <div className={Styles['mobileTasks__cardFooter']}>
+                            <span className={Styles['mobileTasks__cardAssignee']}>{task.assigneeName}</span>
                             <Tag color={TASK_STATUS_COLORS[task.status as TTaskStatus]}>
                                 {TASK_STATUS_LABELS[task.status as TTaskStatus]}
                             </Tag>
-                            <span className={Styles.mobileTasks__card_due}>{formatDate(task.dueDate)}</span>
+                            <span className={Styles['mobileTasks__cardDue']}>{formatDate(task.dueDate)}</span>
                         </div>
                     </div>
                 ))}

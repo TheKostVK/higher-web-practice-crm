@@ -5,7 +5,7 @@ import {useReportFilters} from "@/widgets/reportsContent/hook";
 import {MobileReportBody} from "@/widgets/reportsContent/mobile/ui/mobileReportBody";
 
 export const NewClientsReport = () => {
-    const {period, applied, handleFiltersChange, handlePeriodChange} = useReportFilters();
+    const {period, applied, handlePeriodChange} = useReportFilters();
     const {data = [], isLoading, isError} = useGetNewClientsReportQuery(applied);
 
     return (
@@ -13,7 +13,6 @@ export const NewClientsReport = () => {
             <ReportToolbar
                 period={period}
                 onPeriodChange={handlePeriodChange}
-                onFiltersChange={handleFiltersChange}
                 reportName="new-clients"
                 filters={applied}
             />

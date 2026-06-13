@@ -23,7 +23,7 @@ export const ProfileAvatar = memo(
   ({useIcon = false, isActive = false, size = 'medium', src, alt}: TProfileAvatarProps) => {
     return (
       <Avatar
-        className={`${Styles.profileAvatar__img} ${isActive ? Styles.profileAvatar__img_active : ''}`}
+        className={`${Styles.profileAvatar__img} ${isActive ? Styles['profileAvatar__img--active'] : ''}`}
         size={ProfileSize[size]}
         src={!src && useIcon ? undefined : src}
         icon={useIcon || !src ? <ProfileIconFallback /> : undefined}

@@ -13,9 +13,6 @@
     flex-direction: column;
     gap: 4px;
     padding: 10px 12px;
-    border-radius: 8px;
-    background: var(--color-bg-white);
-    box-shadow: 0 4px 8px 0 var(--color-bg-gray-200);
 }
 
 .card__header {

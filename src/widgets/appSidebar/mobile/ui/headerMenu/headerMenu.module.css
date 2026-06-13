@@ -13,7 +13,7 @@
     border-radius var(--animation-normal);
 }
 
-.headerMenu_open {
+.headerMenu--open {
   position: fixed;
   inset: 0;
   z-index: 1000;
@@ -31,6 +31,9 @@
 }
 
 .headerMenu__logo {
+}
+
+.headerMenu__trigger {
 }
 
 .headerMenu__content {

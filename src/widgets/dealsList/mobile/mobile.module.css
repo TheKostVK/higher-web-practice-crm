@@ -21,14 +21,14 @@
   color: var(--color-neutral-gray-400);
 }
 
-.mobileDeals__search_icon {
+.mobileDeals__searchIcon {
   position: relative;
   width: 16px;
   height: 16px;
   flex: 0 0 16px;
 }
 
-.mobileDeals__search_icon::before {
+.mobileDeals__searchIcon::before {
   content: '';
   position: absolute;
   top: 1px;
@@ -39,7 +39,7 @@
   border-radius: 50%;
 }
 
-.mobileDeals__search_icon::after {
+.mobileDeals__searchIcon::after {
   content: '';
   position: absolute;
   right: 2px;
@@ -71,23 +71,23 @@
   cursor: pointer;
 }
 
-.mobileDeals__card_blue {
+.mobileDeals__card--blue {
   background: var(--color-bg-blue-100);
 }
 
-.mobileDeals__card_green {
+.mobileDeals__card--green {
   background: var(--color-bg-green-100);
 }
 
-.mobileDeals__card_orange {
+.mobileDeals__card--orange {
   background: var(--color-bg-yellow-100);
 }
 
-.mobileDeals__card_white {
+.mobileDeals__card--white {
   background: var(--color-bg-white);
 }
 
-.mobileDeals__card_row {
+.mobileDeals__cardRow {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -95,7 +95,7 @@
   width: 100%;
 }
 
-.mobileDeals__card_title {
+.mobileDeals__cardTitle {
   min-width: 0;
   margin: 0;
   color: var(--color-neutral-gray-800);
@@ -104,7 +104,7 @@
   line-height: 20px;
 }
 
-.mobileDeals__card_client {
+.mobileDeals__cardClient {
   min-width: 0;
   margin: 0;
   color: var(--color-neutral-gray-800);
@@ -112,7 +112,7 @@
   line-height: 20px;
 }
 
-.mobileDeals__card_status {
+.mobileDeals__cardStatus {
   flex: 0 0 auto;
   color: var(--color-neutral-gray-800);
   font-size: 12px;
@@ -121,14 +121,14 @@
   white-space: nowrap;
 }
 
-.mobileDeals__card_description {
+.mobileDeals__cardDescription {
   margin: 6px 0 0;
   color: var(--color-neutral-gray-500);
   font-size: 12px;
   line-height: 16px;
 }
 
-.mobileDeals__card_footer {
+.mobileDeals__cardFooter {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -136,7 +136,7 @@
   margin-top: 6px;
 }
 
-.mobileDeals__card_amount {
+.mobileDeals__cardAmount {
   flex: 0 0 auto;
   color: var(--color-neutral-gray-800);
   font-weight: 700;
@@ -146,26 +146,26 @@
   white-space: nowrap;
 }
 
-.mobileDeals__date_block {
+.mobileDeals__dateBlock {
   display: flex;
   min-width: 0;
   flex-direction: column;
   gap: 2px;
 }
 
-.mobileDeals__date_block_end {
+.mobileDeals__dateBlock--end {
   flex: 0 0 auto;
   align-items: flex-end;
   text-align: right;
 }
 
-.mobileDeals__date_label {
+.mobileDeals__dateLabel {
   color: var(--color-neutral-gray-400);
   font-size: 12px;
   line-height: 16px;
 }
 
-.mobileDeals__date_value {
+.mobileDeals__dateValue {
   color: var(--color-neutral-gray-800);
   font-size: 12px;
   line-height: 16px;

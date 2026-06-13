@@ -1,3 +1,6 @@
+.tableRow {
+}
+
 .tableRow__title {
   color: var(--color-neutral-gray-800);
 
@@ -32,7 +35,7 @@
   line-height: 28px; /* 140% */
 }
 
-.tableRow__cell_value {
+.tableRow__cell--value {
   color: var(--color-accent-blue-500);
 
   /* text-2xl */
@@ -43,31 +46,31 @@
   line-height: 32px; /* 133.333% */
 }
 
-.tableRow__cell_noChange {
+.tableRow__cell--noChange {
   color: var(--color-neutral-gray-800);
 }
 
-.tableRow__cell_noChange::before {
+.tableRow__cell--noChange::before {
   content: '~';
   margin-right: -8px;
   display: block;
 }
 
-.tableRow__cell_green {
+.tableRow__cell--green {
   color: var(--color-accent-green-500);
 }
 
-.tableRow__cell_green::before {
+.tableRow__cell--green::before {
   content: '+';
   margin-right: -8px;
   display: block;
 }
 
-.tableRow__cell_red {
+.tableRow__cell--red {
   color: var(--color-accent-red-500);
 }
 
-.tableRow__cell_red::before {
+.tableRow__cell--red::before {
   content: '-';
   margin-right: -8px;
   display: block;

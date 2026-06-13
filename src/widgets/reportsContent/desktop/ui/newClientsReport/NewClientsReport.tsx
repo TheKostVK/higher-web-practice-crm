@@ -31,7 +31,7 @@ const columns: ColumnsType<TNewClientReportRow> = [
 ];
 
 export const NewClientsReport = () => {
-    const {period, applied, handleFiltersChange, handlePeriodChange} = useReportFilters();
+    const {period, applied, handlePeriodChange} = useReportFilters();
     const {data = [], isLoading, isError} = useGetNewClientsReportQuery(applied);
 
     return (
@@ -39,7 +39,6 @@ export const NewClientsReport = () => {
             <ReportToolbar
                 period={period}
                 onPeriodChange={handlePeriodChange}
-                onFiltersChange={handleFiltersChange}
                 reportName="new-clients"
                 filters={applied}
             />

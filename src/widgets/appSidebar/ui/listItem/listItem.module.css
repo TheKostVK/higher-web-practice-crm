@@ -30,11 +30,11 @@
   background: var(--color-neutral-gray-300);
 }
 
-.listItem_active {
+.listItem--active {
   color: var(--color-accent-blue-600);
 }
 
-.listItem_active svg path {
+.listItem--active svg path {
   stroke: var(--color-accent-blue-600);
 }
 
@@ -54,14 +54,14 @@
     transform var(--animation-normal);
 }
 
-.listItem_collapsed .listItem__title {
+.listItem--collapsed .listItem__title {
   max-width: 0;
 
   opacity: 0;
   transform: translateX(-8px);
 }
 
-.listItem_collapsed {
+.listItem--collapsed {
   margin: 0 auto;
   padding: 8px;
   width: 40px;
@@ -73,7 +73,7 @@
   border-radius: var(--radius-sm);
 }
 
-.listItem_collapsed:not(:last-child)::after {
+.listItem--collapsed:not(:last-child)::after {
   right: 0;
   left: 0;
 }

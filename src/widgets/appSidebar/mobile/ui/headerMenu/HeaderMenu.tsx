@@ -31,7 +31,7 @@ export const HeaderMenu = ({children}: THeaderMenuProps) => {
   }, [collapsed]);
 
   return (
-    <div className={`${Styles.headerMenu} ${collapsed ? '' : Styles.headerMenu_open}`}>
+    <div className={`${Styles.headerMenu} ${collapsed ? '' : Styles['headerMenu--open']}`}>
       <div className={Styles.headerMenu__header}>
         <Button
           aria-label={collapsed ? 'Раскрыть меню' : 'Свернуть меню'}

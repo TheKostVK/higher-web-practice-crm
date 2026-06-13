@@ -11,10 +11,10 @@ import Styles from './mobile.module.css';
 import {MainSection} from "@/shared/ui/mainSection";
 
 const DEAL_STATUS_CLASS_NAMES: Record<TDealStatus, string> = {
-    new: Styles.mobileDeals__card_blue,
-    in_progress: Styles.mobileDeals__card_green,
-    completed: Styles.mobileDeals__card_white,
-    cancelled: Styles.mobileDeals__card_orange,
+    new: Styles['mobileDeals__card--blue'],
+    in_progress: Styles['mobileDeals__card--green'],
+    completed: Styles['mobileDeals__card--white'],
+    cancelled: Styles['mobileDeals__card--orange'],
 };
 
 /**
@@ -46,7 +46,7 @@ export const MobileDealsList = () => {
                 onChange={(e) => setSearch(e.target.value)}
                 aria-label="Искать сделку"
                 disabled={isFetching}
-                prefix={<span className={Styles.mobileDeals__search_icon} aria-hidden="true"/>}
+                prefix={<span className={Styles['mobileDeals__searchIcon']} aria-hidden="true"/>}
             />
             {isError && <ApiErrorMessage message="Не удалось загрузить список сделок." />}
 
@@ -60,29 +60,29 @@ export const MobileDealsList = () => {
                         onClick={() => handleCardClick(deal)}
                         onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && handleCardClick(deal)}
                     >
-                        <div className={Styles.mobileDeals__card_row}>
-                            <p className={Styles.mobileDeals__card_title}>{deal.title}</p>
-                            <span className={Styles.mobileDeals__card_status}>
+                        <div className={Styles['mobileDeals__cardRow']}>
+                            <p className={Styles['mobileDeals__cardTitle']}>{deal.title}</p>
+                            <span className={Styles['mobileDeals__cardStatus']}>
                             {DEAL_STATUS_LABELS[deal.status as TDealStatus]}
                           </span>
                         </div>
 
-                        <div className={Styles.mobileDeals__card_row}>
-                            <p className={Styles.mobileDeals__card_client}>{deal.clientName}</p>
-                            <span className={Styles.mobileDeals__card_amount}>{formatAmount(deal.amount)}</span>
+                        <div className={Styles['mobileDeals__cardRow']}>
+                            <p className={Styles['mobileDeals__cardClient']}>{deal.clientName}</p>
+                            <span className={Styles['mobileDeals__cardAmount']}>{formatAmount(deal.amount)}</span>
                         </div>
 
-                        <p className={Styles.mobileDeals__card_description}>{deal.description || '—'}</p>
+                        <p className={Styles['mobileDeals__cardDescription']}>{deal.description || '—'}</p>
 
-                        <div className={Styles.mobileDeals__card_footer}>
-                            <div className={Styles.mobileDeals__date_block}>
-                                <span className={Styles.mobileDeals__date_label}>создана</span>
-                                <span className={Styles.mobileDeals__date_value}>{formatDate(deal.createdAt)}</span>
+                        <div className={Styles['mobileDeals__cardFooter']}>
+                            <div className={Styles['mobileDeals__dateBlock']}>
+                                <span className={Styles['mobileDeals__dateLabel']}>создана</span>
+                                <span className={Styles['mobileDeals__dateValue']}>{formatDate(deal.createdAt)}</span>
                             </div>
 
-                            <div className={`${Styles.mobileDeals__date_block} ${Styles.mobileDeals__date_block_end}`}>
-                                <span className={Styles.mobileDeals__date_label}>завершена</span>
-                                <span className={Styles.mobileDeals__date_value}>{formatDate(deal.completedAt)}</span>
+                            <div className={`${Styles['mobileDeals__dateBlock']} ${Styles['mobileDeals__dateBlock--end']}`}>
+                                <span className={Styles['mobileDeals__dateLabel']}>завершена</span>
+                                <span className={Styles['mobileDeals__dateValue']}>{formatDate(deal.completedAt)}</span>
                             </div>
                         </div>
                     </div>

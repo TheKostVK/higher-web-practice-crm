@@ -26,7 +26,7 @@ export const MainLayout = () => {
       <AppSidebar />
       <Layout>
         <Content
-          className={`${Styles.content} ${isMobile && contentPathname === '/profile' ? Styles.content_gradient : ''}`}
+          className={`${Styles.content} ${isMobile && contentPathname === '/profile' ? Styles['content--gradient'] : ''}`}
         >
           <PageRoutes location={backgroundLocation || location} />
           <ModalRouteLayer />

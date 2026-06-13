@@ -5,7 +5,7 @@ import {ReportToolbar} from "@/widgets/reportsContent/ui/reportToolbar";
 import {MobileReportBody} from "@/widgets/reportsContent/mobile/ui/mobileReportBody";
 
 export const ClientActivityReport = () => {
-    const {period, applied, handleFiltersChange, handlePeriodChange} = useReportFilters();
+    const {period, applied, handlePeriodChange} = useReportFilters();
     const {data = [], isLoading, isError} = useGetClientActivityReportQuery(applied);
 
     return (
@@ -13,7 +13,6 @@ export const ClientActivityReport = () => {
             <ReportToolbar
                 period={period}
                 onPeriodChange={handlePeriodChange}
-                onFiltersChange={handleFiltersChange}
                 reportName="client-activity"
                 filters={applied}
             />
