@@ -61,7 +61,7 @@ const columns: ColumnsType<TClientListRow> = [
         title: '',
         key: 'actions',
         width: 80,
-        render: (_value, record) => (!record.deleted ? <ActionsCell record={record}/> : null),
+        render: (_value, record) => (!record.deleted ? <ActionsCell record={record} /> : null),
     },
 ];
 
