@@ -1,4 +1,5 @@
 import {Button} from 'antd';
+import {NavLink} from 'react-router-dom';
 
 import Logo from '../../../assetes/logo/YaPlex+Logo.svg';
 import OpenIcon from './assets/sideMenuOpen.svg?react';
@@ -19,7 +20,9 @@ export const SideMenu = ({children}: TSideMenuProps) => {
   return (
     <div className={`${Styles.sideMenu} ${collapsed ? Styles['sideMenu--collapsed'] : ''}`}>
       <div className={Styles.sideMenu__header}>
-        <img className={Styles.sideMenu__logo} src={Logo} alt="YaPlex" />
+        <NavLink to={'/'} className={Styles.sideMenu__logoLink} aria-label="На главную страницу">
+          <img className={Styles.sideMenu__logo} src={Logo} alt="YaPlex" />
+        </NavLink>
         <Button
           aria-label={collapsed ? 'Раскрыть меню' : 'Свернуть меню'}
           className={Styles.sideMenu__trigger}

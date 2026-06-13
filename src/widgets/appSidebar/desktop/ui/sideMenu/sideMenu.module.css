@@ -36,6 +36,14 @@
   margin-top: auto;
 }
 
+.sideMenu__logoLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+
 .sideMenu__logo {
   width: 102px;
   height: 24px;
@@ -51,6 +59,10 @@
 
 .sideMenu--collapsed .sideMenu__header {
   justify-content: center;
+}
+
+.sideMenu--collapsed .sideMenu__logoLink {
+  display: none;
 }
 
 .sideMenu--collapsed .sideMenu__logo {
