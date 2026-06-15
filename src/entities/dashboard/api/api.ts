@@ -147,7 +147,7 @@ const getTopClients = (clients: TClient[], deals: TDeal[]): TDashboardTopClient[
 
 const getTopDeals = (deals: TDeal[], clientsById: Map<string, TClient>): TDashboardTopDeal[] =>
     [...deals]
-        .sort((left, right) => right.amount - left.amount)
+        .sort((left, right) => new Date(right.createdAt).getTime() - new Date(left.createdAt).getTime())
         .slice(0, 10)
         .map((deal) => ({
             id: deal.id,
@@ -177,16 +177,34 @@ export const dashboardApi = createApi({
     tagTypes: ['Dashboard'],
     endpoints: (builder) => ({
         getDashboardStats: builder.query<TDashboardData['stats'], TDashboardFilters | void>({
-            query: (filters) => ({
-                url: '/dashboardStats',
-                params:
-                    filters?.managerId || filters?.period
-                        ? {
-                              managerId: filters.managerId,
-                              period: filters.period,
-                          }
-                        : undefined,
-            }),
+            async queryFn(filters, _api, _extraOptions, fetchWithBQ) {
+                const clientsResult = await fetchWithBQ('/clients');
+
+                if (clientsResult.error) {
+                    return {error: clientsResult.error};
+                }
+
+                const dealsResult = await fetchWithBQ('/deals');
+
+                if (dealsResult.error) {
+                    return {error: dealsResult.error};
+                }
+
+                const tasksResult = await fetchWithBQ('/tasks');
+
+                if (tasksResult.error) {
+                    return {error: tasksResult.error};
+                }
+
+                const {stats} = getDashboardData(
+                    clientsResult.data as TClient[],
+                    dealsResult.data as TDeal[],
+                    tasksResult.data as TTask[],
+                    filters || {},
+                );
+
+                return {data: stats};
+            },
             providesTags: [{type: 'Dashboard', id: 'STATS'}],
         }),
         getDashboardData: builder.query<TDashboardData, TDashboardFilters | void>({

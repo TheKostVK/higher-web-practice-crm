@@ -2,7 +2,20 @@ import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import type {TDeal} from '../../deal';
 import type {TUser} from '../../user';
 import type {TCreateTaskPayload, TTask, TTaskListFilters, TTaskListRow, TUpdateTaskByIdPayload} from '../types';
+import {dashboardApi} from '@/entities/dashboard';
 import {getApiBaseUrl} from '@/shared/api';
+
+const invalidateDashboard = async (
+    queryFulfilled: Promise<unknown>,
+    dispatch: (action: ReturnType<typeof dashboardApi.util.invalidateTags>) => unknown,
+) => {
+    try {
+        await queryFulfilled;
+        dispatch(dashboardApi.util.invalidateTags(['Dashboard']));
+    } catch {
+        return;
+    }
+};
 
 const isDateInRange = (date: string | undefined, from?: string, to?: string) => {
     if (!date) {
@@ -141,6 +154,7 @@ export const taskApi = createApi({
                 },
             }),
             invalidatesTags: [{type: 'TTask', id: 'LIST'}],
+            onQueryStarted: (_arg, {dispatch, queryFulfilled}) => invalidateDashboard(queryFulfilled, dispatch),
         }),
         updateTask: builder.mutation<TTask, TUpdateTaskByIdPayload>({
             query: ({id, data}) => ({
@@ -152,6 +166,7 @@ export const taskApi = createApi({
                 {type: 'TTask', id},
                 {type: 'TTask', id: 'LIST'},
             ],
+            onQueryStarted: (_arg, {dispatch, queryFulfilled}) => invalidateDashboard(queryFulfilled, dispatch),
         }),
         completeTask: builder.mutation<TTask, string>({
             query: (taskId) => ({
@@ -163,6 +178,7 @@ export const taskApi = createApi({
                 {type: 'TTask', id: taskId},
                 {type: 'TTask', id: 'LIST'},
             ],
+            onQueryStarted: (_arg, {dispatch, queryFulfilled}) => invalidateDashboard(queryFulfilled, dispatch),
         }),
         deleteTask: builder.mutation<void, string>({
             query: (taskId) => ({
@@ -173,6 +189,7 @@ export const taskApi = createApi({
                 {type: 'TTask', id: taskId},
                 {type: 'TTask', id: 'LIST'},
             ],
+            onQueryStarted: (_arg, {dispatch, queryFulfilled}) => invalidateDashboard(queryFulfilled, dispatch),
         }),
     }),
 });

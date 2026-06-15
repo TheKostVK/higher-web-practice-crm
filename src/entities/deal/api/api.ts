@@ -1,7 +1,20 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import type {TClient} from '../../client';
 import type {TCreateDealPayload, TDeal, TDealListFilters, TDealListRow, TUpdateDealByIdPayload} from '../types';
+import {dashboardApi} from '@/entities/dashboard';
 import {getApiBaseUrl} from '@/shared/api';
+
+const invalidateDashboard = async (
+    queryFulfilled: Promise<unknown>,
+    dispatch: (action: ReturnType<typeof dashboardApi.util.invalidateTags>) => unknown,
+) => {
+    try {
+        await queryFulfilled;
+        dispatch(dashboardApi.util.invalidateTags(['Dashboard']));
+    } catch {
+        return;
+    }
+};
 
 const isDateInRange = (date: string | undefined, from?: string, to?: string) => {
     if (!date) {
@@ -120,6 +133,7 @@ export const dealApi = createApi({
                 },
             }),
             invalidatesTags: [{type: 'TDeal', id: 'LIST'}],
+            onQueryStarted: (_arg, {dispatch, queryFulfilled}) => invalidateDashboard(queryFulfilled, dispatch),
         }),
         updateDeal: builder.mutation<TDeal, TUpdateDealByIdPayload>({
             query: ({id, data}) => ({
@@ -131,6 +145,7 @@ export const dealApi = createApi({
                 {type: 'TDeal', id},
                 {type: 'TDeal', id: 'LIST'},
             ],
+            onQueryStarted: (_arg, {dispatch, queryFulfilled}) => invalidateDashboard(queryFulfilled, dispatch),
         }),
         completeDeal: builder.mutation<TDeal, string>({
             query: (dealId) => ({
@@ -145,6 +160,7 @@ export const dealApi = createApi({
                 {type: 'TDeal', id: dealId},
                 {type: 'TDeal', id: 'LIST'},
             ],
+            onQueryStarted: (_arg, {dispatch, queryFulfilled}) => invalidateDashboard(queryFulfilled, dispatch),
         }),
         deleteDeal: builder.mutation<void, string>({
             query: (dealId) => ({
@@ -155,6 +171,7 @@ export const dealApi = createApi({
                 {type: 'TDeal', id: dealId},
                 {type: 'TDeal', id: 'LIST'},
             ],
+            onQueryStarted: (_arg, {dispatch, queryFulfilled}) => invalidateDashboard(queryFulfilled, dispatch),
         }),
     }),
 });

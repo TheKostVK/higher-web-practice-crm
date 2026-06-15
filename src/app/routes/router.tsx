@@ -9,59 +9,64 @@ import {ConfirmEmailPage, ForgotPasswordPage, LoginPage, RegistrationPage, Welco
 
 const withSuspense = (element: ReactElement) => <Suspense fallback={<Preloader />}>{element}</Suspense>;
 
-export const router = createBrowserRouter([
+export const router = createBrowserRouter(
+    [
+        {
+            path: '/*',
+            element: (
+                <ProtectedRoute>
+                    <MainLayout />
+                </ProtectedRoute>
+            ),
+        },
+        {
+            path: '/auth',
+            element: <AuthLayout />,
+            children: [
+                {
+                    index: true,
+                    element: withSuspense(
+                        <ProtectedRoute onlyUnAuth>
+                            <WelcomePage />
+                        </ProtectedRoute>,
+                    ),
+                },
+                {
+                    path: 'login',
+                    element: withSuspense(
+                        <ProtectedRoute onlyUnAuth>
+                            <LoginPage />
+                        </ProtectedRoute>,
+                    ),
+                },
+                {
+                    path: 'registration',
+                    element: withSuspense(
+                        <ProtectedRoute onlyUnAuth>
+                            <RegistrationPage />
+                        </ProtectedRoute>,
+                    ),
+                },
+                {
+                    path: 'forgot-password',
+                    element: withSuspense(
+                        <ProtectedRoute onlyUnAuth>
+                            <ForgotPasswordPage />
+                        </ProtectedRoute>,
+                    ),
+                },
+                {
+                    path: 'confirm-email',
+                    element: withSuspense(
+                        <ProtectedRoute onlyUnAuth>
+                            <ConfirmEmailPage />
+                        </ProtectedRoute>,
+                    ),
+                },
+            ],
+        },
+    ],
     {
-        path: '/*',
-        element: (
-            <ProtectedRoute>
-                <MainLayout />
-            </ProtectedRoute>
-        ),
+        basename: import.meta.env.BASE_URL,
     },
-    {
-        path: '/auth',
-        element: <AuthLayout />,
-        children: [
-            {
-                index: true,
-                element: withSuspense(
-                    <ProtectedRoute onlyUnAuth>
-                        <WelcomePage />
-                    </ProtectedRoute>,
-                ),
-            },
-            {
-                path: 'login',
-                element: withSuspense(
-                    <ProtectedRoute onlyUnAuth>
-                        <LoginPage />
-                    </ProtectedRoute>,
-                ),
-            },
-            {
-                path: 'registration',
-                element: withSuspense(
-                    <ProtectedRoute onlyUnAuth>
-                        <RegistrationPage />
-                    </ProtectedRoute>,
-                ),
-            },
-            {
-                path: 'forgot-password',
-                element: withSuspense(
-                    <ProtectedRoute onlyUnAuth>
-                        <ForgotPasswordPage />
-                    </ProtectedRoute>,
-                ),
-            },
-            {
-                path: 'confirm-email',
-                element: withSuspense(
-                    <ProtectedRoute onlyUnAuth>
-                        <ConfirmEmailPage />
-                    </ProtectedRoute>,
-                ),
-            },
-        ],
-    },
-]);
+);

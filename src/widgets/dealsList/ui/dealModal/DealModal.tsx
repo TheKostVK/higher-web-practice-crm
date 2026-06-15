@@ -77,7 +77,11 @@ export const DealModal = ({open, deal, onClose}: TDealModalProps) => {
     const handleFormSubmit = async (values: TDealFormValues) => {
         try {
             if (isEdit && deal) {
-                await updateDeal({id: deal.id, data: values}).unwrap();
+                const becameCompleted = values.status === 'completed' && deal.status !== 'completed';
+                await updateDeal({
+                    id: deal.id,
+                    data: becameCompleted ? {...values, completedAt: new Date().toISOString()} : values,
+                }).unwrap();
             } else {
                 await createDeal({
                     title: values.title,

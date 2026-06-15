@@ -6,7 +6,20 @@ import type {
     TCreateClientPayload,
     TUpdateClientByIdPayload,
 } from '../types';
+import {dashboardApi} from '@/entities/dashboard';
 import {getApiBaseUrl} from '@/shared/api';
+
+const invalidateDashboard = async (
+    queryFulfilled: Promise<unknown>,
+    dispatch: (action: ReturnType<typeof dashboardApi.util.invalidateTags>) => unknown,
+) => {
+    try {
+        await queryFulfilled;
+        dispatch(dashboardApi.util.invalidateTags(['Dashboard']));
+    } catch {
+        return;
+    }
+};
 
 const isDateInRange = (date: string, from?: string, to?: string) => {
     const value = new Date(date).getTime();
@@ -101,6 +114,7 @@ export const clientApi = createApi({
                 },
             }),
             invalidatesTags: [{type: 'TClient', id: 'LIST'}],
+            onQueryStarted: (_arg, {dispatch, queryFulfilled}) => invalidateDashboard(queryFulfilled, dispatch),
         }),
         updateClient: builder.mutation<TClient, TUpdateClientByIdPayload>({
             query: ({id, data}) => ({
@@ -112,6 +126,7 @@ export const clientApi = createApi({
                 {type: 'TClient', id},
                 {type: 'TClient', id: 'LIST'},
             ],
+            onQueryStarted: (_arg, {dispatch, queryFulfilled}) => invalidateDashboard(queryFulfilled, dispatch),
         }),
         deleteClient: builder.mutation<TClient, string>({
             query: (clientId) => ({
@@ -123,6 +138,7 @@ export const clientApi = createApi({
                 {type: 'TClient', id: clientId},
                 {type: 'TClient', id: 'LIST'},
             ],
+            onQueryStarted: (_arg, {dispatch, queryFulfilled}) => invalidateDashboard(queryFulfilled, dispatch),
         }),
     }),
 });
