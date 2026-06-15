@@ -1,0 +1,1 @@
+import{dn as e,pn as t}from"./jsx-runtime-C8jG9JgE.js";import{N as n,P as r}from"./index-BQvKW3xJ.js";var i=t(e(),1),a=()=>{let e=n(),t=r(),a=e.pathname===`/auth/login`;return{isLoginPage:a,isWelcomePage:e.pathname===`/auth`,handleClick:(0,i.useCallback)(()=>{t(a?`/auth/registration`:`/auth/login`)},[a,t])}};export{a as t};
